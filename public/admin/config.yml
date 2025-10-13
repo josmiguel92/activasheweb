@@ -40,3 +40,4 @@ collections:
       - { name: areas, label: Areas, widget: list, default: ["Investigación", "Derechos Humanos"] }
       - {label: "Coming Soon", name: "isComingSoon", widget: "boolean", default: false}
       - { name: body, label: Body, widget: markdown }
+      - {label: "Show Donate Button", name: "showDonate", widget: "boolean", default: false}

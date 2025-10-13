@@ -9,7 +9,7 @@ module.exports = {
         sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        accent: '#ff7a59',
+        accent: 'rgb(249 115 22 / var(--tw-bg-opacity))',
         'accent-600': '#ff6a3f'
       }
     },

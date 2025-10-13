@@ -1,0 +1,22 @@
+---
+type Props = {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary';
+};
+
+const { href, label, variant = 'primary' } = Astro.props as Props;
+
+const classes = variant === 'primary'
+  ? 'inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-600'
+  : 'inline-flex items-center gap-2 rounded-md bg-neutral-800 px-3 py-1 text-sm text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-600';
+
+---
+
+
+<a href={href} class={classes} role="button">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="-ml-0.5">
+    <path d="M12.1 21.35l-1.1-1.01C5.14 15.24 2 12.39 2 9.5 2 7.01 4.01 5 6.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5 18.99 5 21 7.01 21 9.5c0 2.89-3.14 5.74-8.99 10.84l-1.91 1.01z" fill="currentColor"/>
+  </svg>
+  <span>{label}</span>
+</a>

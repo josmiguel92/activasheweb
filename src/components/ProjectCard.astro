@@ -4,9 +4,10 @@ type Props = {
   areas?: string[];
   link: string;
   isComingSoon?: boolean;
+  preview?: string;
 };
 
-const { title, areas = [], link, isComingSoon } = Astro.props as Props;
+const { title, areas = [], link, isComingSoon, preview } = Astro.props as Props;
 
 import StatusBadge from "@/components/StatusBadge.astro";
 
@@ -24,6 +25,7 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       <div class="flex-1">
         <p class="text-neutral-100 text-lg font-semibold">{title}</p>
         <p class="text-neutral-400">{formatAreas(areas)}</p>
+        {preview && <p class="mt-2 text-neutral-400 text-sm">{preview}</p>}
       </div>
 
       <div class="ml-auto flex-shrink-0 flex items-center gap-4">

@@ -2,9 +2,16 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
 const formatAreas = (values = []) => values.join(" • ");
+
+const makePreview = (text = '', maxWords = 30) => {
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length <= maxWords) return text;
+  return words.slice(0, maxWords).join(' ') + '...';
+}
 ---
 
 <Layout title="Todos los Proyectos">
@@ -13,54 +20,19 @@ const formatAreas = (values = []) => values.join(" • ");
 
     <article class="flex flex-col gap-4">
       {
-        projects.map((project) => (
-          <a
-            class="group flex flex-col gap-2 border-t border-neutral-700 py-4 transition-all hover:text-neutral-100"
-            href={`/projects/${project.slug}`}
-          >
-            <div class="flex w-full items-center justify-between">
-              <h2 class="text-lg">{project.data.title}</h2>
-              {
-                project.data.isComingSoon && (
-                  <p class="w-fit rounded-md bg-neutral-900 px-4 py-1">Próximamente</p>
-                )
-              }
-
-              <div class="flex flex-row items-center gap-4">
-                <p>{formatDate(project.data.publishedAt)}</p>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  class="transition-all duration-300 group-hover:translate-x-1"
-                >
-                  <path
-                    d="M5.25 12.75L12.75 5.25"
-                    stroke="#999999"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M5.25 5.25H12.75V12.75"
-                    stroke="#999999"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2 text-sm text-neutral-400">
-              {
-                project.data.areas?.map((area: string) => (
-                  <span class="rounded bg-neutral-800 px-2 py-0.5">{area}</span>
-                ))
-              }
-            </div>
-
-            <p>{project.data.description}</p>
-          </a>
-        ))
+        projects.map((project) => {
+          const raw = project.data.description ?? "";
+          const preview = makePreview(raw, 30);
+          return (
+            <ProjectCard
+              title={project.data.title}
+              areas={project.data.areas}
+              link={`/projects/${project.slug}`}
+              isComingSoon={!!project.data.isComingSoon}
+              preview={preview}
+            />
+          );
+        })
       }
     </article>
   </main>

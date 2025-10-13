@@ -6,6 +6,7 @@ slug: "red-apoyo-alimentario"
 isPublish: true
 areas: ["Ayuda Directa", "Seguridad Alimentaria"]
 isComingSoon: true
+showDonate: true
 ---
 
 ## Resumen del Proyecto
