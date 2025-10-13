@@ -25,7 +25,7 @@ const DEFAULT_URL_SITE = SITE_URL;
 const openGraph = {
   title: og?.title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
-  image: og?.image || "/opengraph-image.jpg",
+  image: og?.image || "/favicon.png",
   alt: og?.alt || "Logo de Activashe con el eslogan 'Visibilidad y Equidad'",
   url: DEFAULT_URL_SITE,
   description: og?.description || DEFAULT_DESCRIPTION_PAGE,
@@ -53,7 +53,7 @@ const openGraph = {
     }}
     extend={{
       link: [
-        { rel: "icon", href: "/favicon.svg" },
+        { rel: "icon", href: "/favicon.png" },
         { rel: "sitemap", href: "/sitemap-index.xml" },
       ],
       meta: [
