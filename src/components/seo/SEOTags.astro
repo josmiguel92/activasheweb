@@ -17,16 +17,16 @@ type Props = {
 
 const { title, description, noindex, og } = Astro.props;
 
-const DEFAULT_TITLE_PAGE = "Astro & decap CMS - starter";
+const DEFAULT_TITLE_PAGE = "Activashe | Visibilidad y Apoyo para Mujeres Afrodescendientes";
 const DEFAULT_DESCRIPTION_PAGE =
-  "A minimal starter built with Astro & Decap CMS and Tailwindcss.";
+  "Activashe: Damos voz a las mujeres afrodescendientes en situación de vulnerabilidad. Trabajamos para visibilizar la injusticia y promover la equidad y los derechos humanos.";
 const DEFAULT_URL_SITE = SITE_URL;
 
 const openGraph = {
   title: og?.title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
   image: og?.image || "/opengraph-image.jpg",
-  alt: og?.alt || "astro starter image",
+  alt: og?.alt || "Logo de Activashe con el eslogan 'Visibilidad y Equidad'",
   url: DEFAULT_URL_SITE,
   description: og?.description || DEFAULT_DESCRIPTION_PAGE,
 };
@@ -49,7 +49,7 @@ const openGraph = {
       },
     }}
     twitter={{
-      creator: "@itsstormzz_",
+      creator: "@activashecuba",
     }}
     extend={{
       link: [
@@ -66,7 +66,7 @@ const openGraph = {
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: openGraph.title },
         { name: "twitter:description", content: openGraph.description },
-        { name: "twitter:site", content: "@itsstormzz_" },
+        { name: "twitter:site", content: "@activashecuba" },
       ],
     }}
   />

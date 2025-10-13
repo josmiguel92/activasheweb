@@ -1,12 +1,12 @@
 ---
-title: "Bienvenida a Activashe: Un Espacio para las Voces Silenciadas"
+title: "Bienvenida a Activ@she: Un Espacio para las Voces Silenciadas"
 publishedAt: 2024-10-08
-description: "Nacemos para dar voz a las historias que no se cuentan. Presentamos la web de Activashe, dedicada a visibilizar las realidades de minorías vulnerables en Cuba."
+description: "Nacemos para dar voz a las historias que no se cuentan. Presentamos la web de Activ@she, dedicada a visibilizar las realidades de minorías vulnerables en Cuba."
 slug: "bienvenida-a-activashe-un-espacio-para-voces-silenciadas"
 isPublish: true
 ---
 
-Hoy nace la web de Activashe. Y con este nacimiento, creamos un espacio que hacía falta: un altavoz para las realidades que a menudo se ignoran, se minimizan o, directamente, se silencian.
+Hoy nace la web de Activ@she. Y con este nacimiento, creamos un espacio que hacía falta: un altavoz para las realidades que a menudo se ignoran, se minimizan o, directamente, se silencian.
 
 Vivimos en un mundo saturado de información, pero lleno de vacíos. Hay historias de lucha, resiliencia y supervivencia que no llegan a los grandes titulares. Hay colectivos enteros cuya vulnerabilidad se vuelve invisible ante la indiferencia o la falta de interés de los medios tradicionales.
 
@@ -14,9 +14,9 @@ Nosotras hemos llegado para llenar uno de esos vacíos.
 
 ***
 
-### ¿Por qué Activashe?
+### ¿Por qué Activ@she?
 
-Porque creemos en el poder de nombrar la injusticia. Porque entendemos que detrás de cada estadística hay un rostro, una familia, una comunidad que sufre en silencio. Activashe nace de la convicción de que visibilizar es el primer paso para transformar.
+Porque creemos en el poder de nombrar la injusticia. Porque entendemos que detrás de cada estadística hay un rostro, una familia, una comunidad que sufre en silencio. Activ@she nace de la convicción de que visibilizar es el primer paso para transformar.
 
 Nuestro enfoque es claro: queremos poner la lupa sobre la intersección de las opresiones. No se puede entender la pobreza sin hablar de género; no se puede analizar la migración sin hablar de raza; no se puede denunciar la desigualdad sin entender cómo múltiples factores se entrelazan para crear barreras casi insuperables.
 
@@ -32,4 +32,4 @@ Te invitamos a explorar nuestros artículos, a compartir nuestro contenido y a u
 
 Gracias por estar aquí. Gracias por escuchar.
 
-**Bienvenida, bienvenido, a Activashe.**
+**Bienvenida, bienvenido, a Activ@she.**

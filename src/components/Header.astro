@@ -31,6 +31,28 @@ const pathname = removeTrailingSlash(Astro.url.pathname);
           }}>Posts</a
         >
       </li>
+      <li>/</li>
+
+      <li>
+        <a
+          href="/projects"
+          class:list={{
+            ["hover:text-neutral-100"]: true,
+            ["text-neutral-100"]: pathname.startsWith("/projects"),
+          }}>Proyectos</a
+        >
+      </li>
+      <li>/</li>
+
+      <li>
+        <a
+          href="/donate"
+          class:list={{
+            ["hover:text-neutral-100"]: true,
+            ["text-neutral-100"]: pathname === "/donate",
+          }}>Donar</a
+        >
+      </li>
     </ul>
   </nav>
 </header>

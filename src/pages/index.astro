@@ -9,7 +9,13 @@ import Link from "@/components/shared/Link.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
-import projects from "@/data/projects";
+const projectsCollection = await getCollection("projects");
+const projects = projectsCollection.map((p) => ({
+  title: p.data.title,
+  areas: p.data.areas,
+  link: `/projects/${p.slug}`,
+  isComingSoon: !!p.data.isComingSoon,
+}));
 
 const posts = await getCollection("posts");
 ---
@@ -58,10 +64,7 @@ const posts = await getCollection("posts");
       {projects.length === 0 && <p>Oops, I must work^^^^^</p>}
 
       <section class="flex flex-col gap-4">
-        {
-          projects.length !== 0 &&
-            projects.map((project) => <ProjectCard {...project} />)
-        }
+        {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
       </section>
     </article>
 
