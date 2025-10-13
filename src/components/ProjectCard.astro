@@ -8,23 +8,26 @@ type Props = {
 
 const { title, areas = [], link, isComingSoon } = Astro.props as Props;
 
+import StatusBadge from "@/components/StatusBadge.astro";
+
 const formatAreas = (values: string[] = []) => values.join(" • ");
 ---
 
 <>
   <a
-    class="group flex w-full cursor-pointer flex-col justify-between gap-2 rounded-md border border-neutral-700 p-4 transition-all duration-300 hover:-translate-y-2 hover:border-neutral-400 md:flex-row md:items-center"
+    class="group block w-full cursor-pointer flex-col justify-between gap-2 rounded-lg border border-neutral-700 bg-neutral-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:flex md:flex-row md:items-center"
     href={link}
     target="_blank"
     rel="noreferrer"
   >
-    <div class="flex flex-col gap-4 md:flex-row md:items-center">
-      <p class="text-neutral-100">{title}</p>
-      <p>{formatAreas(areas)}</p>
-    </div>
+    <div class="flex w-full flex-col gap-4 md:flex-row md:items-center md:gap-6">
+      <div class="flex-1">
+        <p class="text-neutral-100 text-lg font-semibold">{title}</p>
+        <p class="text-neutral-400">{formatAreas(areas)}</p>
+      </div>
 
-    <div class="flex items-center gap-4">
-      {isComingSoon && <p class="w-fit rounded-md bg-neutral-900 px-4 py-1">Próximamente</p>}
+      <div class="ml-auto flex-shrink-0 flex items-center gap-4">
+        {isComingSoon && (<StatusBadge label="Próximamente" />)}
 
       <svg
         width="18"

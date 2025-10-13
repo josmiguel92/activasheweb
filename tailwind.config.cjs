@@ -8,6 +8,10 @@ module.exports = {
       fontFamily: {
         sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        accent: '#ff7a59',
+        'accent-600': '#ff6a3f'
+      }
     },
   },
   plugins: [],
