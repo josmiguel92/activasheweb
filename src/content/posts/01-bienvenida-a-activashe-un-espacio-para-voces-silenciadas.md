@@ -1,6 +1,6 @@
 ---
 title: "Bienvenida a Activ@she: Un Espacio para las Voces Silenciadas"
-publishedAt: 2024-10-08
+publishedAt: 2025-09-08
 description: "Nacemos para dar voz a las historias que no se cuentan. Presentamos la web de Activ@she, dedicada a visibilizar las realidades de minorías vulnerables en Cuba."
 slug: "bienvenida-a-activashe-un-espacio-para-voces-silenciadas"
 isPublish: true
