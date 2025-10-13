@@ -1,9 +1,12 @@
 ---
 title: "La Doble Carga: Ser Mujer y Negra en la Crisis Cubana"
+description: Análisis sobre cómo la crisis económica y la inseguridad
+  alimentaria en Cuba impactan de forma desproporcionada a las mujeres
+  afrocubanas.
 publishedAt: 2025-10-07
-description: "Análisis sobre cómo la crisis económica y la inseguridad alimentaria en Cuba impactan de forma desproporcionada a las mujeres afrocubanas."
-slug: "doble-carga-mujeres-negras-crisis-cuba"
+slug: doble-carga-mujeres-negras-crisis-cuba
 isPublish: true
+isDraft: true
 ---
 
 En medio de una de las peores crisis económicas de su historia, que ha sumido a gran parte de la población en la pobreza, las mujeres negras en Cuba enfrentan una batalla diaria por la supervivencia, marcada por una profunda inseguridad alimentaria y la agudización de desigualdades históricas. Mientras los apagones se prolongan y el valor del peso cubano se desploma, para muchas mujeres afrocubanas, llevar un plato de comida a la mesa se ha convertido en un desafío monumental.
@@ -14,7 +17,7 @@ En medio de una de las peores crisis económicas de su historia, que ha sumido a
 
 La crisis económica en Cuba, agudizada por la pandemia, la disminución del turismo y políticas económicas internas fallidas, ha generado una escasez generalizada de alimentos, medicinas y productos básicos. Sin embargo, el impacto de esta crisis no es uniforme. Las mujeres, tradicionalmente encargadas del cuidado del hogar y la alimentación familiar, soportan una carga desproporcionada. Esta situación se agrava aún más para las mujeres negras, quienes se encuentran en la intersección de la discriminación de género y racial.
 
-![Mujer cubana en un mercado local](/images/mujer-cuba-mercado.jpg)
+![Mujer cubana en un mercado local](/images/mujer-cuba-mercado.webp)
 *Leyenda: La escasez de alimentos es una realidad diaria para muchas familias en la isla.*
 
 Estudios y reportes de diversas organizaciones de derechos humanos señalan que la población afrodescendiente en Cuba es la más afectada por la pobreza. Las mujeres negras y mestizas están sobrerrepresentadas en los barrios más precarios, con viviendas en mal estado y acceso limitado a servicios básicos como el agua potable. Esta desventaja socioespacial limita su capacidad para hacer frente a la crisis.
