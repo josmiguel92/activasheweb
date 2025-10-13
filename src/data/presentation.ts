@@ -11,24 +11,23 @@ type Presentation = {
 };
 
 const presentation: Presentation = {
-  mail: "gxanshu@yahoo.com",
-  title: "Hi, I’m Anshu 👋",
-  description:
-    "Howdy, i'm a *indian software programmer* with over *5 years* of web experience. I am currently working with *NextJS and Typescript*. Outside of work I complete my pokemon card collection and learning TypeScript.",
-  socials: [
+  "mail": "contacto@activashe.org",
+  "title": "Hola, somos Activ@she 👋",
+  "description": "Somos una organización comprometida con la defensa y el apoyo a las *minorías de mujeres afrodescendientes* en contextos de crisis. Trabajamos para visibilizar su lucha contra la *inseguridad alimentaria* y la *desigualdad sistémica*, promoviendo la equidad y la justicia. ¡Únete a nuestra causa!",
+  "socials": [
     {
-      label: "Twiiter",
-      link: "https://twitter.com/gxanshu",
+      "label": "Instagram",
+      "link": "https://instagram.com/activashe"
     },
     {
-      label: "Bento",
-      link: "https://bento.me/gxanshu",
+      "label": "X (Twitter)",
+      "link": "https://twitter.com/activashe"
     },
     {
-      label: "Github",
-      link: "https://github.com/gxanshu",
-    },
-  ],
+      "label": "Facebook",
+      "link": "https://facebook.com/activasheONG"
+    }
+  ]
 };
 
 export default presentation;

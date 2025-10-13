@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: gxanshu/astro-decap-cms-starter #replace with your githu repo
+  repo: josmiguel92/activasheweb #replace with your githu repo
   branch: main
   squash_merges: true
   open_authoring: true
@@ -8,7 +8,7 @@ backend:
 publish_mode: editorial_workflow
 media_folder: public/images
 public_folder: /images
-site_url: "https://astro-decapcms-starter.netlify.app/" # your site name
+site_url: "https://activashecuba.netlify.app/" # your site name
 
 collections:
   - name: post
