@@ -24,3 +24,19 @@ collections:
       - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
       - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
       - { name: body, label: Body, widget: markdown }
+
+  - name: project
+    label: Projects
+    folder: src/content/projects
+    create: true
+    format: frontmatter
+    preview_path: projects/{{slug}}
+    fields:
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: publishedAt, label: Date, widget: date }
+      - { name: slug, label: Slug }
+      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
+      - { name: areas, label: Areas, widget: list, default: ["Investigación", "Derechos Humanos"] }
+      - {label: "Coming Soon", name: "isComingSoon", widget: "boolean", default: false}
+      - { name: body, label: Body, widget: markdown }
