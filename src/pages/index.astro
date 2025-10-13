@@ -41,10 +41,10 @@ const posts = await getCollection("posts");
 
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Latest posts</h3>
-        <Link href="/posts" label="See all posts" isUnderline target="_self" />
+        <h3 class="text-lg text-neutral-100">Publicaciones recientes</h3>
+        <Link href="/posts" label="Ver todas las publicaciones" isUnderline target="_self" />
       </header>
-      {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
+      {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
 
       <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
         {
@@ -69,7 +69,7 @@ const posts = await getCollection("posts");
           Selected projects ({projects.length})
         </h3>
       </header>
-      {projects.length === 0 && <p>Oops, I must work^^^^^</p>}
+      {projects.length === 0 && <p>Oops, debemos trabajar en esto...</p>}
 
       <section class="flex flex-col gap-4">
         {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
@@ -78,13 +78,13 @@ const posts = await getCollection("posts");
 
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Get in touch</h3>
+        <h3 class="text-lg text-neutral-100">Contáctanos</h3>
       </header>
       <p>
-        Email us at <Link
+        Envíanos un correo a <Link
           href={`mailto:${presentation.mail}`}
           label={presentation.mail}
-        /> or follow us via our social links.
+        /> o síguenos a través de nuestros enlaces sociales.
       </p>
 
       <SocialLinks />
