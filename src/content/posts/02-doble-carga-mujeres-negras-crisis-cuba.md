@@ -1,6 +1,6 @@
 ---
 title: "La Doble Carga: Ser Mujer y Negra en la Crisis Cubana"
-publishedAt: "2025-10-07"
+publishedAt: 2025-10-07
 description: "Análisis sobre cómo la crisis económica y la inseguridad alimentaria en Cuba impactan de forma desproporcionada a las mujeres afrocubanas."
 slug: "doble-carga-mujeres-negras-crisis-cuba"
 isPublish: true
