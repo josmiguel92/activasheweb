@@ -12,7 +12,7 @@ type Presentation = {
 
 const presentation: Presentation = {
   "mail": "contacto@activashe.org",
-  "title": "Hola, somos Activ@she 👋",
+  "title": "Hola, somos Activ@Ase 👋",
   "description": "Somos una organización comprometida con la defensa y el apoyo a las *minorías de mujeres afrodescendientes* en contextos de crisis. Trabajamos para visibilizar su lucha contra la *inseguridad alimentaria* y la *desigualdad sistémica*, promoviendo la equidad y la justicia. ¡Únete a nuestra causa!",
   "socials": [
     {

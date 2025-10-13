@@ -1,6 +1,6 @@
 ---
 title: "Informe: La Doble Carga en Cuba"
-publishedAt: 2024-09-15
+publishedAt: 2025-09-15
 description: "Una investigación profunda sobre cómo la crisis económica y el racismo estructural impactan la seguridad alimentaria de las mujeres afrocubanas."
 slug: "informe-doble-carga"
 isPublish: true
@@ -10,6 +10,7 @@ isComingSoon: false
 
 ## Resumen del Proyecto
 
+![Mujer cubana](/images/01-informe-doble-carga.jpg)
 El proyecto **"La Doble Carga"** es nuestra investigación fundacional. Durante meses, hemos recopilado datos y testimonios para documentar una realidad a menudo ignorada: la intersección de la discriminación de género y raza en medio de la crisis de inseguridad alimentaria en Cuba.
 
 Este informe no solo presenta estadísticas, sino que pone rostro y voz a las cifras, demostrando cómo las barreras estructurales relegan a las mujeres negras a una situación de extrema vulnerabilidad.
