@@ -1,1 +1,1 @@
-export const SITE_URL = "https://activashecuba.netlify.app";
+export const SITE_URL = "https://activashecuba.org";
