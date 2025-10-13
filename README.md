@@ -1,5 +1,26 @@
 # 👨‍🚀 Astro & decap (netlify) CMS - Portfolio Template
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b0f3d132-781b-4ced-8438-4e496dedea5e/deploy-status)](https://app.netlify.com/projects/activashecuba/deploys)
+
+
+## ✨ Tema del sitio
+
+Este sitio es la web de un proyecto activista llamado "Activashe": contiene artículos (posts) y proyectos focalizados en temas de seguridad alimentaria, derechos y redes de apoyo. El contenido principal está organizado en Markdown dentro de `src/content` y se publica mediante la colección de contenido de Astro.
+
+Estructura relevante:
+
+- `src/content/posts/` — artículos y entradas del blog (frontmatter con `title`, `publishedAt`, `description`, `slug`, etc.).
+- `src/content/projects/` — páginas por proyecto (frontmatter con `title`, `publishedAt`, `description`, `areas`, `isComingSoon`, `slug`, `isPublish`).
+- `src/components/` — componentes reutilizables (ej. `ProjectCard.astro`, `PostCard.astro`).
+- `src/pages/` — rutas de la web (`/`, `/posts`, `/projects`, `/donate`, etc.).
+
+Contenido y estado de los proyectos:
+- La propiedad `isComingSoon` en el frontmatter de un proyecto marca si el proyecto está "Próximamente". El sitio mostrará un badge "Próximamente" en listados y en la propia página del proyecto cuando este campo esté en `true`.
+
+Internacionalización:
+- El contenido actual está mayormente en español. Los textos de interfaz (badges, botones) pueden traducirse directamente en los componentes.
+
+## Template
 ![Template](https://astro-decapcms-starter.netlify.app/opengraph-image.jpg)
 
 This Repo is not that much old but Astro is growing faster its hard for me to cachup due to some of my personal work. if anyone want to use this repo then please do update packages after cloning and look for astro docs to upgrade astro version. Netlify CMS intigration will work fine
