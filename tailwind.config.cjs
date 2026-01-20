@@ -6,9 +6,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        display: ["Fraunces", ...defaultTheme.fontFamily.serif],
       },
       colors: {
+        chocolate: '#2D1B14',
+        terracotta: '#C45B3D',
+        mustard: '#E1AD01',
+        'vibrant-orange': '#FF7033',
+        'warm-cream': '#FDF8F3',
         accent: 'rgb(249 115 22 / var(--tw-bg-opacity))',
         'accent-600': '#ff6a3f'
       }

@@ -6,44 +6,33 @@ type Props = {
   publishedAt: Date;
   description: string;
   slug: string;
+  image?: string;
 };
 
-const { title, publishedAt, description, slug } = Astro.props;
+const { title, publishedAt, description, slug, image } = Astro.props;
 ---
 
-<a
-  class="group flex max-w-sm cursor-pointer flex-col gap-2 rounded-md border border-neutral-700 p-4 transition-all duration-300 hover:-translate-y-2 hover:border-neutral-400"
-  href={`/posts/${slug}`}
->
-  <div
-    class="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center"
-  >
-    <p class="text-neutral-100">{title}</p>
-    <div class="flex flex-row items-center gap-4">
-      <p>{formatDate(publishedAt)}</p>
-
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
-        fill="none"
-        class="transition-all duration-300 group-hover:translate-x-1"
-      >
-        <path
-          d="M5.25 12.75L12.75 5.25"
-          stroke="#999999"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M5.25 5.25H12.75V12.75"
-          stroke="#999999"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-      </svg>
+<article class="bg-white/5 rounded-3xl overflow-hidden border-t-4 border-terracotta card-shadow">
+  {image && (
+    <div class="h-48 relative overflow-hidden">
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent"></div>
     </div>
+  )}
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-4">
+      <span class="text-[10px] font-black uppercase tracking-widest text-terracotta">Publicación</span>
+      <span class="text-[10px] text-white/40">{formatDate(publishedAt)}</span>
+    </div>
+    <h3 class="text-xl mb-3 leading-snug text-warm-cream">{title}</h3>
+    <p class="text-sm text-white/60 line-clamp-2 mb-6">{description}</p>
+    <a class="flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all" href={`/posts/${slug}`}>
+      Leer artículo completo
+      <span class="material-symbols-outlined text-sm">north_east</span>
+    </a>
   </div>
-
-  <p class="truncate">
-    {description}
-  </p>
-</a>
+</article>

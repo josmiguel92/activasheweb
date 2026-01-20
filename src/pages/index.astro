@@ -16,78 +16,101 @@ const projects = projectsCollection.map((p) => ({
   areas: p.data.areas,
   link: `/projects/${p.slug}`,
   isComingSoon: !!p.data.isComingSoon,
+  image: p.data.image,
 }));
 
 const posts = await getCollection("posts");
 ---
 
 <Layout>
-  <main class="flex flex-col gap-20">
-    <section class="relative overflow-hidden rounded-lg bg-gradient-to-br from-neutral-900/60 to-neutral-900/40 p-8">
-      <div class="max-w-[80ch]">
-        <h1 class="text-4xl md:text-5xl font-semibold text-neutral-100">{presentation.title}</h1>
-        <p class="mt-4 text-lg text-neutral-300 leading-7" set:html={convertAsteriskToStrongTag(presentation.description)} />
-
-        <div class="mt-6 flex items-center gap-4">
-          <Link href="/projects" label="Ver proyectos" isUnderline={false} target="_self" class="bg-accent rounded-md px-4 py-2 text-sm text-white" />
-          <Link href="/posts" label="Leer artículos" isUnderline target="_self" />
+  <section class="relative px-6">
+    <div class="h-[60vh] w-full relative overflow-hidden rounded-3xl -mx-6">
+      <img 
+        alt="Comunidad Activ@Ase" 
+        class="w-full h-full object-cover" 
+        src="/favicon.png"
+      />
+      <div class="absolute inset-0 image-overlay"></div>
+    </div>
+    <div class="-mt-32 relative z-10 max-w-4xl mx-auto">
+      <div class="bg-terracotta p-8 rounded-3xl card-shadow">
+        <h1 class="text-4xl leading-tight mb-4 text-warm-cream">
+          {presentation.title}
+        </h1>
+        <p class="text-lg leading-relaxed text-warm-cream opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <Link href="/projects" label="Conoce nuestra labor" isUnderline={false} target="_self" class="bg-mustard text-chocolate py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:opacity-90" />
+          <Link href="/posts" label="Lee nuestras publicaciones" isUnderline={false} target="_self" class="border-2 border-warm-cream text-warm-cream py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-warm-cream/10" />
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="pointer-events-none absolute -right-20 top-0 opacity-40">
-        <BlurCircle position="top" color="orange" />
-      </div>
-    </section>
+  <section class="px-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-vibrant-orange">
+      <span class="material-symbols-outlined text-vibrant-orange mb-3 text-3xl">restaurant</span>
+      <h3 class="text-lg mb-1 text-warm-cream font-bold">Seguridad</h3>
+      <p class="text-xs opacity-70">Soberanía alimentaria para nuestras familias.</p>
+    </div>
+    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-mustard">
+      <span class="material-symbols-outlined text-mustard mb-3 text-3xl">balance</span>
+      <h3 class="text-lg mb-1 text-warm-cream font-bold">Justicia</h3>
+      <p class="text-xs opacity-70">Combatiendo la desigualdad sistémica.</p>
+    </div>
+  </section>
 
-    <article class="flex flex-col gap-8">
-      <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Publicaciones recientes</h3>
-        <Link href="/posts" label="Ver todas las publicaciones" isUnderline target="_self" />
-      </header>
-      {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
+  <section class="px-6 space-y-6 max-w-4xl mx-auto">
+    <div class="flex items-end justify-between">
+      <h2 class="text-3xl font-display">Voces de la<br/><span class="text-vibrant-orange">Comunidad</span></h2>
+      <Link href="/posts" label="Ver todas" isUnderline target="_self" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1" />
+    </div>
+    {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
+    <div class="space-y-6">
+      {
+        posts.length !== 0 &&
+          posts
+            .slice(0, 2)
+            .map((post) => (
+              <PostCard
+                publishedAt={post.data.publishedAt}
+                title={post.data.title}
+                description={post.data.description}
+                slug={post.slug}
+                image={post.data.image}
+              />
+            ))
+      }
+    </div>
+  </section>
 
-      <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
-        {
-          posts.length !== 0 &&
-            posts
-              .slice(0, 2)
-              .map((post) => (
-                <PostCard
-                  publishedAt={post.data.publishedAt}
-                  title={post.data.title}
-                  description={post.data.description}
-                  slug={post.slug}
-                />
-              ))
-        }
-      </section>
-    </article>
+  <section class="space-y-6 max-w-4xl mx-auto">
+    <div class="px-6 flex items-center gap-3">
+      <h2 class="text-3xl font-display">Proyectos</h2>
+      <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-xs font-black">ACTIVOS</span>
+    </div>
+    {projects.length === 0 && <p class="px-6">Oops, debemos trabajar en esto...</p>}
+    <div class="px-6 overflow-x-auto flex gap-6 no-scrollbar">
+      {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
 
-    <article class="flex flex-col gap-8">
-      <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">
-          Proyectos destacados ({projects.length})
-        </h3>
-      </header>
-      {projects.length === 0 && <p>Oops, debemos trabajar en esto...</p>}
-
-      <section class="flex flex-col gap-4">
-        {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
-      </section>
-    </article>
-
-    <article class="flex flex-col gap-8">
-      <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Contáctanos</h3>
-      </header>
-      <p>
-        Envíanos un correo a <Link
-          href={`mailto:${presentation.mail}`}
-          label={presentation.mail}
-        /> o síguenos a través de nuestros enlaces sociales.
+  <section class="px-6 max-w-4xl mx-auto">
+    <footer class="p-8 rounded-[2.5rem] bg-terracotta text-warm-cream">
+      <h2 class="text-3xl font-display mb-4">Hablemos</h2>
+      <p class="opacity-90 mb-8 leading-relaxed">
+        Estamos construyendo futuro juntas. Escríbenos para colaborar, donar o simplemente para conectar.
       </p>
-
+      <div class="space-y-4 mb-10">
+        <Link
+        href={`mailto:${presentation.mail}`}
+        label={presentation.mail}
+        class="flex items-center gap-4 text-lg font-bold"
+      />
       <SocialLinks />
-    </article>
-  </main>
+    </div>
+    <div class="pt-8 border-t border-warm-cream/20 text-center">
+      <p class="text-[10px] font-black uppercase tracking-widest opacity-60">© 2024 Activ@Ase — Hecho con amor y resistencia</p>
+    </div>
+    </footer>
+  </section>
 </Layout>

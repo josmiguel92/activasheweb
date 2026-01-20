@@ -6,6 +6,7 @@ slug: "informe-doble-carga"
 isPublish: true
 areas: ["Investigación", "Derechos Humanos"]
 isComingSoon: false
+image: "/images/01-informe-doble-carga.jpg"
 ---
 
 ## Resumen del Proyecto

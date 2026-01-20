@@ -7,6 +7,7 @@ isPublish: true
 areas: ["Ayuda Directa", "Seguridad Alimentaria"]
 isComingSoon: true
 showDonate: true
+image: "favicon.png"
 ---
 
 ## Resumen del Proyecto

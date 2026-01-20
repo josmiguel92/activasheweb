@@ -4,7 +4,6 @@ import BlurCircle from "@/components/shared/BlurCircle.astro";
 import theme from "@/data/theme";
 import SEOTags from "@/components/seo/SEOTags.astro";
 
-import "@fontsource/open-sans";
 import "@/styles/tailwind.css";
 import "@/styles/post.css";
 
@@ -18,19 +17,20 @@ const { title, description } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="es">
-  <SEOTags title={title} description={description} />
+  <head>
+    <SEOTags title={title} description={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  </head>
 
-  <body
-    class="mx-auto flex min-h-screen max-w-[1100px] flex-col gap-9 bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
-  >
+  <body class="min-h-screen">
     <Header />
+    <main class="space-y-16 pb-20">
+      <slot />
+    </main>
     <BlurCircle position="top" color={theme.colors.blur.top} />
     <BlurCircle position="bottom" color={theme.colors.blur.bottom} />
-    <slot />
-    <style is:global>
-      html {
-        font-family: "Open Sans";
-      }
-    </style>
   </body>
 </html>

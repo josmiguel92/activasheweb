@@ -15,10 +15,14 @@ const makePreview = (text = '', maxWords = 30) => {
 ---
 
 <Layout title="Todos los Proyectos">
-  <main class="flex flex-col gap-20">
-    <h1 class="text-2xl text-neutral-100">Proyectos</h1>
+  <section class="px-6 space-y-8 max-w-6xl mx-auto">
+    <div class="flex items-center gap-3">
+      <h1 class="text-4xl font-display text-warm-cream">Nuestros <span class="text-vibrant-orange">Proyectos</span></h1>
+      <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-xs font-black">ACTIVOS</span>
+    </div>
+    <a href="/" class="inline-block text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">Volver al inicio</a>
 
-    <article class="flex flex-col gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         projects.map((project) => {
           const raw = project.data.description ?? "";
@@ -30,10 +34,11 @@ const makePreview = (text = '', maxWords = 30) => {
               link={`/projects/${project.slug}`}
               isComingSoon={!!project.data.isComingSoon}
               preview={preview}
+              image={project.data.image}
             />
           );
         })
       }
-    </article>
-  </main>
+    </div>
+  </section>
 </Layout>

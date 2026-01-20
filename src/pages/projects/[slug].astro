@@ -23,20 +23,40 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.title}>
-  <main class="post mx-auto flex w-full max-w-[72ch] flex-col gap-4">
-    <header role="presentation">
-      <h1 class="text-md">
-        {project.data.title} - {formatDate(project.data.publishedAt)}
+  <article class="px-6 max-w-4xl mx-auto">
+    <header class="mb-8 bg-gradient-to-br from-terracotta to-mustard/80 p-8 rounded-3xl card-shadow">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          {project.data.areas && project.data.areas.length > 0 && (
+            <span class="text-[10px] font-black uppercase tracking-widest text-chocolate">
+              {project.data.areas.join(' • ')}
+            </span>
+          )}
+        </div>
+        <div class="flex gap-2">
+          {project.data.isComingSoon && (
+            <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-[10px] font-black">
+              PRÓXIMAMENTE
+            </span>
+          )}
+          <span class="text-sm text-warm-cream/60">{formatDate(project.data.publishedAt)}</span>
+        </div>
+      </div>
+      <h1 class="text-4xl font-display leading-tight mb-4 text-warm-cream">
+        {project.data.title}
       </h1>
-      <div class="flex items-center gap-4">
-        <p class="italic">{project.data.description}</p>
-        {project.data.isComingSoon && (
-          <StatusBadge label="Próximamente" />
-        )}
-        
-      </div>      
+      <p class="text-lg text-warm-cream/90 italic">{project.data.description}</p>
     </header>
 
-    <Content />
-  </main>
+    <div class="post prose prose-invert prose-lg max-w-none mb-8">
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10">
+      <a href="/projects" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        Volver a proyectos
+      </a>
+    </div>
+  </article>
 </Layout>

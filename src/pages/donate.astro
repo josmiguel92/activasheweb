@@ -9,30 +9,43 @@ import presentation from "@/data/presentation";
 ---
 
 <Layout title="Colabora con Activ@se | Donaciones">
-  <main class="flex flex-col gap-10">
-    <article class="flex flex-col gap-8">
-      <h1 class="text-3xl text-neutral-100">Colabora con Activ@se</h1>
-  <div class="flex flex-col gap-4 max-w-[80ch] leading-7">
+  <section class="px-6 space-y-8 max-w-4xl mx-auto">
+    <div class="bg-terracotta p-8 md:p-12 rounded-3xl card-shadow">
+      <h1 class="text-4xl font-display text-warm-cream mb-6">Colabora con <span class="text-mustard">Activ@se</span></h1>
+      
+      <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
         <p>
           Actualmente estamos estableciendo una plataforma segura y directa para recibir donaciones. De momento, no contamos con un sistema automatizado, pero tu interés en ayudar es increíblemente valioso para nosotras.
         </p>
         <p>
           Si deseas colaborar, la mejor vía es ponerte en contacto directo con nuestro equipo. Escríbenos y te comentaremos personalmente las formas más efectivas y seguras para que tu aporte llegue íntegramente a quienes lo necesitan.
         </p>
-        <p class="mt-4 text-lg">
-          <strong>Nuestro correo de contacto:</strong>
-          <Link
+        
+        <div class="mt-4 p-6 bg-chocolate/30 rounded-2xl border-l-4 border-mustard">
+          <p class="text-sm font-bold uppercase tracking-wider text-mustard mb-2">Nuestro correo de contacto</p>
+          <a 
             href={`mailto:${presentation.mail}`}
-            label={presentation.mail}
-            isUnderline
-          />
-        </p>
-        <p class="mt-2">
+            class="flex items-center gap-3 text-xl font-bold hover:text-mustard transition-colors"
+          >
+            <span class="material-symbols-outlined text-mustard">mail</span>
+            {presentation.mail}
+          </a>
+        </div>
+
+        <p class="text-lg">
           Gracias de antemano por tu generosidad y por creer en nuestra misión. Cada gesto, por pequeño que sea, nos impulsa a seguir adelante.
         </p>
       </div>
+    </div>
 
+    <div class="bg-white/5 p-8 rounded-3xl border-t-4 border-vibrant-orange">
+      <h2 class="text-2xl font-display mb-4 text-warm-cream">Síguenos en nuestras redes</h2>
+      <p class="mb-6 text-white/70">Mantente al tanto de nuestro trabajo y comparte nuestra misión:</p>
       <SocialLinks />
-    </article>
-  </main>
+    </div>
+
+    <a href="/" class="inline-block text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">
+      Volver al inicio
+    </a>
+  </section>
 </Layout>

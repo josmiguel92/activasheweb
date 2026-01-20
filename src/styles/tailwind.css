@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-chocolate text-warm-cream antialiased;
+  }
+  
+  h1, h2, h3 {
+    @apply font-display font-extrabold;
+  }
+}
+
+@layer utilities {
+  .card-shadow {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .image-overlay {
+    background: linear-gradient(to bottom, transparent 0%, #2D1B14 100%);
+  }
+}

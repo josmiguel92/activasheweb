@@ -14,4 +14,9 @@ export type TailwindColor =
   | "purple"
   | "fushia"
   | "pink"
-  | "rose";
+  | "rose"
+  | "chocolate"
+  | "terracotta"
+  | "mustard"
+  | "vibrant-orange"
+  | "warm-cream";

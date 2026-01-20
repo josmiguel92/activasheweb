@@ -5,54 +5,41 @@ import presentation from "@/data/presentation";
 const pathname = removeTrailingSlash(Astro.url.pathname);
 ---
 
-<header class="z-40 flex w-full flex-col gap-2 md:flex-row md:justify-between">
-  <a href={`mailto:${presentation.mail}`} class="hover:text-neutral-100"
-    >{presentation.mail}</a
-  >
-
-  <nav role="navigation">
-    <ul role="list" class="flex flex-row gap-2">
-      <li>
-        <a
-          href="/"
-          class:list={{
-            ["hover:text-neutral-100"]: true,
-            ["text-neutral-100"]: pathname === "/",
-          }}>Home</a
-        >
-      </li>
-      <li>/</li>
-      <li>
-        <a
-          href="/posts"
-          class:list={{
-            ["hover:text-neutral-100"]: true,
-            ["text-neutral-100"]: pathname.startsWith("/posts"),
-          }}>Publicaciones</a
-        >
-      </li>
-      <li>/</li>
-
-      <li>
-        <a
-          href="/projects"
-          class:list={{
-            ["hover:text-neutral-100"]: true,
-            ["text-neutral-100"]: pathname.startsWith("/projects"),
-          }}>Proyectos</a
-        >
-      </li>
-      <li>/</li>
-
-      <li>
-        <a
-          href="/donate"
-          class:list={{
-            ["hover:text-neutral-100"]: true,
-            ["text-neutral-100"]: pathname === "/donate",
-          }}>Donar</a
-        >
-      </li>
-    </ul>
-  </nav>
-</header>
+<nav class="sticky top-0 z-50 px-6 py-5 bg-chocolate/95 backdrop-blur-lg border-b border-white/10">
+  <div class="flex items-center justify-between mb-4">
+    <span class="text-xs font-bold tracking-widest uppercase text-mustard">Activ@Ase</span>
+    <a href={`mailto:${presentation.mail}`} class="text-sm hover:text-vibrant-orange transition-colors">
+      <span class="material-symbols-outlined text-vibrant-orange">mail</span>
+    </a>
+  </div>
+  <div class="flex items-center gap-6 text-sm font-semibold overflow-x-auto whitespace-nowrap pb-1 no-scrollbar">
+    <a
+      href="/"
+      class:list={{
+        ["text-vibrant-orange"]: pathname === "/",
+        ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]: pathname !== "/",
+      }}>Inicio</a
+    >
+    <a
+      href="/posts"
+      class:list={{
+        ["text-vibrant-orange"]: pathname.startsWith("/posts"),
+        ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]: !pathname.startsWith("/posts"),
+      }}>Publicaciones</a
+    >
+    <a
+      href="/projects"
+      class:list={{
+        ["text-vibrant-orange"]: pathname.startsWith("/projects"),
+        ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]: !pathname.startsWith("/projects"),
+      }}>Proyectos</a
+    >
+    <a
+      href="/donate"
+      class:list={{
+        ["text-vibrant-orange"]: pathname === "/donate",
+        ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]: pathname !== "/donate",
+      }}>Donar</a
+    >
+  </div>
+</nav>

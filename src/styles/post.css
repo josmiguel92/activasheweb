@@ -1,39 +1,51 @@
 .post p {
-  @apply leading-7;
+  @apply leading-7 text-warm-cream/80 mb-4;
 }
 
 .post code {
-  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-orange-500;
+  @apply rounded-md bg-white/10 px-2 py-1 text-mustard font-mono text-sm;
 }
 
 .post h2 {
-  @apply mt-6 text-3xl text-neutral-100;
+  @apply mt-8 mb-4 text-3xl font-display text-warm-cream;
 }
 
 .post h3 {
-  @apply mt-4 text-xl text-neutral-100;
-}
-
-.post code {
-  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-red-500;
+  @apply mt-6 mb-3 text-xl font-display text-warm-cream;
 }
 
 .post a {
-  @apply text-neutral-100 underline;
+  @apply text-vibrant-orange underline hover:text-mustard transition-colors;
 }
 
 .post ul {
-  @apply list-disc;
+  @apply list-disc ml-6 mb-4 space-y-2;
+}
+
+.post li {
+  @apply text-warm-cream/80;
 }
 
 .post blockquote {
-  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
+  @apply flex flex-row gap-4 pl-4 py-4 my-6 border-l-4 border-mustard bg-white/5 rounded-r-xl before:content-[''];
+}
+
+.post blockquote p {
+  @apply text-warm-cream/90 italic;
 }
 
 .post pre {
-  @apply p-4;
+  @apply p-4 rounded-xl bg-white/5 overflow-x-auto my-6;
 }
 
 .post pre > code {
-  @apply bg-transparent;
+  @apply bg-transparent text-sm;
+}
+
+.post strong {
+  @apply text-warm-cream font-bold;
+}
+
+.post em {
+  @apply text-warm-cream/90 italic;
 }

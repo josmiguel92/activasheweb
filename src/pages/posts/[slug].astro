@@ -21,14 +21,27 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <main class="post mx-auto flex w-full max-w-[72ch] flex-col gap-4">
-    <header role="presentation">
-      <h1 class="text-md">
-        {post.data.title} - {formatDate(post.data.publishedAt)}
+  <article class="px-6 max-w-4xl mx-auto">
+    <header class="mb-8 bg-terracotta p-8 rounded-3xl card-shadow">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-[10px] font-black uppercase tracking-widest text-mustard">Publicación</span>
+        <span class="text-sm text-warm-cream/60">{formatDate(post.data.publishedAt)}</span>
+      </div>
+      <h1 class="text-4xl font-display leading-tight mb-4 text-warm-cream">
+        {post.data.title}
       </h1>
-      <p class="italic">{post.data.description}</p>
+      <p class="text-lg text-warm-cream/90 italic">{post.data.description}</p>
     </header>
 
-    <Content />
-  </main>
+    <div class="post prose prose-invert prose-lg max-w-none mb-8">
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10">
+      <a href="/posts" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        Volver a publicaciones
+      </a>
+    </div>
+  </article>
 </Layout>

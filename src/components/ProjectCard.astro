@@ -5,9 +5,10 @@ type Props = {
   link: string;
   isComingSoon?: boolean;
   preview?: string;
+  image?: string;
 };
 
-const { title, areas = [], link, isComingSoon, preview } = Astro.props as Props;
+const { title, areas = [], link, isComingSoon, preview, image } = Astro.props as Props;
 
 import StatusBadge from "@/components/StatusBadge.astro";
 
@@ -15,42 +16,41 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
 ---
 
 <>
-  <a
-    class="group block w-full cursor-pointer flex-col justify-between gap-2 rounded-lg border border-neutral-700 bg-neutral-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:flex md:flex-row md:items-center"
-    href={link}
-    target="_blank"
-    rel="noreferrer"
-  >
-    <div class="flex w-full flex-col gap-4 md:flex-row md:items-center md:gap-6">
-      <div class="flex-1">
-        <p class="text-neutral-100 text-lg font-semibold">{title}</p>
-        <p class="text-neutral-400">{formatAreas(areas)}</p>
-        {preview && <p class="mt-2 text-neutral-400 text-sm">{preview}</p>}
+  <div class="min-w-[280px] bg-white/5 rounded-[2rem] overflow-hidden border border-white/10 transition-transform hover:-translate-y-1">
+    <div class="h-40 relative">
+      {image ? (
+        <>
+          <img 
+            src={image} 
+            alt={title}
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent"></div>
+        </>
+      ) : (
+        <div class="w-full h-full bg-gradient-to-br from-terracotta/20 to-mustard/20"></div>
+      )}
+      <div class="absolute top-4 left-4 bg-chocolate/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase">
+        {formatAreas(areas)}
       </div>
-
-      <div class="ml-auto flex-shrink-0 flex items-center gap-4">
-        {isComingSoon && (<StatusBadge label="Próximamente" />)}
-
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
-        fill="none"
-        class="transition-all duration-300 group-hover:translate-x-1"
-      >
-        <path
-          d="M5.25 12.75L12.75 5.25"
-          stroke="#999999"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M5.25 5.25H12.75V12.75"
-          stroke="#999999"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+      {isComingSoon && (
+        <div class="absolute top-4 right-4 bg-vibrant-orange px-3 py-1 rounded-full text-[10px] font-bold text-chocolate">
+          NUEVO
+        </div>
+      )}
     </div>
-  </a>
+    <div class="p-6">
+      <h3 class="text-lg mb-2 text-warm-cream">{title}</h3>
+      {preview && <p class="text-sm text-white/60 mb-4 line-clamp-2">{preview}</p>}
+      <a 
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        class="w-full py-3 rounded-xl border border-mustard text-mustard font-bold text-sm flex items-center justify-center gap-2 hover:bg-mustard/10 transition-colors"
+      >
+        Detalles del proyecto
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </div>
 </>

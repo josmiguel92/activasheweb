@@ -4,6 +4,7 @@ publishedAt: 2025-09-08
 description: "Nacemos para dar voz a las historias que no se cuentan. Presentamos la web de Activ@Ase, dedicada a visibilizar las realidades de minorías vulnerables en Cuba."
 slug: "bienvenida-a-activashe-un-espacio-para-voces-silenciadas"
 isPublish: true
+image: "favicon.png"
 ---
 
 Hoy nace la web de Activ@Ase. Y con este nacimiento, creamos un espacio que hacía falta: un altavoz para las realidades que a menudo se ignoran, se minimizan o, directamente, se silencian.

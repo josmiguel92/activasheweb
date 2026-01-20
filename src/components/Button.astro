@@ -8,8 +8,8 @@ type Props = {
 const { href, label, variant = 'primary' } = Astro.props as Props;
 
 const classes = variant === 'primary'
-  ? 'inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-600'
-  : 'inline-flex items-center gap-2 rounded-md bg-neutral-800 px-3 py-1 text-sm text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-600';
+  ? 'bg-mustard text-chocolate py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 active:scale-95 transition-transform hover:opacity-90'
+  : 'py-3 px-6 rounded-xl border border-mustard text-mustard font-bold text-sm hover:bg-mustard/10 transition-colors';
 
 ---
 
