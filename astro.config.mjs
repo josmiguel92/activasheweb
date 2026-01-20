@@ -7,6 +7,9 @@ import { SITE_URL } from "./src/data/config";
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   site: SITE_URL,
+  experimental: {
+    viewTransitions: true,
+  },
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {

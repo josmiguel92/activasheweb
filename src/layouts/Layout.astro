@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import BlurCircle from "@/components/shared/BlurCircle.astro";
 import theme from "@/data/theme";
@@ -19,6 +20,7 @@ const { title, description, noTopMargin = false } = Astro.props as Props;
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <ViewTransitions />
     <SEOTags title={title} description={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
