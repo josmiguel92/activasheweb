@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import ArtGalleryGrid from "@/components/ArtGalleryGrid.astro";
 import FeaturedVideo from "@/components/FeaturedVideo.astro";
 import VideoGrid from "@/components/VideoGrid.astro";
+import "@/styles/art-gallery.css";
 
 const artworks = await getCollection("art");
 const videos = await getCollection("videos");

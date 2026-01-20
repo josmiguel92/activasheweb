@@ -1,0 +1,122 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const artworks = await getCollection("art");
+  return artworks.map((art) => ({
+    params: { slug: art.slug },
+    props: { art },
+  }));
+}
+
+type Props = {
+  art: CollectionEntry<"art">;
+};
+
+const { art } = Astro.props;
+const { Content } = await art.render();
+---
+
+<Layout title={`${art.data.title} | Galería`}>
+  <main class="px-6 max-w-4xl mx-auto space-y-10 pb-16">
+    <section class="space-y-6">
+      <button 
+        type="button"
+        class="w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 card-shadow cursor-zoom-in hover:border-mustard/60 transition-colors"
+        data-lightbox-trigger
+      >
+        <img
+          src={art.data.image}
+          alt={art.data.title}
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <p class="text-xs text-warm-cream/60 text-center py-2">
+          <span class="material-symbols-outlined text-sm align-middle">zoom_in</span>
+          Toca para ver en tamaño completo
+        </p>
+      </button>
+      <div class="space-y-4">
+        <h1 class="text-4xl font-display text-warm-cream leading-tight">{art.data.title}</h1>
+        <div class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-widest">
+          <span class="px-3 py-1 rounded-full bg-terracotta text-chocolate">{art.data.artist}</span>
+          {art.data.category && (
+            <span class="px-3 py-1 rounded-full border border-mustard/80 text-mustard">{art.data.category}</span>
+          )}
+          {art.data.year && (
+            <span class="px-3 py-1 rounded-full border border-white/20 text-warm-cream/80">{art.data.year}</span>
+          )}
+        </div>
+        {art.data.description && (
+          <p class="text-warm-cream/80 text-lg leading-relaxed">{art.data.description}</p>
+        )}
+      </div>
+    </section>
+
+    <section class="prose prose-invert max-w-none text-warm-cream/90">
+      <Content />
+    </section>
+
+    <div class="pt-4">
+      <a href="/gallery" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">← Volver a la galería</a>
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div 
+    data-lightbox-modal
+    class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      type="button"
+      class="absolute top-4 right-4 text-warm-cream hover:text-vibrant-orange transition-colors z-10"
+      data-lightbox-close
+      aria-label="Cerrar"
+    >
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <img
+      src={art.data.image}
+      alt={art.data.title}
+      class="max-w-full max-h-full object-contain"
+      data-lightbox-image
+    />
+    <div class="absolute bottom-4 inset-x-0 text-center px-4">
+      <p class="text-warm-cream text-sm font-semibold">{art.data.title}</p>
+      <p class="text-warm-cream/60 text-xs">{art.data.artist}</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const trigger = document.querySelector('[data-lightbox-trigger]');
+      const modal = document.querySelector('[data-lightbox-modal]');
+      const closeBtn = document.querySelector('[data-lightbox-close]');
+
+      const openLightbox = () => {
+        modal?.classList.remove('hidden');
+        modal?.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeLightbox = () => {
+        modal?.classList.add('hidden');
+        modal?.classList.remove('flex');
+        document.body.style.overflow = '';
+      };
+
+      trigger?.addEventListener('click', openLightbox);
+      closeBtn?.addEventListener('click', closeLightbox);
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    });
+  </script>
+</Layout>
