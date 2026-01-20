@@ -10,9 +10,10 @@ import "@/styles/post.css";
 export interface Props {
   title?: string;
   description?: string;
+  noTopMargin?: boolean;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description, noTopMargin = false } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ const { title, description } = Astro.props as Props;
 
   <body class="min-h-screen">
     <Header />
-    <main class="space-y-16 pb-20">
+    <main class:list={[!noTopMargin && "mt-8", "space-y-16 pb-20"]}>
       <slot />
     </main>
     <BlurCircle position="top" color={theme.colors.blur.top} />

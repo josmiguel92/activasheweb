@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import ArtGalleryGrid from "@/components/ArtGalleryGrid.astro";
+import FeaturedVideo from "@/components/FeaturedVideo.astro";
+import VideoGrid from "@/components/VideoGrid.astro";
+
+const artworks = await getCollection("art");
+const videos = await getCollection("videos");
+
+// Sort videos by publishedAt date
+const sortedVideos = videos.sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+
+// Get featured video or first one
+const featuredVideo = videos.find((v) => v.data.featured) || sortedVideos[0];
+const otherVideos = sortedVideos
+  .filter((v) => !v.data.featured)
+  .slice(0, 4);
+---
+
+<Layout title="Galería | Activ@Ase">
+  <div class="px-6 max-w-4xl mx-auto space-y-16">
+    <!-- Galería de Arte Section -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-l-4 border-terracotta pl-4">
+        <h1 class="text-4xl font-display font-bold text-warm-cream">
+          Galería de Arte
+        </h1>
+        <span class="material-symbols-outlined text-mustard text-3xl">
+          brush
+        </span>
+      </div>
+
+      <p class="text-warm-cream/70 text-lg">
+        Celebramos las voces creativas de nuestra comunidad. Aquí encuentras obras
+        de artistas que cantan, pintan, tejen y crean historias de resistencia.
+      </p>
+
+      <div class="mt-6">
+        <ArtGalleryGrid artworks={artworks} />
+      </div>
+
+      <a
+        href="https://www.instagram.com/activase"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full mt-6 py-3 px-4 bg-terracotta/10 border border-terracotta/30 text-terracotta font-bold rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-terracotta/20"
+      >
+        Explorar Más Arte
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </section>
+
+    <div class="h-px bg-terracotta/10"></div>
+
+    <!-- Repositorio de Video Section -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-l-4 border-mustard pl-4">
+        <h2 class="text-4xl font-display font-bold text-warm-cream">
+          Repositorio de Video
+        </h2>
+        <span class="material-symbols-outlined text-vibrant-orange text-3xl">
+          movie
+        </span>
+      </div>
+
+      <p class="text-warm-cream/70 text-lg">
+        Documentales, entrevistas y talleres que capturan el movimiento, la energía
+        y las historias de transformación de Activ@Ase.
+      </p>
+
+      <div class="mt-6">
+        {featuredVideo && <FeaturedVideo featuredVideo={featuredVideo} />}
+      </div>
+
+      <div class="mt-8">
+        <h3 class="text-lg font-semibold text-warm-cream mb-4">Más Videos</h3>
+        <VideoGrid videos={otherVideos} />
+      </div>
+
+      <a
+        href="https://www.youtube.com/@activase"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full mt-8 py-4 px-4 bg-vibrant-orange text-warm-cream font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all hover:bg-vibrant-orange/90"
+      >
+        Ver más en YouTube
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </a>
+    </section>
+  </div>
+</Layout>

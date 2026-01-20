@@ -22,7 +22,7 @@ const projects = projectsCollection.map((p) => ({
 const posts = await getCollection("posts");
 ---
 
-<Layout>
+<Layout noTopMargin>
   <section class="relative px-6">
     <div class="h-[60vh] w-full relative overflow-hidden rounded-3xl -mx-6">
       <img 
@@ -83,13 +83,13 @@ const posts = await getCollection("posts");
     </div>
   </section>
 
-  <section class="space-y-6 max-w-4xl mx-auto">
-    <div class="px-6 flex items-center gap-3">
+  <section class="px-6 space-y-6 max-w-4xl mx-auto">
+    <div class="flex items-center gap-3">
       <h2 class="text-3xl font-display">Proyectos</h2>
       <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-xs font-black">ACTIVOS</span>
     </div>
-    {projects.length === 0 && <p class="px-6">Oops, debemos trabajar en esto...</p>}
-    <div class="px-6 overflow-x-auto flex gap-6 no-scrollbar">
+    {projects.length === 0 && <p>Oops, debemos trabajar en esto...</p>}
+    <div class="overflow-x-auto flex gap-6 no-scrollbar -mx-6 px-6">
       {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
     </div>
   </section>

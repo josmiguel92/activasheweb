@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  artist: string;
+  image: string;
+  category: string;
+}
+
+const { title, artist, image, category } = Astro.props;
+---
+
+<div class="relative group overflow-hidden rounded-xl">
+  <img
+    class="w-full h-auto object-cover rounded-xl border border-white/10"
+    src={image}
+    alt={title}
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3">
+    <p class="text-warm-cream text-xs font-bold font-sans">{artist} - "{title}"</p>
+  </div>
+</div>
