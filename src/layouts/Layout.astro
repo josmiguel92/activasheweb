@@ -29,10 +29,12 @@ const { title, description, noTopMargin = false } = Astro.props as Props;
   
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B1E6QKQQC"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      gtag('config', 'G-4B1E6QKQQC');
+    </script>
 
       gtag('config', 'G-4B1E6QKQQC');
     </script>

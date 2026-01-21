@@ -34,42 +34,40 @@ const openGraph = {
 };
 ---
 
-<head>
-  <SEO
-    charset="UTF-8"
-    title={title || DEFAULT_TITLE_PAGE}
-    description={description || DEFAULT_DESCRIPTION_PAGE}
-    noindex={noindex || false}
-    openGraph={{
-      basic: {
-        title: openGraph.title,
-        type: openGraph.type,
-        image: openGraph.image,
+<SEO
+  charset="UTF-8"
+  title={title || DEFAULT_TITLE_PAGE}
+  description={description || DEFAULT_DESCRIPTION_PAGE}
+  noindex={noindex || false}
+  openGraph={{
+    basic: {
+      title: openGraph.title,
+      type: openGraph.type,
+      image: openGraph.image,
+    },
+    image: {
+      alt: openGraph.alt,
+    },
+  }}
+  twitter={{
+    creator: "@activashecuba",
+  }}
+  extend={{
+    link: [
+      { rel: "icon", href: "/favicon.png" },
+      { rel: "sitemap", href: "/sitemap-index.xml" },
+    ],
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "generator", content: Astro.generator },
+      {
+        name: "twitter:image",
+        content: openGraph.image,
       },
-      image: {
-        alt: openGraph.alt,
-      },
-    }}
-    twitter={{
-      creator: "@activashecuba",
-    }}
-    extend={{
-      link: [
-        { rel: "icon", href: "/favicon.png" },
-        { rel: "sitemap", href: "/sitemap-index.xml" },
-      ],
-      meta: [
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "generator", content: Astro.generator },
-        {
-          name: "twitter:image",
-          content: openGraph.image,
-        },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: openGraph.title },
-        { name: "twitter:description", content: openGraph.description },
-        { name: "twitter:site", content: "@activashecuba" },
-      ],
-    }}
-  />
-</head>
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: openGraph.title },
+      { name: "twitter:description", content: openGraph.description },
+      { name: "twitter:site", content: "@activashecuba" },
+    ],
+  }}
+/>
