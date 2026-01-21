@@ -1,7 +1,7 @@
 ---
 title: "Voces Cimarronas contra la opresión (Yunaikys Linares)"
 youtubeId: "GnkM6DXXN-Y"
-category: "interviews"
+category: "entrevistas"
 duration: "1:14"
 featured: false
 publishedAt: 2026-01-20

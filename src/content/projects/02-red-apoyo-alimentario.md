@@ -4,7 +4,7 @@ publishedAt: 2025-10-02
 description: "Una iniciativa de acción directa para conectar recursos y donaciones con las mujeres y familias que más lo necesitan en la isla."
 slug: "red-apoyo-alimentario"
 isPublish: true
-areas: ["Ayuda Directa", "Seguridad Alimentaria"]
+areas: ["Incidencia", "Seguridad Alimentaria"]
 isComingSoon: true
 showDonate: true
 image: "favicon.png"

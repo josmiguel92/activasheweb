@@ -1,7 +1,7 @@
 ---
 title: "Voces Cimarronas (Negra Cubana tenía que ser)"
 youtubeId: "hxmU3JqHvCs"
-category: "interviews"
+category: "entrevistas"
 duration: "1:05"
 featured: true
 publishedAt: 2026-01-21
