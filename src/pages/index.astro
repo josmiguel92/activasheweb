@@ -24,8 +24,8 @@ const artItems = (await getCollection("art")).slice(0, 3);
 ---
 
 <Layout noTopMargin>
-  <section class="relative px-6">
-    <div class="h-[60vh] w-full relative overflow-hidden rounded-3xl -mx-6">
+  <section class="relative">
+    <div class="h-[60vh] w-screen relative overflow-hidden rounded-b-3xl">
       <img 
         alt="Comunidad Activ@Ase" 
         class="w-full h-full object-cover" 
@@ -33,7 +33,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
       />
       <div class="absolute inset-0 image-overlay"></div>
     </div>
-    <div class="-mt-32 relative z-10 max-w-4xl mx-auto">
+    <div class="-mt-32 relative z-10 max-w-4xl mx-auto px-6">
       <div class="bg-terracotta p-8 rounded-3xl card-shadow">
         <h1 class="text-4xl leading-tight mb-4 text-warm-cream">
           {presentation.title}
