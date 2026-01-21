@@ -18,12 +18,12 @@ collections:
     format: frontmatter
     preview_path: post/{{slug}}
     fields:
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: publishedAt, label: Date, widget: date }
-      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
-      - { name: body, label: Body, widget: markdown }
+      - { name: title, label: Título }
+      - { name: description, label: Descripción }
+      - { name: publishedAt, label: Fecha, widget: date }
+      - {label: "Publicado", name: "isPublish", widget: "boolean", default: true}
+      - {label: "Borrador", name: "isDraft", widget: "boolean", default: false}
+      - { name: body, label: Contenido, widget: markdown }
 
   - name: project
     label: Projects
@@ -32,12 +32,41 @@ collections:
     format: frontmatter
     preview_path: projects/{{slug}}
     fields:
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: publishedAt, label: Date, widget: date }
+      - { name: title, label: Título }
+      - { name: description, label: Descripción }
+      - { name: publishedAt, label: Fecha, widget: date }
       - { name: slug, label: Slug }
-      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - { name: areas, label: Areas, widget: list, default: ["Investigación", "Derechos Humanos"] }
-      - {label: "Coming Soon", name: "isComingSoon", widget: "boolean", default: false}
-      - { name: body, label: Body, widget: markdown }
-      - {label: "Show Donate Button", name: "showDonate", widget: "boolean", default: false}
+      - {label: "Publicado", name: "isPublish", widget: "boolean", default: true}
+      - { name: areas, label: Áreas, widget: select, multiple: true, options: ["Investigación", "Derechos Humanos", "Educación", "Incidencia", "Arte y Cultura", "Salud", "Seguridad Alimentaria", "Justicia Social"] }
+      - {label: "Próximamente", name: "isComingSoon", widget: "boolean", default: false}
+      - { name: body, label: Contenido, widget: markdown }
+      - {label: "Mostrar Botón de Donación", name: "showDonate", widget: "boolean", default: false}
+
+  - name: video
+    label: Videos
+    folder: src/content/videos
+    create: true
+    format: frontmatter
+    fields:
+      - { name: title, label: Título }
+      - { name: description, label: Descripción }
+      - { name: youtubeId, label: "ID de Video YouTube" }
+      - { name: category, label: Categoría, widget: select, options: ["entrevistas", "talleres", "documentales", "eventos", "educación"] }
+      - { name: duration, label: Duración }
+      - { name: publishedAt, label: Fecha, widget: date }
+      - { name: featured, label: Destacado, widget: boolean, default: false }
+      - { name: body, label: Contenido, widget: markdown }
+
+  - name: art
+    label: Galería de Arte
+    folder: src/content/art
+    create: true
+    format: frontmatter
+    fields:
+      - { name: title, label: Título }
+      - { name: artist, label: Artista }
+      - { name: description, label: Descripción }
+      - { name: image, label: Imagen, widget: image }
+      - { name: category, label: Categoría, widget: select, options: ["pintura", "fotografía", "escultura", "digital", "artesanía"] }
+      - { name: year, label: Año, widget: number }
+      - { name: body, label: Contenido, widget: markdown }

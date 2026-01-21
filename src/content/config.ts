@@ -33,7 +33,7 @@ const artCollection = defineCollection({
     artist: z.string(),
     image: z.string(),
     description: z.string().optional(),
-    category: z.enum(["painting", "photography", "sculpture", "digital", "crafts"]),
+    category: z.enum(["pintura", "fotografía", "escultura", "digital", "artesanía"]),
     year: z.number().optional(),
   }),
 });
@@ -45,7 +45,7 @@ const videoCollection = defineCollection({
     description: z.string().optional(),
     youtubeId: z.string(),
     featured: z.boolean().default(false),
-    category: z.enum(["interviews", "workshops", "documentaries", "events", "education"]),
+    category: z.enum(["entrevistas", "talleres", "documentales", "eventos", "educación"]),
     duration: z.string(),
     thumbnail: z.string().optional(),
     publishedAt: z.date(),
