@@ -1,0 +1,48 @@
+---
+// ScrollToTop button component
+---
+
+<button
+  id="scroll-to-top"
+  aria-label="Volver arriba"
+  class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-vibrant-orange text-chocolate rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-mustard flex items-center justify-center"
+>
+  <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<script>
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+  
+  const toggleScrollButton = () => {
+    if (!scrollToTopBtn) return;
+    
+    if (window.scrollY > 400) {
+      scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+      scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+      scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Listen for scroll events
+  window.addEventListener('scroll', toggleScrollButton);
+  
+  // Listen for button click
+  scrollToTopBtn?.addEventListener('click', scrollToTop);
+
+  // Check on page load
+  toggleScrollButton();
+
+  // Handle view transitions
+  document.addEventListener('astro:after-swap', () => {
+    toggleScrollButton();
+  });
+</script>

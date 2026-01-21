@@ -1,6 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
 
 export async function getStaticPaths() {
@@ -22,6 +24,10 @@ const { Content } = await post.render();
 
 <Layout title={post.data.title}>
   <article class="px-6 max-w-4xl mx-auto">
+    <Breadcrumbs items={[
+      { label: "Publicaciones", href: "/posts" },
+      { label: post.data.title }
+    ]} />
     <header class="mb-8 bg-terracotta p-8 rounded-3xl card-shadow">
       <div class="flex justify-between items-center mb-4">
         <span class="text-[10px] font-black uppercase tracking-widest text-mustard">Publicación</span>
@@ -35,6 +41,14 @@ const { Content } = await post.render();
 
     <div class="post prose prose-invert prose-lg max-w-none mb-8">
       <Content />
+    </div>
+
+    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+      <ShareButtons 
+        url={`/posts/${post.slug}`}
+        title={post.data.title}
+        description={post.data.description}
+      />
     </div>
 
     <div class="mt-12 pt-8 border-t border-white/10">

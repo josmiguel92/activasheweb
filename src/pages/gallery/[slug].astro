@@ -1,6 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ShareButtons from "@/components/ShareButtons.astro";
 
 export async function getStaticPaths() {
   const artworks = await getCollection("art");
@@ -20,6 +22,10 @@ const { Content } = await art.render();
 
 <Layout title={`${art.data.title} | Galería`}>
   <main class="px-6 max-w-4xl mx-auto space-y-10 pb-16">
+    <Breadcrumbs items={[
+      { label: "Galería", href: "/gallery" },
+      { label: art.data.title }
+    ]} />
     <section class="space-y-6">
       <button 
         type="button"
@@ -57,6 +63,14 @@ const { Content } = await art.render();
     <section class="prose prose-invert max-w-none text-warm-cream/90">
       <Content />
     </section>
+
+    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+      <ShareButtons 
+        url={`/gallery/${art.slug}`}
+        title={`${art.data.title} - ${art.data.artist}`}
+        description={art.data.description}
+      />
+    </div>
 
     <div class="pt-4">
       <a href="/gallery" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">← Volver a la galería</a>

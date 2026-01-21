@@ -17,6 +17,7 @@ const thumbnailUrl = thumbnail || `https://img.youtube.com/vi/${youtubeId}/sddef
       src={thumbnailUrl}
       alt={title}
       class="w-full h-full object-cover"
+      loading="lazy"
     />
     <div class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
       <span class="material-symbols-outlined text-white/90 group-hover:scale-110 transition-transform" style="font-size: 24px;">

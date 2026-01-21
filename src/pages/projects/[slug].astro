@@ -1,6 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
 import StatusBadge from "@/components/StatusBadge.astro";
 import Button from "@/components/Button.astro";
@@ -24,6 +26,10 @@ const { Content } = await project.render();
 
 <Layout title={project.data.title}>
   <article class="px-6 max-w-4xl mx-auto">
+    <Breadcrumbs items={[
+      { label: "Proyectos", href: "/projects" },
+      { label: project.data.title }
+    ]} />
     <header class="mb-8 bg-gradient-to-br from-terracotta to-mustard/80 p-8 rounded-3xl card-shadow">
       <div class="flex justify-between items-start mb-4">
         <div>
@@ -50,6 +56,14 @@ const { Content } = await project.render();
 
     <div class="post prose prose-invert prose-lg max-w-none mb-8">
       <Content />
+    </div>
+
+    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+      <ShareButtons 
+        url={`/projects/${project.slug}`}
+        title={project.data.title}
+        description={project.data.description}
+      />
     </div>
 
     <div class="mt-12 pt-8 border-t border-white/10">

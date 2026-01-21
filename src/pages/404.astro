@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Link from "@/components/shared/Link.astro";
+---
+
+<Layout title="Página no encontrada - Activ@Ase">
+  <section class="px-6 max-w-4xl mx-auto">
+    <div class="text-center py-20 space-y-8">
+      <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-terracotta/20 mb-4">
+        <span class="material-symbols-outlined text-7xl text-terracotta">error</span>
+      </div>
+      
+      <div class="space-y-4">
+        <h1 class="text-6xl font-display font-bold text-vibrant-orange">404</h1>
+        <h2 class="text-3xl font-display text-warm-cream">Página no encontrada</h2>
+        <p class="text-lg text-white/60 max-w-md mx-auto">
+            Lo sentimos, pero la página que buscas no existe o ha sido movida.
+        </p>
+        <p class="text-sm text-white/50 max-w-lg mx-auto italic">
+          "Pies, ¿para qué los quiero si tengo alas para volar?" — aquí no hay nada que ver.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+        <Link 
+          href="/" 
+          label="Volver al inicio" 
+          isUnderline={false} 
+          target="_self" 
+          class="bg-vibrant-orange text-chocolate py-4 px-8 rounded-xl font-bold text-base hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
+        />
+        <Link 
+          href="/posts" 
+          label="Ver publicaciones" 
+          isUnderline={false} 
+          target="_self" 
+          class="border-2 border-warm-cream text-warm-cream py-4 px-8 rounded-xl font-bold text-base hover:bg-warm-cream/10 transition-colors inline-flex items-center justify-center gap-2"
+        />
+      </div>
+
+      <div class="pt-12 space-y-4">
+        <p class="text-sm text-white/40">Enlaces útiles:</p>
+        <div class="flex flex-wrap gap-4 justify-center text-sm">
+          <a href="/projects" class="text-mustard hover:text-vibrant-orange transition-colors">Proyectos</a>
+          <span class="text-white/20">•</span>
+          <a href="/gallery" class="text-mustard hover:text-vibrant-orange transition-colors">Galería</a>
+          <span class="text-white/20">•</span>
+          <a href="/donate" class="text-mustard hover:text-vibrant-orange transition-colors">Donar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
