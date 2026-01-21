@@ -17,8 +17,8 @@ const sortedVideos = videos.sort(
 // Get featured video or first one
 const featuredVideo = videos.find((v) => v.data.featured) || sortedVideos[0];
 const otherVideos = sortedVideos
-  .filter((v) => !v.data.featured)
-  .slice(0, 4);
+  .filter((v) => v.slug !== featuredVideo.slug)
+  .slice(0, 6);
 ---
 
 <Layout title="Galería | Activ@Ase">
@@ -82,7 +82,7 @@ const otherVideos = sortedVideos
       </div>
 
       <a
-        href="https://www.youtube.com/@activase"
+        href="https://www.youtube.com/@ActivaShe"
         target="_blank"
         rel="noopener noreferrer"
         class="w-full mt-8 py-4 px-4 bg-vibrant-orange text-warm-cream font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all hover:bg-vibrant-orange/90"
