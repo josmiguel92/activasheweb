@@ -5,68 +5,100 @@ import presentation from "@/data/presentation";
 ---
 
 <Layout title="Quiénes Somos | ActivaShe">
-  <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
-    <div class="bg-terracotta p-8 md:p-12 rounded-3xl card-shadow relative overflow-hidden">
-      <div 
-        class="absolute inset-0 opacity-20 pointer-events-none pattern-background"
-      ></div>
+  <section class="mx-auto max-w-4xl space-y-8 px-6 lg:max-w-6xl">
+    <div
+      class="card-shadow relative overflow-hidden rounded-3xl bg-terracotta p-8 md:p-12"
+    >
+      <div
+        class="pattern-background pointer-events-none absolute inset-0 opacity-20"
+      >
+      </div>
       <div class="relative z-10">
-        <h1 class="text-4xl font-display text-warm-cream mb-6">Quiénes <span class="text-mustard">Somos</span></h1>
-        
+        <h1 class="mb-6 font-display text-4xl text-warm-cream">
+          Quiénes <span class="text-mustard">Somos</span>
+        </h1>
+
         <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
-        <p class="text-lg">
-          <strong>Activ@ Àşé</strong> es un espacio comunal y familiar que nace con el objetivo de empoderar a la comunidad afrocubana, especialmente a las mujeres negras, que a pesar de ser mayoría en el país, son las más desatendidas y desprotegidas por la política social de la isla.
-        </p>
-
-        <h2 class="text-3xl font-display text-warm-cream mb-6">Nuestro <span class="text-mustard">Propósito</span></h2>
-
-        <p class="text-lg">
-          Crear un centro de capacitación y empoderamiento que ponga a disposición de la gente negra espacios de formación y desarrollo, para que puedan:
-        </p>
-
-        <div class="mt-4 grid gap-4 md:grid-cols-2">
-          <div class="p-6 bg-chocolate/10 rounded-2xl border-l-4 border-mustard">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="material-symbols-outlined text-mustard text-3xl">handshake</span>
-              <h3 class="text-sm font-bold text-warm-cream">Desarrollar sus comunidades y generar un futuro próspero</h3>
-            </div>
-          </div>
-
-          <div class="p-6 bg-chocolate/10 rounded-2xl border-l-4 border-mustard">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="material-symbols-outlined text-mustard text-3xl">school</span>
-              <h3 class="text-sm font-bold text-warm-cream">Recibir formación en diversos ámbitos y acceder a oportunidades de calidad</h3>
-            </div>
-          </div>
-
-          <div class="p-6 bg-chocolate/10 rounded-2xl border-l-4 border-mustard">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="material-symbols-outlined text-mustard text-3xl">palette</span>
-              <h3 class="text-sm font-bold text-warm-cream">Elevar su cognición en el ámbito de la cultura y la sociedad</h3>
-            </div>
-          </div>
-
-          <div class="p-6 bg-chocolate/10 rounded-2xl border-l-4 border-mustard">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="material-symbols-outlined text-mustard text-3xl">stars</span>
-              <h3 class="text-sm font-bold text-warm-cream">Promover y visibilizar la labor de emprendedores y artistas negrxs en la isla</h3>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="text-3xl font-display text-warm-cream mb-6">Un espacio cubano para la transformación</h2>
-
-        <p class="text-lg">
-          <strong>Activ@ Àşé</strong> es un centro de artivismo y desarrollo cultural que busca promover y potenciar bienes espirituales, morales y materiales para el bienestar de las poblaciones no blancas en la Cuba de hoy. Un espacio donde la comunidad afrocubana pueda crecer, expresarse y sentirse valorada.
-        </p>
-
+          <p class="text-lg">
+            <strong>Activ@ Àşé</strong> es un espacio comunal y familiar que nace
+            con el objetivo de empoderar a la comunidad afrocubana, especialmente
+            a las mujeres negras, que a pesar de ser mayoría en el país, son las
+            más desatendidas y desprotegidas por la política social de la isla.
+          </p>
         </div>
       </div>
     </div>
 
-    
+    <h2 class="mb-6 font-display text-3xl text-chocolate">Nuestro Propósito</h2>
 
-    <a href="/" class="inline-block text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">
+    <p class="text-lg">
+      Crear un centro de capacitación y empoderamiento que ponga a disposición
+      de la gente negra espacios de formación y desarrollo, para que puedan:
+    </p>
+
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
+        <div class="mb-3 flex items-center gap-3">
+          <span class="material-symbols-outlined text-3xl text-mustard"
+            >handshake</span
+          >
+          <h3 class="text-sm font-bold text-chocolate">
+            Desarrollar sus comunidades y generar un futuro próspero
+          </h3>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
+        <div class="mb-3 flex items-center gap-3">
+          <span class="material-symbols-outlined text-3xl text-mustard"
+            >school</span
+          >
+          <h3 class="text-sm font-bold text-chocolate">
+            Recibir formación en diversos ámbitos y acceder a oportunidades de
+            calidad
+          </h3>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
+        <div class="mb-3 flex items-center gap-3">
+          <span class="material-symbols-outlined text-3xl text-mustard"
+            >palette</span
+          >
+          <h3 class="text-sm font-bold text-chocolate">
+            Elevar su cognición en el ámbito de la cultura y la sociedad
+          </h3>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
+        <div class="mb-3 flex items-center gap-3">
+          <span class="material-symbols-outlined text-3xl text-mustard"
+            >stars</span
+          >
+          <h3 class="text-sm font-bold text-chocolate">
+            Promover y visibilizar la labor de emprendedores y artistas negrxs
+            en la isla
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="mb-6 font-display text-3xl text-chocolate">
+      Un espacio cubano para la transformación
+    </h2>
+
+    <p class="text-lg">
+      <strong>Activ@ Àşé</strong> es un centro de artivismo y desarrollo cultural
+      que busca promover y potenciar bienes espirituales, morales y materiales para
+      el bienestar de las poblaciones no blancas en la Cuba de hoy. Un espacio donde
+      la comunidad afrocubana pueda crecer, expresarse y sentirse valorada.
+    </p>
+
+    <a
+      href="/"
+      class="inline-block border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard transition-colors hover:text-vibrant-orange"
+    >
       Volver al inicio
     </a>
   </section>
