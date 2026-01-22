@@ -5,7 +5,7 @@ import presentation from "@/data/presentation";
 const pathname = removeTrailingSlash(Astro.url.pathname);
 
 const navLinks = [
-  { href: "/", label: "Inicio", isActive: (path: string) => path === "/" },
+  { href: "/", label: "Inicio", isActive: (path: string) => path === "/" || path === "" },
   { href: "/about", label: "Quiénes Somos", isActive: (path: string) => path === "/about" },
   { href: "/posts", label: "Publicaciones", isActive: (path: string) => path.startsWith("/posts") },
   { href: "/projects", label: "Proyectos", isActive: (path: string) => path.startsWith("/projects") },
@@ -13,7 +13,8 @@ const navLinks = [
   { href: "/donate", label: "Donar", isActive: (path: string) => path === "/donate" },
 ];
 
-const visibleLinks = navLinks.filter((link) => !(pathname === "/" && link.href === "/"));
+const isHome = pathname === "/" || pathname === "";
+const visibleLinks = navLinks.filter((link) => !(isHome && link.href === "/"));
 ---
 
 <nav class="sticky top-0 z-50 px-6 py-5 bg-chocolate/80 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10 shadow-lg">
@@ -38,7 +39,7 @@ const visibleLinks = navLinks.filter((link) => !(pathname === "/" && link.href =
       ))}
     </div>
 
-    <div class="relative flex-shrink-0">
+    <div class="relative flex-shrink-0 md:hidden">
       <details class="group">
         <summary class="flex items-center gap-1 px-3 py-1 rounded-full border border-white/10 text-warm-cream/80 hover:text-vibrant-orange hover:border-vibrant-orange transition-colors cursor-pointer list-none">
           <span class="material-symbols-outlined text-base">more_horiz</span>
