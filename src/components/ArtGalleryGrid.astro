@@ -6,7 +6,7 @@ interface Props {
 const { artworks } = Astro.props;
 ---
 
-<div class="columns-2 gap-3 space-y-3">
+<div class="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
   {artworks.map((item) => (
     <a href={`/gallery/${item.slug}`} class="block relative group overflow-hidden rounded-xl masonry-item">
       <img

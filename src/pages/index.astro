@@ -29,11 +29,11 @@ const artItems = (await getCollection("art")).slice(0, 3);
       <img 
         alt="Comunidad ActivaShe" 
         class="w-full h-full object-cover" 
-        src="/favicon.png"
+        src="/hero.webp"
       />
       <div class="absolute inset-0 image-overlay"></div>
     </div>
-    <div class="-mt-32 relative z-10 max-w-4xl mx-auto px-6">
+    <div class="-mt-32 relative z-10 max-w-4xl lg:max-w-6xl mx-auto px-6">
       <div class="bg-terracotta p-8 rounded-3xl card-shadow">
         <h1 class="text-4xl leading-tight mb-4 text-warm-cream">
           {presentation.title}
@@ -47,7 +47,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
     </div>
   </section>
 
-  <section class="px-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+  <section class="px-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-vibrant-orange">
       <span class="material-symbols-outlined text-vibrant-orange mb-3 text-3xl">restaurant</span>
       <h3 class="text-lg mb-1 text-warm-cream font-bold">Seguridad</h3>
@@ -60,17 +60,17 @@ const artItems = (await getCollection("art")).slice(0, 3);
     </div>
   </section>
 
-  <section class="px-6 space-y-6 max-w-4xl mx-auto">
+  <section class="px-6 space-y-6 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="flex items-end justify-between">
       <h2 class="text-3xl font-display">Voces de la<br/><span class="text-vibrant-orange">Comunidad</span></h2>
       <Link href="/posts" label="Ver todas" isUnderline target="_self" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1" />
     </div>
     {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
-    <div class="space-y-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {
         posts.length !== 0 &&
           posts
-            .slice(0, 2)
+            .slice(0, 4)
             .map((post) => (
               <PostCard
                 publishedAt={post.data.publishedAt}
@@ -84,7 +84,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
     </div>
   </section>
 
-  <section class="px-6 space-y-6 max-w-4xl mx-auto">
+  <section class="px-6 space-y-6 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="flex items-center gap-3">
       <h2 class="text-3xl font-display">Proyectos</h2>
       <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-xs font-black">ACTIVOS</span>
@@ -95,7 +95,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
     </div>
   </section>
 
-  <section class="px-6 space-y-4 max-w-4xl mx-auto">
+  <section class="px-6 space-y-4 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="flex items-end justify-between">
       <h2 class="text-3xl font-display">Galería</h2>
       <Link href="/gallery" label="Ver galería" isUnderline target="_self" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1" />
@@ -118,7 +118,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
     )}
   </section>
 
-  <section class="px-6 max-w-4xl mx-auto">
+  <section class="px-6 max-w-4xl lg:max-w-6xl mx-auto">
     <footer class="p-8 rounded-[2.5rem] bg-terracotta text-warm-cream">
       <h2 class="text-3xl font-display mb-4">Hablemos</h2>
       <p class="opacity-90 mb-8 leading-relaxed">
