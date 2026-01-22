@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import ArtGalleryGrid from "@/components/ArtGalleryGrid.astro";
 import FeaturedVideo from "@/components/FeaturedVideo.astro";
 import VideoGrid from "@/components/VideoGrid.astro";
+import Button from "@/components/Button.astro";
 import "@/styles/art-gallery.css";
 
 const artworks = await getCollection("art");
@@ -21,7 +22,8 @@ const otherVideos = sortedVideos
   .slice(0, 6);
 ---
 
-<Layout title="Galería | ActivaShe">
+
+<Layout title="Galería | ActivaShe" bodyClass="bg-gradient-to-b from-olive to-olive/90">
   <div class="px-6 max-w-4xl lg:max-w-6xl mx-auto space-y-16">
     <!-- Galería de Arte Section -->
     <section class="space-y-4">
@@ -43,15 +45,14 @@ const otherVideos = sortedVideos
         <ArtGalleryGrid artworks={artworks} />
       </div>
 
-      <a
+      <Button 
         href="https://www.instagram.com/activashe"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full mt-6 py-3 px-4 bg-terracotta/10 border border-terracotta/30 text-terracotta font-bold rounded-lg flex items-center justify-center gap-2 transition-colors hover:bg-terracotta/20"
-      >
-        Explorar Más Arte
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </a>
+        label="Explorar Más Arte"
+        variant="secondary"
+        showIcon={true}
+        icon="arrow"
+        class="w-full mt-6 !text-warm-cream border-warm-cream hover:border-warm-cream"
+      />
     </section>
 
     <div class="h-px bg-terracotta/10"></div>
@@ -81,15 +82,14 @@ const otherVideos = sortedVideos
         <VideoGrid videos={otherVideos} />
       </div>
 
-      <a
+      <Button 
         href="https://www.youtube.com/@ActivaShe"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full mt-8 py-4 px-4 bg-vibrant-orange text-warm-cream font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all hover:bg-vibrant-orange/90"
-      >
-        Ver más en YouTube
-        <span class="material-symbols-outlined text-sm">open_in_new</span>
-      </a>
+        label="Ver más en YouTube"
+        variant="primary"
+        showIcon={true}
+        icon="external"
+        class="w-full mt-8"
+      />
     </section>
   </div>
 </Layout>

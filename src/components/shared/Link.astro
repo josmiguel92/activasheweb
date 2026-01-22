@@ -6,19 +6,23 @@ type Props = HTMLAttributes<"a"> & {
   isUnderline?: boolean;
 };
 
-const { label, isUnderline, ...props } = Astro.props;
+const { label, isUnderline, class: customClass, ...props } = Astro.props;
 ---
 
 <a
   href={props.href}
-  class:list={{
-    ["hover:text-neutral-100 cursor-pointer"]: true,
-    ["underline decoration-dashed underline-offset-8"]: isUnderline,
-  }}
+  class:list={[
+    "cursor-pointer relative inline-flex group",
+    { "underline decoration-dashed underline-offset-8": isUnderline },
+    customClass
+  ]}
   {...props}
   rel="noreferrer"
   target="_blank"
 >
-  {label}
+  <span class="relative">
+    {label}
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
+  </span>
   <span class="sr-only">{label} link</span>
 </a>

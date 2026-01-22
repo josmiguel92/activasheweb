@@ -8,7 +8,7 @@ import presentation from "@/data/presentation";
 
 <Layout title="Colabora con ActivaShe | Donaciones">
   <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
-    <div class="bg-terracotta p-8 md:p-12 rounded-3xl card-shadow">
+    <div class="bg-olive p-8 md:p-12 rounded-3xl card-shadow">
       <h1 class="text-4xl font-display text-warm-cream mb-6">Colabora con <span class="text-mustard">ActivaShe</span></h1>
       
       <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
@@ -20,13 +20,17 @@ import presentation from "@/data/presentation";
         </p>
         
         <div class="mt-4 p-6 bg-chocolate/30 rounded-2xl border-l-4 border-mustard">
-          <p class="text-sm font-bold uppercase tracking-wider text-mustard mb-2">Nuestro correo de contacto</p>
+          <div class="flex justify-between items-center mb-2">
+            <p class="text-sm font-bold uppercase tracking-wider text-mustard mb-3">Nuestro correo de contacto</p>
+            <span class="material-symbols-outlined text-mustard flex-shrink-0">mail</span>
+
+          </div>
+         
           <a 
             href={`mailto:${presentation.mail}`}
-            class="flex items-center gap-3 text-xl font-bold hover:text-mustard transition-colors"
+            class="flex items-center gap-3 text-lg lg:text-xl font-bold hover:text-mustard transition-colors break-all"
           >
-            <span class="material-symbols-outlined text-mustard">mail</span>
-            {presentation.mail}
+            <span class="truncate lg:truncate-none">{presentation.mail}</span>
           </a>
         </div>
 
@@ -36,11 +40,6 @@ import presentation from "@/data/presentation";
       </div>
     </div>
 
-    <div class="bg-white/5 p-8 rounded-3xl border-t-4 border-vibrant-orange">
-      <h2 class="text-2xl font-display mb-4 text-warm-cream">Síguenos en nuestras redes</h2>
-      <p class="mb-6 text-white/70">Mantente al tanto de nuestro trabajo y comparte nuestra misión:</p>
-      <SocialLinks />
-    </div>
 
     <a href="/" class="inline-block text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">
       Volver al inicio

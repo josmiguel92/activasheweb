@@ -7,6 +7,7 @@ import PostCard from "@/components/PostCard.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import BlurCircle from "@/components/shared/BlurCircle.astro";
 import Link from "@/components/shared/Link.astro";
+import Button from "@/components/Button.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
@@ -34,14 +35,14 @@ const artItems = (await getCollection("art")).slice(0, 3);
       <div class="absolute inset-0 image-overlay"></div>
     </div>
     <div class="-mt-32 relative z-10 max-w-4xl lg:max-w-6xl mx-auto px-6">
-      <div class="bg-terracotta p-8 rounded-3xl card-shadow">
-        <h1 class="text-4xl leading-tight mb-4 text-warm-cream">
+      <div class="bg-mustard p-8 rounded-3xl card-shadow">
+        <h1 class="text-4xl leading-tight mb-4 text-terracotta font-display font-bold">
           {presentation.title}
         </h1>
-        <p class="text-lg leading-relaxed text-warm-cream opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
+        <p class="text-lg leading-relaxed text-chocolate opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
         <div class="flex flex-col gap-3 sm:flex-row">
-          <Link href="/projects" label="Conoce nuestra labor" isUnderline={false} target="_self" class="bg-mustard text-chocolate py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:opacity-90" />
-          <Link href="/posts" label="Lee nuestras publicaciones" isUnderline={false} target="_self" class="border-2 border-warm-cream text-warm-cream py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-warm-cream/10" />
+          <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="" />
+          <Button href="/posts" label="Lee nuestras publicaciones" variant="outline" icon="arrow" class="!text-chocolate !border-chocolate hover:!border-chocolate" />
         </div>
       </div>
     </div>
@@ -49,14 +50,18 @@ const artItems = (await getCollection("art")).slice(0, 3);
 
   <section class="px-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-vibrant-orange">
-      <span class="material-symbols-outlined text-vibrant-orange mb-3 text-3xl">restaurant</span>
-      <h3 class="text-lg mb-1 text-warm-cream font-bold">Seguridad</h3>
-      <p class="text-xs opacity-70">Soberanía alimentaria para nuestras familias.</p>
+      <div class="flex flex-row gap-2  items-center">
+        <span class="material-symbols-outlined text-vibrant-orange mb-3 text-3xl">restaurant</span>
+      <h3 class="text-lg mb-1 text-terracotta font-bold">Seguridad</h3>
+      </div>  
+      <p class="text-2xs opacity-70 text-chocolate">Soberanía alimentaria para nuestras familias.</p>
     </div>
     <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-mustard">
-      <span class="material-symbols-outlined text-mustard mb-3 text-3xl">balance</span>
-      <h3 class="text-lg mb-1 text-warm-cream font-bold">Justicia</h3>
-      <p class="text-xs opacity-70">Combatiendo la desigualdad sistémica.</p>
+      <div class="flex flex-row gap-2  items-center">
+        <span class="material-symbols-outlined text-mustard mb-3 text-3xl">balance</span>
+      <h3 class="text-3xl mb-1 text-mustard font-bold">Justicia</h3>
+      </div>
+      <p class="text-2xs opacity-70 text-chocolate">Combatiendo la desigualdad sistémica.</p>
     </div>
   </section>
 
@@ -109,8 +114,8 @@ const artItems = (await getCollection("art")).slice(0, 3);
               <img src={item.data.image} alt={item.data.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
             </div>
             <div class="p-3 space-y-1">
-              <p class="text-sm font-semibold text-warm-cream line-clamp-1">{item.data.title}</p>
-              <p class="text-xs text-warm-cream/60 line-clamp-1">{item.data.artist}</p>
+              <p class="text-sm font-semibold text-chocolate line-clamp-1">{item.data.title}</p>
+              <p class="text-xs text-chocolate/60 line-clamp-1">{item.data.artist}</p>
             </div>
           </a>
         ))}

@@ -2,21 +2,48 @@
 type Props = {
   href: string;
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline';
+  showIcon?: boolean;
+  icon?: 'heart' | 'arrow' | 'external';
+  class?: string;
 };
 
-const { href, label, variant = 'primary' } = Astro.props as Props;
+const { 
+  href, 
+  label, 
+  variant = 'primary',
+  showIcon = true,
+  icon = 'heart',
+  class: customClass = ''
+} = Astro.props as Props;
 
-const classes = variant === 'primary'
-  ? 'bg-mustard text-chocolate py-4 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 active:scale-95 transition-transform hover:opacity-90'
-  : 'py-3 px-6 rounded-xl border border-mustard text-mustard font-bold text-sm hover:bg-mustard/10 transition-colors';
+const baseClasses = 'relative overflow-hidden rounded-xl font-bold flex items-center justify-center gap-2 transition-all py-3 px-6 text-sm';
+
+const variantClasses = {
+  primary: 'bg-mustard text-chocolate hover:opacity-90 active:scale-95',
+  secondary: 'bg-soft-olive/50 border border-soft-olive/60 text-warm-cream hover:bg-soft-olive/70 hover:border-soft-olive/80',
+  outline: 'border-2 border-soft-olive text-warm-cream hover:border-olive hover:bg-soft-olive/20'
+};
+
+const getIconSVG = (iconType: string) => {
+  switch(iconType) {
+    case 'arrow':
+      return '<path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>';
+    case 'external':
+      return '<path d="M6 18L18 6M18 6L18 16M18 6L8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>';
+    case 'heart':
+    default:
+      return '<path d="M12.1 21.35l-1.1-1.01C5.14 15.24 2 12.39 2 9.5 2 7.01 4.01 5 6.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5 18.99 5 21 7.01 21 9.5c0 2.89-3.14 5.74-8.99 10.84l-1.91 1.01z" fill="currentColor"/>';
+  }
+};
 
 ---
 
-
-<a href={href} class={classes} role="button">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="-ml-0.5">
-    <path d="M12.1 21.35l-1.1-1.01C5.14 15.24 2 12.39 2 9.5 2 7.01 4.01 5 6.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5 18.99 5 21 7.01 21 9.5c0 2.89-3.14 5.74-8.99 10.84l-1.91 1.01z" fill="currentColor"/>
-  </svg>
+<a href={href} class:list={[variantClasses[variant], baseClasses, customClass]} role="button">
   <span>{label}</span>
+  {showIcon && (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="-ml-0.5">
+      <Fragment set:html={getIconSVG(icon)} />
+    </svg>
+  )}
 </a>

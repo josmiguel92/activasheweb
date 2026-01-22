@@ -11,12 +11,13 @@ type Props = {
 const { title, areas = [], link, isComingSoon, preview, image } = Astro.props as Props;
 
 import StatusBadge from "@/components/StatusBadge.astro";
+import Button from "@/components/Button.astro";
 
 const formatAreas = (values: string[] = []) => values.join(" • ");
 ---
 
 <>
-  <div class="min-w-[280px] bg-white/5 rounded-[2rem] overflow-hidden border border-white/10 transition-transform hover:-translate-y-1">
+  <div class="min-w-[280px] bg-mustard/5 rounded-[2rem] overflow-hidden border border-chocolate/20 transition-transform hover:-translate-y-1 text-chocolate">
     <div class="h-40 relative">
       {image ? (
         <>
@@ -39,15 +40,16 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       </div>
     </div>
     <div class="p-6">
-      <h3 class="text-lg mb-2 text-warm-cream">{title}</h3>
-      {preview && <p class="text-sm text-white/60 mb-4 line-clamp-2">{preview}</p>}
-      <a 
+      <h3 class="text-lg mb-2 text-olive">{title}</h3>
+      {preview && <p class="text-sm text-chocolate/60 mb-4 line-clamp-2">{preview}</p>}
+      <Button 
         href={link}
-        class="w-full py-3 rounded-xl border border-mustard text-mustard font-bold text-sm flex items-center justify-center gap-2 hover:bg-soft-olive/15 hover:border-olive hover:text-olive transition-colors"
-      >
-        Detalles del proyecto
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </a>
+        label="Detalles del proyecto"
+        variant="outline"
+        showIcon={true}
+        icon="arrow"
+        class="w-full !text-olive border-olive hover:border-olive"
+      />
     </div>
   </div>
 </>

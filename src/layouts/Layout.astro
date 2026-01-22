@@ -13,9 +13,10 @@ export interface Props {
   title?: string;
   description?: string;
   noTopMargin?: boolean;
+  bodyClass?: string;
 }
 
-const { title, description, noTopMargin = false } = Astro.props as Props;
+const { title, description, noTopMargin = false, bodyClass = "bg-warm-cream" } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@ const { title, description, noTopMargin = false } = Astro.props as Props;
 
   </head>
 
-  <body class="min-h-screen">
+  <body class:list={["min-h-screen text-chocolate", bodyClass]}>
     <Header />
     <main class:list={[!noTopMargin && "mt-8", "space-y-16 pb-20"]}>
       <slot />

@@ -12,7 +12,7 @@ type Props = {
 const { title, publishedAt, description, slug, image } = Astro.props;
 ---
 
-<article class="bg-white/5 rounded-3xl overflow-hidden border-t-4 border-terracotta card-shadow">
+<article class="bg-white/5 rounded-3xl overflow-hidden border-t-4 border-terracotta card-shadow text-chocolate">
   {image && (
     <div class="h-48 relative overflow-hidden">
       <img 
@@ -27,10 +27,10 @@ const { title, publishedAt, description, slug, image } = Astro.props;
   <div class="p-6">
     <div class="flex justify-between items-center mb-4">
       <span class="text-[10px] font-black uppercase tracking-widest text-terracotta">Publicación</span>
-      <span class="text-[10px] text-white/40">{formatDate(publishedAt)}</span>
+      <span class="text-[10px] text-chocolate/40">{formatDate(publishedAt)}</span>
     </div>
-    <h3 class="text-xl mb-3 leading-snug text-warm-cream">{title}</h3>
-    <p class="text-sm text-white/60 line-clamp-2 mb-6">{description}</p>
+    <h3 class="text-xl mb-3 leading-snug text-terracotta">{title}</h3>
+    <p class="text-sm text-chocolate/60 line-clamp-2 mb-6">{description}</p>
     <a class="flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all" href={`/posts/${slug}`}>
       Leer artículo completo
       <span class="material-symbols-outlined text-sm">north_east</span>

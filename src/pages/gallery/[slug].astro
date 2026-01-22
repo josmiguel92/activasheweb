@@ -20,7 +20,7 @@ const { art } = Astro.props;
 const { Content } = await art.render();
 ---
 
-<Layout title={`${art.data.title} | Galería`}>
+<Layout title={`${art.data.title} | Galería`} bodyClass="bg-gradient-to-b from-olive to-olive/90">
   <main class="px-6 max-w-4xl mx-auto space-y-10 pb-16">
     <Breadcrumbs items={[
       { label: "Galería", href: "/gallery" },
@@ -64,7 +64,7 @@ const { Content } = await art.render();
       <Content />
     </section>
 
-    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+    <div class="">
       <ShareButtons 
         url={`/gallery/${art.slug}`}
         title={`${art.data.title} - ${art.data.artist}`}
