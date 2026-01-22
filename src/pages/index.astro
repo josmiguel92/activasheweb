@@ -35,14 +35,19 @@ const artItems = (await getCollection("art")).slice(0, 3);
       <div class="absolute inset-0 image-overlay"></div>
     </div>
     <div class="-mt-32 relative z-10 max-w-4xl lg:max-w-6xl mx-auto px-6">
-      <div class="bg-mustard p-8 rounded-3xl card-shadow">
-        <h1 class="text-4xl leading-tight mb-4 text-terracotta font-display font-bold">
-          {presentation.title}
-        </h1>
-        <p class="text-lg leading-relaxed text-chocolate opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
-        <div class="flex flex-col gap-3 sm:flex-row">
-          <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="" />
-          <Button href="/posts" label="Lee nuestras publicaciones" variant="outline" icon="arrow" class="!text-chocolate !border-chocolate hover:!border-chocolate" />
+      <div class="bg-mustard p-8 rounded-3xl card-shadow relative overflow-hidden">
+        <div 
+          class="absolute inset-0 opacity-20 pointer-events-none pattern-background"
+        ></div>
+        <div class="relative z-10">
+          <h1 class="text-4xl leading-tight mb-4 text-terracotta font-display font-bold">
+            {presentation.title}
+          </h1>
+          <p class="text-lg leading-relaxed text-chocolate opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="" />
+            <Button href="/posts" label="Lee nuestras publicaciones" variant="outline" icon="arrow" class="!text-chocolate !border-chocolate hover:!border-chocolate" />
+          </div>
         </div>
       </div>
     </div>

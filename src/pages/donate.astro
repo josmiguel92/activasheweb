@@ -8,10 +8,14 @@ import presentation from "@/data/presentation";
 
 <Layout title="Colabora con ActivaShe | Donaciones">
   <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
-    <div class="bg-olive p-8 md:p-12 rounded-3xl card-shadow">
-      <h1 class="text-4xl font-display text-warm-cream mb-6">Colabora con <span class="text-mustard">ActivaShe</span></h1>
-      
-      <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
+    <div class="bg-olive p-8 md:p-12 rounded-3xl card-shadow relative overflow-hidden">
+      <div 
+        class="absolute inset-0 opacity-20 pointer-events-none pattern-background"
+      ></div>
+      <div class="relative z-10">
+        <h1 class="text-4xl font-display text-warm-cream mb-6">Colabora con <span class="text-mustard">ActivaShe</span></h1>
+        
+        <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
         <p>
           Actualmente estamos estableciendo una plataforma segura y directa para recibir donaciones. De momento, no contamos con un sistema automatizado, pero tu interés en ayudar es increíblemente valioso para nosotras.
         </p>
@@ -37,6 +41,7 @@ import presentation from "@/data/presentation";
         <p class="text-lg">
           Gracias de antemano por tu generosidad y por creer en nuestra misión. Cada gesto, por pequeño que sea, nos impulsa a seguir adelante.
         </p>
+        </div>
       </div>
     </div>
 

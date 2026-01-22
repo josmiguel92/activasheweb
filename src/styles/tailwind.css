@@ -29,4 +29,17 @@
   .image-overlay {
     background: linear-gradient(to bottom, transparent 0%, #2D1B14 100%);
   }
+
+  .pattern-background {
+    background: url('/abstract-ethnic.webp') repeat-x;
+    background-size: 30vh auto;
+    background-position: right bottom;
+    mix-blend-mode: multiply;
+  }
+
+  @media (min-width: 768px) {
+    .pattern-background {
+      background-size: 25vh auto;
+    }
+  }
 }

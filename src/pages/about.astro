@@ -6,10 +6,14 @@ import presentation from "@/data/presentation";
 
 <Layout title="Quiénes Somos | ActivaShe">
   <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
-    <div class="bg-terracotta p-8 md:p-12 rounded-3xl card-shadow">
-      <h1 class="text-4xl font-display text-warm-cream mb-6">Quiénes <span class="text-mustard">Somos</span></h1>
-      
-      <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
+    <div class="bg-terracotta p-8 md:p-12 rounded-3xl card-shadow relative overflow-hidden">
+      <div 
+        class="absolute inset-0 opacity-20 pointer-events-none pattern-background"
+      ></div>
+      <div class="relative z-10">
+        <h1 class="text-4xl font-display text-warm-cream mb-6">Quiénes <span class="text-mustard">Somos</span></h1>
+        
+        <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
         <p class="text-lg">
           <strong>Activ@ Àşé</strong> es un espacio comunal y familiar que nace con el objetivo de empoderar a la comunidad afrocubana, especialmente a las mujeres negras, que a pesar de ser mayoría en el país, son las más desatendidas y desprotegidas por la política social de la isla.
         </p>
@@ -56,6 +60,7 @@ import presentation from "@/data/presentation";
           <strong>Activ@ Àşé</strong> es un centro de artivismo y desarrollo cultural que busca promover y potenciar bienes espirituales, morales y materiales para el bienestar de las poblaciones no blancas en la Cuba de hoy. Un espacio donde la comunidad afrocubana pueda crecer, expresarse y sentirse valorada.
         </p>
 
+        </div>
       </div>
     </div>
 
