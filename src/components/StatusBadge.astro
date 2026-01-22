@@ -5,7 +5,9 @@ type Props = {
 };
 
 const { label = 'Próximamente', tone = 'accent' } = Astro.props as Props;
-const bg = tone === 'accent' ? 'bg-accent text-white' : 'bg-neutral-800 text-neutral-300';
+const bg = tone === 'accent'
+  ? 'bg-vibrant-orange text-chocolate'
+  : 'bg-white/10 text-warm-cream/80 border border-white/10 backdrop-blur';
 ---
 
 <span class={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${bg}`} aria-label={label}>

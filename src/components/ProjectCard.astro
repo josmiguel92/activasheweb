@@ -34,11 +34,9 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       <div class="absolute top-4 left-4 bg-chocolate/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase">
         {formatAreas(areas)}
       </div>
-      {isComingSoon && (
-        <div class="absolute top-4 right-4 bg-vibrant-orange px-3 py-1 rounded-full text-[10px] font-bold text-chocolate">
-          NUEVO
-        </div>
-      )}
+      <div class="absolute top-4 right-4">
+        <StatusBadge label={isComingSoon ? "Próximo" : "Activo"} tone={isComingSoon ? "accent" : "muted"} />
+      </div>
     </div>
     <div class="p-6">
       <h3 class="text-lg mb-2 text-warm-cream">{title}</h3>

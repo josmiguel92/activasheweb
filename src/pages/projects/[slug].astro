@@ -39,12 +39,8 @@ const { Content } = await project.render();
             </span>
           )}
         </div>
-        <div class="flex gap-2">
-          {project.data.isComingSoon && (
-            <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-[10px] font-black">
-              PRÓXIMAMENTE
-            </span>
-          )}
+        <div class="flex gap-2 items-center">
+          <StatusBadge label={project.data.isComingSoon ? "Próximo" : "Activo"} tone={project.data.isComingSoon ? "accent" : "muted"} />
           <span class="text-sm text-warm-cream/60">{formatDate(project.data.publishedAt)}</span>
         </div>
       </div>
