@@ -45,7 +45,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
           </h1>
           <p class="text-lg leading-relaxed text-chocolate opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
           <div class="flex flex-col gap-3 sm:flex-row">
-            <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="" />
+            <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="!bg-chocolate !text-warm-cream" />
             <Button href="/posts" label="Lee nuestras publicaciones" variant="outline" icon="arrow" class="!text-chocolate !border-chocolate hover:!border-chocolate" />
           </div>
         </div>
