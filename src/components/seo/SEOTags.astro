@@ -1,22 +1,25 @@
 ---
 import { SEO } from "astro-seo";
 import { SITE_URL } from "@/data/config";
+import presentation from "@/data/presentation";
 
-type Props = {
-  title?: string;
-  description?: string;
-  noindex?: boolean;
-  image?: string;
-  og?: {
-    title: string;
-    type: string;
-    description: string;
-    image: string;
-    alt: string;
-  };
-};
-
-const { title, description, noindex, image, og } = Astro.props;
+ type Props = {
+   title?: string;
+   description?: string;
+   noindex?: boolean;
+   image?: string;
+   author?: string;
+   keywords?: string[];
+   og?: {
+     title: string;
+     type: string;
+     description: string;
+     image: string;
+     alt: string;
+   };
+ };
+ 
+ const { title, description, noindex, image, author, keywords = [], og } = Astro.props;
 
 const toAbsoluteUrl = (maybeUrl?: string) => {
   if (!maybeUrl) return undefined;
@@ -25,11 +28,21 @@ const toAbsoluteUrl = (maybeUrl?: string) => {
   return `${SITE_URL}${leadingSlash}${maybeUrl}`;
 };
 
-const DEFAULT_TITLE_PAGE = "ActivaShe | Visibilidad y Apoyo para Mujeres Afrodescendientes";
+const DEFAULT_TITLE_PAGE = "ActivaShe | Visibilidad y Apoyo Afrodescendiente";
 const DEFAULT_DESCRIPTION_PAGE =
-  "ActivaShe: Damos voz a las mujeres afrodescendientes en situación de vulnerabilidad. Trabajamos para visibilizar la injusticia y promover la equidad y los derechos humanos.";
+  "ActivaShe: Visibilidad y apoyo a mujeres afrodescendientes en vulnerabilidad, promoviendo equidad y derechos humanos.";
 const DEFAULT_URL_SITE = SITE_URL;
-const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}/favicon.png`;
+const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}/opengraph-image.jpg`;
+const DEFAULT_SITE_NAME = "ActivaShe";
+const DEFAULT_LOCALE = "es_ES";
+const DEFAULT_AUTHOR = "ActivaShe";
+const DEFAULT_KEYWORDS = [
+  "ActivaShe",
+  "mujeres afrodescendientes",
+  "equidad",
+  "justicia social",
+  "comunidad",
+];
 
 const openGraph = {
   title: og?.title || title || DEFAULT_TITLE_PAGE,
@@ -38,6 +51,8 @@ const openGraph = {
   alt: og?.alt || "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'",
   url: DEFAULT_URL_SITE,
   description: og?.description || description || DEFAULT_DESCRIPTION_PAGE,
+  siteName: DEFAULT_SITE_NAME,
+  locale: DEFAULT_LOCALE,
 };
 ---
 
@@ -55,26 +70,61 @@ const openGraph = {
     image: {
       alt: openGraph.alt,
     },
+    extra: [
+      { property: "og:site_name", content: openGraph.siteName },
+      { property: "og:locale", content: openGraph.locale },
+    ],
   }}
   twitter={{
     creator: "@activashecuba",
+    image: openGraph.image,
+    card: "summary_large_image",
   }}
   extend={{
     link: [
       { rel: "icon", href: "/favicon.png" },
-      { rel: "sitemap", href: "/sitemap-index.xml" },
+      { rel: "sitemap", href: "/sitemap-0.xml" },
     ],
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "generator", content: Astro.generator },
-      {
-        name: "twitter:image",
-        content: openGraph.image,
-      },
+      { name: "author", content: author || DEFAULT_AUTHOR },
+      { name: "keywords", content: (keywords.length ? keywords : DEFAULT_KEYWORDS).join(", ") },
+      { property: "og:site_name", content: openGraph.siteName },
+      { property: "og:locale", content: openGraph.locale },
+      { name: "twitter:image", content: openGraph.image },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: openGraph.title },
       { name: "twitter:description", content: openGraph.description },
       { name: "twitter:site", content: "@activashecuba" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: DEFAULT_SITE_NAME,
+          url: DEFAULT_URL_SITE,
+          logo: DEFAULT_IMAGE,
+          description: openGraph.description,
+          sameAs: presentation.socials?.map((s) => s.link).filter(Boolean) || [],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: DEFAULT_SITE_NAME,
+          url: DEFAULT_URL_SITE,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: `${DEFAULT_URL_SITE}/search?q={search_term_string}`,
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
     ],
   }}
 />
