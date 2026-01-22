@@ -6,4 +6,4 @@ image: /images/4_20251205_152423_0003.png
 category: pintura
 year: 2025
 ---
-(acrl**í**ico sobre cartulina)
+(acrílico sobre cartulina)
