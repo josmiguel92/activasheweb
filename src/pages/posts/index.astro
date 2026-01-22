@@ -6,10 +6,10 @@ import formatDate from "@/utils/formatDate";
 const posts = await getCollection("posts");
 ---
 
-<Layout title="Todas las Publicaciones">
+<Layout title="Todas las Publicaciones" class="text-chocolate">
   <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
     <div class="flex items-end justify-between">
-      <h1 class="text-4xl font-display text-warm-cream">Todas las <span class="text-vibrant-orange">Publicaciones</span></h1>
+      <h1 class="text-4xl font-display text-chocolate">Todas las <span class="text-vibrant-orange">Publicaciones</span></h1>
       <a href="/" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">Volver al inicio</a>
     </div>
 
@@ -19,11 +19,11 @@ const posts = await getCollection("posts");
           <article class="bg-white/5 rounded-3xl overflow-hidden border-t-4 border-terracotta card-shadow text-chocolate">
             <div class="p-6">
               <div class="flex justify-between items-center mb-4">
-                <span class="text-[10px] font-black uppercase tracking-widest text-terracotta">Publicación</span>
-                <span class="text-[10px] text-white/40">{formatDate(post.data.publishedAt)}</span>
+                <span class="text-[10px] font-black uppercase tracking-widest text-terracotta">Artículo</span>
+                <span class="text-[10px] text-chocolate/40">{formatDate(post.data.publishedAt)}</span>
               </div>
-              <h2 class="text-xl mb-3 leading-snug text-warm-cream">{post.data.title}</h2>
-              <p class="text-sm text-white/60 line-clamp-2 mb-6">{post.data.description}</p>
+              <h2 class="text-xl mb-3 leading-snug text-terracotta">{post.data.title}</h2>
+              <p class="text-sm text-chocolate/60 line-clamp-2 mb-6">{post.data.description}</p>
               <a class="flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all" href={`/posts/${post.slug}`}>
                 Leer artículo completo
                 <span class="material-symbols-outlined text-sm">north_east</span>

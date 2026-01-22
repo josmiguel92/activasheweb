@@ -29,8 +29,11 @@ const { Content } = await project.render();
     <Breadcrumbs items={[
       { label: "Proyectos", href: "/projects" },
       { label: project.data.title }
-    ]} />
-    <header class="mb-8 bg-gradient-to-br from-terracotta to-mustard/80 p-8 rounded-3xl card-shadow">
+    ]}
+      textColor="text-chocolate" 
+  mutedColor="text-chocolate/60" 
+  separatorColor="text-chocolate/30" />
+    <header class="mb-8 bg-gradient-to-br from-olive to-olive/60 p-8 rounded-3xl card-shadow">
       <div class="flex justify-between items-start mb-4">
         <div>
           {project.data.areas && project.data.areas.length > 0 && (

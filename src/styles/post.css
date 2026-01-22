@@ -1,5 +1,5 @@
 .post p {
-  @apply leading-7 text-warm-cream/80 mb-4;
+  @apply leading-7 text-chocolate/80 mb-4;
 }
 
 .post code {
@@ -7,11 +7,11 @@
 }
 
 .post h2 {
-  @apply mt-8 mb-4 text-3xl font-display text-warm-cream;
+  @apply mt-8 mb-4 text-3xl font-display text-chocolate;
 }
 
 .post h3 {
-  @apply mt-6 mb-3 text-xl font-display text-warm-cream;
+  @apply mt-6 mb-3 text-xl font-display text-chocolate;
 }
 
 .post a {
@@ -23,7 +23,7 @@
 }
 
 .post li {
-  @apply text-warm-cream/80;
+  @apply text-chocolate/80;
 }
 
 .post blockquote {
@@ -31,7 +31,7 @@
 }
 
 .post blockquote p {
-  @apply text-warm-cream/90 italic;
+  @apply text-chocolate/90 italic;
 }
 
 .post pre {
@@ -43,9 +43,9 @@
 }
 
 .post strong {
-  @apply text-warm-cream font-bold;
+  @apply text-chocolate font-bold;
 }
 
 .post em {
-  @apply text-warm-cream/90 italic;
+  @apply text-chocolate/90 italic;
 }
