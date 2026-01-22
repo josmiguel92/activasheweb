@@ -20,7 +20,12 @@ const { art } = Astro.props;
 const { Content } = await art.render();
 ---
 
-<Layout title={`${art.data.title} | Galería`} bodyClass="bg-gradient-to-b from-olive to-olive/90">
+<Layout 
+  title={`${art.data.title} | Galería`} 
+  description={art.data.description}
+  bodyClass="bg-gradient-to-b from-olive to-olive/90"
+  image={art.data.image}
+>
   <main class="px-6 max-w-4xl mx-auto space-y-10 pb-16">
     <Breadcrumbs items={[
       { label: "Galería", href: "/gallery" },

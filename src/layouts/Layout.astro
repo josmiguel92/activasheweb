@@ -14,15 +14,16 @@ export interface Props {
   description?: string;
   noTopMargin?: boolean;
   bodyClass?: string;
+  image?: string;
 }
 
-const { title, description, noTopMargin = false, bodyClass = "bg-warm-cream" } = Astro.props as Props;
+const { title, description, noTopMargin = false, bodyClass = "bg-warm-cream", image } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <SEOTags title={title} description={description} />
+    <SEOTags title={title} description={description} image={image} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
