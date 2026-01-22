@@ -1,6 +1,6 @@
 ---
 title: Afi-Mar
-artist: Afrik3Reina
+artist: "*"
 description: Dedicado a Afibola
 image: /images/img-20251208-wa0000.jpg
 category: pintura
