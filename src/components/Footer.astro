@@ -1,0 +1,30 @@
+---
+import Link from "@/components/shared/Link.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
+import presentation from "@/data/presentation";
+---
+
+<section class="px-6 max-w-4xl lg:max-w-6xl mx-auto">
+  <footer 
+    class="p-8 rounded-[2.5rem] bg-terracotta text-warm-cream relative overflow-hidden"
+    style={{backgroundImage: "linear-gradient(45deg, rgba(209, 100, 54, 1) 50%, rgba(209, 100, 54, .4) 100%), url('/random-zigzag.svg')", backgroundPosition: 'left, right', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%, auto 100%'}}
+  >
+    <div class="relative z-10">
+      <h2 class="text-3xl font-display mb-4">Hablemos</h2>
+    <p class="opacity-90 mb-8 leading-relaxed">
+      Estamos construyendo futuro juntas. Escríbenos para colaborar, donar o simplemente para conectar.
+    </p>
+    <div class="space-y-4 mb-10">
+      <Link
+        href={`mailto:${presentation.mail}`}
+        label={presentation.mail}
+        class="flex items-center gap-4 text-lg font-bold"
+      />
+      <SocialLinks />
+    </div>
+    <div class="pt-8 border-t border-warm-cream/20 text-center">
+      <p class="text-[10px] font-black uppercase tracking-widest opacity-60">© 2024 ActivaShe — Hecho con amor y resistencia</p>
+    </div>
+    </div>
+  </footer>
+</section>

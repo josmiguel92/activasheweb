@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import BlurCircle from "@/components/shared/BlurCircle.astro";
 import theme from "@/data/theme";
@@ -43,6 +44,7 @@ const { title, description, noTopMargin = false } = Astro.props as Props;
     <main class:list={[!noTopMargin && "mt-8", "space-y-16 pb-20"]}>
       <slot />
     </main>
+    <Footer />
     <ScrollToTop />
     <BlurCircle position="top" color={theme.colors.blur.top} />
     <BlurCircle position="bottom" color={theme.colors.blur.bottom} />
