@@ -51,7 +51,7 @@ collections:
       - { name: title, label: Título }
       - { name: description, label: Descripción }
       - { name: youtubeId, label: "ID de Video YouTube" }
-      - { name: category, label: Categoría, widget: select, options: ["entrevistas", "talleres", "documentales", "eventos", "educación"] }
+      - { name: category, label: Categoría, widget: select, options: ["entrevistas", "talleres", "documentales", "eventos", "educación", "video arte"] }
       - { name: duration, label: Duración }
       - { name: publishedAt, label: Fecha, widget: date }
       - { name: featured, label: Destacado, widget: boolean, default: false }

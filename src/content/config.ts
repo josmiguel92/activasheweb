@@ -45,7 +45,7 @@ const videoCollection = defineCollection({
     description: z.string().optional(),
     youtubeId: z.string(),
     featured: z.boolean().default(false),
-    category: z.enum(["entrevistas", "talleres", "documentales", "eventos", "educación"]),
+    category: z.enum(["entrevistas", "talleres", "documentales", "eventos", "educación", "video arte"]),
     duration: z.string(),
     thumbnail: z.string().optional(),
     publishedAt: z.date(),
