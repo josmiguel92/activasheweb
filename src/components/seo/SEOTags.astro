@@ -18,6 +18,13 @@ type Props = {
 
 const { title, description, noindex, image, og } = Astro.props;
 
+const toAbsoluteUrl = (maybeUrl?: string) => {
+  if (!maybeUrl) return undefined;
+  if (maybeUrl.startsWith("http://") || maybeUrl.startsWith("https://")) return maybeUrl;
+  const leadingSlash = maybeUrl.startsWith("/") ? "" : "/";
+  return `${SITE_URL}${leadingSlash}${maybeUrl}`;
+};
+
 const DEFAULT_TITLE_PAGE = "ActivaShe | Visibilidad y Apoyo para Mujeres Afrodescendientes";
 const DEFAULT_DESCRIPTION_PAGE =
   "ActivaShe: Damos voz a las mujeres afrodescendientes en situación de vulnerabilidad. Trabajamos para visibilizar la injusticia y promover la equidad y los derechos humanos.";
@@ -27,7 +34,7 @@ const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}/favicon.png`;
 const openGraph = {
   title: og?.title || title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
-  image: og?.image || image || DEFAULT_IMAGE,
+  image: toAbsoluteUrl(og?.image || image) || DEFAULT_IMAGE,
   alt: og?.alt || "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'",
   url: DEFAULT_URL_SITE,
   description: og?.description || description || DEFAULT_DESCRIPTION_PAGE,
