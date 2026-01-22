@@ -5,6 +5,7 @@ import ArtGalleryGrid from "@/components/ArtGalleryGrid.astro";
 import FeaturedVideo from "@/components/FeaturedVideo.astro";
 import VideoGrid from "@/components/VideoGrid.astro";
 import Button from "@/components/Button.astro";
+import presentation from "@/data/presentation";
 import "@/styles/art-gallery.css";
 
 const artworks = await getCollection("art");
@@ -20,6 +21,10 @@ const featuredVideo = videos.find((v) => v.data.featured) || sortedVideos[0];
 const otherVideos = sortedVideos
   .filter((v) => v.slug !== featuredVideo.slug)
   .slice(0, 6);
+
+// Get social links
+const instagramLink = presentation.socials.find(s => s.label === "Instagram")?.link || "https://www.instagram.com/activashe";
+const youtubeLink = presentation.socials.find(s => s.label === "YouTube")?.link || "https://www.youtube.com/@ActivaShe";
 ---
 
 
@@ -41,12 +46,21 @@ const otherVideos = sortedVideos
         de artistas que cantan, pintan, tejen y crean historias de resistencia.
       </p>
 
+      <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-warm-cream/90 space-y-3">
+        <h2 class="text-lg font-semibold text-warm-cream">Manifiesto:</h2>
+        <p class="text-2sm leading-relaxed">
+          Somos las voces que se niegan al silencio. Somos raíces que se entrelazan en la tierra y en la memoria. Desde la negritud, el feminismo y la espiritualidad, alzamos el canto por la libertad, la justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color, es un acto de amor, de resistencia y de sanación. Porque nuestro arte es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento.
+        </p>
+      </div>
+
+      
+
       <div class="mt-6">
         <ArtGalleryGrid artworks={artworks} />
       </div>
 
       <Button 
-        href="https://www.instagram.com/activashe"
+        href={instagramLink}
         label="Explorar Más Arte"
         variant="secondary"
         showIcon={true}
@@ -83,7 +97,7 @@ const otherVideos = sortedVideos
       </div>
 
       <Button 
-        href="https://www.youtube.com/@ActivaShe"
+        href={youtubeLink}
         label="Ver más en YouTube"
         variant="primary"
         showIcon={true}

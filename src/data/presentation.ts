@@ -13,11 +13,11 @@ type Presentation = {
 const presentation: Presentation = {
   "mail": "contacto@activashe.org",
   "title": "Hola, somos ActivaShe 👋",
-  "description": "Somos una organización comprometida con la defensa y el apoyo a las *minorías de mujeres afrodescendientes* en contextos de crisis. Trabajamos para visibilizar su lucha contra la *inseguridad alimentaria* y la *desigualdad sistémica*, promoviendo la equidad y la justicia. ¡Únete a nuestra causa!",
+  "description": "**Activ@ Àşé** es un espacio comunal y familiar que nace con el objetivo de empoderar a la comunidad afrocubana, especialmente a las mujeres negras, que a pesar de ser mayoría en el país, son las más desatendidas y desprotegidas por la política social de la isla.",
   "socials": [
     {
       "label": "Instagram",
-      "link": "https://instagram.com/activashe"
+      "link": "https://instagram.com/luzafr0"
     },
     {
       "label": "X (Twitter)",
@@ -26,6 +26,10 @@ const presentation: Presentation = {
     {
       "label": "Facebook",
       "link": "https://facebook.com/activasheONG"
+    },
+    {
+      "label": "YouTube",
+      "link": "https://www.youtube.com/@ActivaShe"
     }
   ]
 };
