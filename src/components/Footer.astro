@@ -7,8 +7,22 @@ import presentation from "@/data/presentation";
 <section class="px-6 max-w-4xl lg:max-w-6xl mx-auto">
   <footer 
     class="p-8 rounded-[2.5rem] bg-terracotta text-warm-cream relative overflow-hidden"
-    style={{backgroundImage: "linear-gradient(45deg, rgba(209, 100, 54, 1) 50%, rgba(209, 100, 54, .4) 100%), url('/random-zigzag.svg')", backgroundPosition: 'left, right', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%, auto 100%'}}
   >
+    <div class="absolute inset-0 bg-gradient-to-tr from-terracotta via-terracotta to-terracotta/40 pointer-events-none"></div>
+    <div 
+      class="absolute inset-y-0 right-0 w-2/3 bg-olive opacity-90 pointer-events-none"
+      style={{
+        maskImage: "url('/random-zigzag.svg')",
+        WebkitMaskImage: "url('/random-zigzag.svg')",
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskPosition: 'right center',
+        WebkitMaskPosition: 'right center',
+        maskSize: 'cover',
+        WebkitMaskSize: 'cover'
+      }}
+    ></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-gradient-to-r from-terracotta via-terracotta/65 to-transparent"></div>
     <div class="relative z-10">
       <h2 class="text-3xl font-display mb-4">Hablemos</h2>
     <p class="opacity-90 mb-8 leading-relaxed">

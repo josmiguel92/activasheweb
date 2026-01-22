@@ -31,7 +31,7 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       ) : (
         <div class="w-full h-full bg-gradient-to-br from-terracotta/20 to-mustard/20"></div>
       )}
-      <div class="absolute top-4 left-4 bg-chocolate/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase">
+      <div class="absolute top-4 left-4 bg-soft-olive/60 border border-soft-olive/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase text-warm-cream">
         {formatAreas(areas)}
       </div>
       <div class="absolute top-4 right-4">
@@ -43,7 +43,7 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       {preview && <p class="text-sm text-white/60 mb-4 line-clamp-2">{preview}</p>}
       <a 
         href={link}
-        class="w-full py-3 rounded-xl border border-mustard text-mustard font-bold text-sm flex items-center justify-center gap-2 hover:bg-mustard/10 transition-colors"
+        class="w-full py-3 rounded-xl border border-mustard text-mustard font-bold text-sm flex items-center justify-center gap-2 hover:bg-soft-olive/15 hover:border-olive hover:text-olive transition-colors"
       >
         Detalles del proyecto
         <span class="material-symbols-outlined text-sm">arrow_forward</span>

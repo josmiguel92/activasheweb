@@ -12,7 +12,9 @@ module.exports = {
       colors: {
         chocolate: '#2D1B14',
         terracotta: '#C45B3D',
-        mustard: '#E1AD01',
+        mustard: '#F6A700',
+        olive: '#3F6B0F',
+        'soft-olive': '#556E2F',
         'vibrant-orange': '#FF7033',
         'warm-cream': '#FDF8F3',
         accent: 'rgb(249 115 22 / var(--tw-bg-opacity))',

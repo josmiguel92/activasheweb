@@ -34,7 +34,7 @@ const { Content } = await project.render();
       <div class="flex justify-between items-start mb-4">
         <div>
           {project.data.areas && project.data.areas.length > 0 && (
-            <span class="text-[10px] font-black uppercase tracking-widest text-chocolate">
+            <span class="text-[10px] font-black uppercase tracking-widest text-warm-cream bg-soft-olive/60 border border-soft-olive/60 rounded-full px-3 py-1 backdrop-blur">
               {project.data.areas.join(' • ')}
             </span>
           )}
@@ -54,7 +54,7 @@ const { Content } = await project.render();
       <Content />
     </div>
 
-    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-soft-olive/30">
       <ShareButtons 
         url={`/projects/${project.slug}`}
         title={project.data.title}
@@ -62,8 +62,8 @@ const { Content } = await project.render();
       />
     </div>
 
-    <div class="mt-12 pt-8 border-t border-white/10">
-      <a href="/projects" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all">
+    <div class="mt-12 pt-8 border-t border-soft-olive/30">
+      <a href="/projects" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:text-olive hover:gap-3 transition-all">
         <span class="material-symbols-outlined text-sm">arrow_back</span>
         Volver a proyectos
       </a>
