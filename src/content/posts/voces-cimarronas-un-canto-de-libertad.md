@@ -14,7 +14,7 @@ image: /images/fragmentada.afrik3reina..jpg
 
 > ##### *Somos las voces que se niegan al silencio. Somos raíces que se entrelazan en la tierra y en la memoria. Desde la negritud, el feminismo y la espiritualidad, alzamos el canto por la libertad, la justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color, es un acto de amor, de resistencia y de sanación. Porque nuestro arte es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento*.
 
-La muestra homenajea la lucha y la resistencia de  [Yunaikys Linares  ](https://youtu.be/GnkM6DXXN-Y?si=7Ee94LpBWtJUCYr5)quien cumplio condena por manifestarse pacíficamente el 11 de julio de 2021 en la Habana, así mismo su madre, [Niurka Rodríguez](https://youtu.be/GnkM6DXXN-Y?si=YD1NDhw-Zt_8Yqhb&t=53) quien se convirtió en voz representativa de las cientos de madres que desde esa fecha aclaman la libertar de los centenares de jóvenes que el gobierno mantiene presos injustamente por participar en dichas protestas. 
+La muestra homenajea la lucha, la resistencia y obra de artistas y activistas tales como: [Yunaikys Linares  ](https://youtu.be/GnkM6DXXN-Y?si=7Ee94LpBWtJUCYr5)quien cumplio condena por manifestarse pacíficamente el 11 de julio de 2021 en la Habana, así mismo su madre, [Niurka Rodríguez](https://youtu.be/GnkM6DXXN-Y?si=YD1NDhw-Zt_8Yqhb&t=53) quien se convirtió en voz representativa de las cientos de madres que desde esa fecha aclaman la libertar de los centenares de jóvenes que el gobierno mantiene presos injustamente por participar en dichas protestas. 
 
 [Sandra Abd'Allah-Álvarez Ramírez (Negra Cubana tenia que ser)](https://youtu.be/hxmU3JqHvCs?si=WN6KkK-mCPhQ4lcii) voz poderosa en la lucha por la justicia social en Cuba. Como activista, escritora y periodista, Sandra ha utilizado su plataforma para amplificar las voces de las mujeres negras y LGBTIQ+ en Cuba. Su trabajo es un ejemplo de cómo la resistencia puede ser bella, creativa y transformadora.  
 
@@ -24,85 +24,45 @@ La muestra homenajea la lucha y la resistencia de  [Yunaikys Linares  ](https://
 
 No victimizar más nuestra condición oscuro, sexual, terrenal,
 
-
-
 artística, amiga, sincera, cualquiera, puta que respeta la vida.
-
-
 
 Exigir de-construir la fábrica del
 
-
-
 miedo, con nuestros cuerpos, nuestras almas, nuestras vaginas
-
-
 
 Te gusta, hay, pero no te toca, cuatro toneladas de feromonas con
 
-
-
 sabiduría, revolución sexual y respeto, lo que las mías querían.
-
-
 
 Pensando cómo borrar la marca de nuestra placenta con tus
 
-
-
 mentiras. Si todos los siglos de nuestros cuerpos, ovarios, orgasmos,
-
-
 
 hijo han dicho que sobre nuestras cabezas solo
 
-
-
 Olorun.
-
-
 
 Y tú sigues pensando como, borrando la marca de nuestra placenta
 
-
-
 con tus mentiras.
-
-
 
 Es que mirando nuestros cuerpos te pierdes, lo que hay en nuestras
 
-
-
 mentes.
-
-
 
 ¡Paren!
 
-  
-
-*Voces Cimarrona*s es un tributo a las mujeres negras cubanas que han sido baluartes de luchas desde lo intelectual y lo cívico, y cuyo legado nos inspira a seguir luchando por un mundo más justo y equitativo. Tal es el caso de mamá [Georgina Herrera](https://activashecuba.org/gallery/mam%C3%A1-georgina/)  quien con su poesía nos lavó las lágrimas, nos hizo fuertes desde la raíz, derrumbó muros, nos regaló camino y amuleto:  
+Voces Cimarronas es un tributo a las mujeres negras cubanas que han sido baluartes de luchas desde lo intelectual y lo cívico, y cuyo legado nos inspira a seguir luchando por un mundo más justo y equitativo. Tal es el caso de mamá [Georgina Herrera](https://activashecuba.org/gallery/mam%C3%A1-georgina/)  quien con su poesía nos lavó las lágrimas, nos hizo fuertes desde la raíz, derrumbó muros, nos regaló camino y amuleto:  
 
 “Cuando yo te mencione
 
-
-
 o siempre que seas nombrada en mi presencia
-
-
 
 será para elogiarte.
 
-
-
 Yo te cuido.
 
-
-
 Junto a ti permanezco, como al pie
-
-
 
 del más grande árbol…”
 
@@ -119,8 +79,6 @@ que nunca hubo para retratos;
 los rostros y sucesos familiares
 
 se perpetuaron en conversaciones.
-
-
 
 “Familia… Hogar”
 
@@ -158,8 +116,6 @@ Cada cual, a veces hasta sin despedirse
 
 cogió su rumbo.
 
-
-
 Soy
 
 la sobreviviente,
@@ -169,8 +125,6 @@ la que está aquí,
 la fuerte.
 
 Solitaria.
-
-
 
 >  **SOBRE EL POETA, EL AMOR, LA POESÍA**
 
@@ -193,10 +147,6 @@ nuestro modo
 de hacer saber hasta qué punto hicimos grandes
 
 a momentos, a seres tan pequeños.
-
-
-
-      
 
 También desde las letras y desde otra generación mucho más joven, nos inspira la valiente [Sulmira Martinez Perez](https://activashecuba.org/gallery/sulmira-m/)  también conocida como Salem, es una joven bloguera cubana de 24 años que fue arrestada en enero de 2023 por publicar en Facebook su intención de participar en protestas contra el gobierno cubano. Fue acusada de "desacato al orden constitucional" y "propaganda enemiga"  
 
