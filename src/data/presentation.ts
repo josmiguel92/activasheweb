@@ -17,7 +17,7 @@ const presentation: Presentation = {
   "socials": [
     {
       "label": "Instagram",
-      "link": "https://instagram.com/luzafr0"
+      "link": "https://www.instagram.com/luzafr0store"
     },
     {
       "label": "X (Twitter)",
