@@ -3,13 +3,23 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-<section class="px-6 max-w-4xl lg:max-w-6xl mx-auto space-y-6 min-h-[40vh] flex flex-col justify-center">
-  <h1 class="text-4xl font-display text-chocolate">Podcasts</h1>
-  <p class="text-lg text-chocolate/70">Estamos trabajando en nuestra sección de podcasts. ¡Pronto podrás disfrutar de episodios interesantes!</p>
+  <section
+    class="mx-auto flex min-h-[40vh] max-w-4xl flex-col justify-center space-y-6 px-6 lg:max-w-6xl"
+  >
+    <h1 class="font-display text-4xl text-chocolate">Podcasts</h1>
+    <p class="text-lg text-chocolate/70">
+      Estamos trabajando en nuestra sección de podcasts. ¡Pronto podrás
+      disfrutar de episodios interesantes!
+    </p>
 
-  <div class="bg-white/5 rounded-3xl p-6 border border-mustard/30 text-chocolate/80 flex flex-col items-center justify-center text-center">
-    <p class="text-lg font-medium text-mustard">Próximamente</p>
-    <p class="text-sm mt-2">Aquí encontrarás nuestros episodios de podcast tan pronto como estén listos. ¡Mantente atento!</p>
-  </div>
-</section>
+    <div
+      class="flex flex-col items-center justify-center rounded-3xl border border-mustard/30 bg-white/5 p-6 text-center text-chocolate/80"
+    >
+      <p class="text-lg font-medium text-mustard">Próximamente</p>
+      <p class="mt-2 text-sm">
+        Aquí encontrarás nuestros episodios de podcast tan pronto como estén
+        listos. ¡Mantente atento!
+      </p>
+    </div>
+  </section>
 </Layout>

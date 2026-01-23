@@ -8,20 +8,22 @@ interface Props {
 const { videos } = Astro.props;
 ---
 
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  {videos.map((video) => (
-    <a
-      href={`https://www.youtube.com/watch?v=${video.data.youtubeId}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:opacity-80 transition-opacity"
-    >
-      <VideoCard
-        title={video.data.title}
-        duration={video.data.duration}
-        category={video.data.category}
-        youtubeId={video.data.youtubeId}
-      />
-    </a>
-  ))}
+<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+  {
+    videos.map((video) => (
+      <a
+        href={`https://www.youtube.com/watch?v=${video.data.youtubeId}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-opacity hover:opacity-80"
+      >
+        <VideoCard
+          title={video.data.title}
+          duration={video.data.duration}
+          category={video.data.category}
+          youtubeId={video.data.youtubeId}
+        />
+      </a>
+    ))
+  }
 </div>

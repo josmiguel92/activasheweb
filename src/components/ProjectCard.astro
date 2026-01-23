@@ -8,7 +8,14 @@ type Props = {
   image?: string;
 };
 
-const { title, areas = [], link, isComingSoon, preview, image } = Astro.props as Props;
+const {
+  title,
+  areas = [],
+  link,
+  isComingSoon,
+  preview,
+  image,
+} = Astro.props as Props;
 
 import StatusBadge from "@/components/StatusBadge.astro";
 import Button from "@/components/Button.astro";
@@ -17,38 +24,51 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
 ---
 
 <>
-  <div class="min-w-[280px] bg-mustard/5 rounded-[2rem] overflow-hidden border border-chocolate/20 transition-transform hover:-translate-y-1 text-chocolate">
-    <div class="h-40 relative">
-      {image ? (
-        <>
-          <img 
-            src={image} 
-            alt={title}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent"></div>
-        </>
-      ) : (
-        <div class="w-full h-full bg-gradient-to-br from-terracotta/20 to-mustard/20"></div>
-      )}
-      <div class="absolute top-4 left-4 bg-soft-olive/60 border border-soft-olive/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase text-warm-cream">
+  <div
+    class="min-w-[280px] overflow-hidden rounded-[2rem] border border-chocolate/20 bg-mustard/5 text-chocolate transition-transform hover:-translate-y-1"
+  >
+    <div class="relative h-40">
+      {
+        image ? (
+          <>
+            <img
+              src={image}
+              alt={title}
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent" />
+          </>
+        ) : (
+          <div class="h-full w-full bg-gradient-to-br from-terracotta/20 to-mustard/20" />
+        )
+      }
+      <div
+        class="absolute left-4 top-4 rounded-full border border-soft-olive/60 bg-soft-olive/60 px-3 py-1 text-[10px] font-black uppercase text-warm-cream backdrop-blur"
+      >
         {formatAreas(areas)}
       </div>
-      <div class="absolute top-4 right-4">
-        <StatusBadge label={isComingSoon ? "Próximo" : "Activo"} tone={isComingSoon ? "accent" : "muted"} />
+      <div class="absolute right-4 top-4">
+        <StatusBadge
+          label={isComingSoon ? "Próximo" : "Activo"}
+          tone={isComingSoon ? "accent" : "muted"}
+        />
       </div>
     </div>
     <div class="p-6">
-      <h3 class="text-lg mb-2 text-olive">{title}</h3>
-      {preview && <p class="text-sm text-chocolate/60 mb-4 line-clamp-2">{preview}</p>}
-      <Button 
+      <h3 class="mb-2 text-lg text-olive">{title}</h3>
+      {
+        preview && (
+          <p class="mb-4 line-clamp-2 text-sm text-chocolate/60">{preview}</p>
+        )
+      }
+      <Button
         href={link}
         label="Detalles del proyecto"
         variant="outline"
         showIcon={true}
         icon="arrow"
-        class="w-full !text-olive border-olive hover:border-olive"
+        class="w-full border-olive !text-olive hover:border-olive"
       />
     </div>
   </div>

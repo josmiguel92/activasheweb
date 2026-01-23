@@ -2,17 +2,15 @@
 import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
-import SocialLinks from "@/components/SocialLinks.astro";
 import PostCard from "@/components/PostCard.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
-import BlurCircle from "@/components/shared/BlurCircle.astro";
 import Link from "@/components/shared/Link.astro";
 import Button from "@/components/Button.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
 const projectsCollection = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
 const projects = projectsCollection.map((p) => ({
   title: p.data.title,
@@ -23,64 +21,103 @@ const projects = projectsCollection.map((p) => ({
 }));
 
 const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
 const artItems = (await getCollection("art")).slice(0, 3);
 ---
 
 <Layout noTopMargin>
   <section class="relative">
-    <div class="h-[60vh] w-screen relative overflow-hidden rounded-b-3xl">
-      <img 
-        alt="Comunidad ActivaShe" 
-        class="w-full h-full object-cover" 
+    <div class="relative h-[60vh] w-screen overflow-hidden rounded-b-3xl">
+      <img
+        alt="Comunidad ActivaShe"
+        class="h-full w-full object-cover"
         src="/hero.webp"
       />
-      <div class="absolute inset-0 image-overlay"></div>
+      <div class="image-overlay absolute inset-0"></div>
     </div>
-    <div class="-mt-32 relative z-10 max-w-4xl lg:max-w-6xl mx-auto px-6">
-      <div class="bg-mustard p-8 rounded-3xl card-shadow relative overflow-hidden">
-        <div 
-          class="absolute inset-0 opacity-20 pointer-events-none pattern-background"
-        ></div>
+    <div class="relative z-10 mx-auto -mt-32 max-w-4xl px-6 lg:max-w-6xl">
+      <div
+        class="card-shadow relative overflow-hidden rounded-3xl bg-mustard p-8"
+      >
+        <div
+          class="pattern-background pointer-events-none absolute inset-0 opacity-20"
+        >
+        </div>
         <div class="relative z-10">
-          <h1 class="text-4xl leading-tight mb-4 text-terracotta font-display font-bold">
+          <h1
+            class="mb-4 font-display text-4xl font-bold leading-tight text-terracotta"
+          >
             {presentation.title}
           </h1>
-          <p class="text-lg leading-relaxed text-chocolate opacity-95 mb-8" set:html={convertAsteriskToStrongTag(presentation.description)} />
+          <p
+            class="mb-8 text-lg leading-relaxed text-chocolate opacity-95"
+            set:html={convertAsteriskToStrongTag(presentation.description)}
+          />
           <div class="flex flex-col gap-3 sm:flex-row">
-            <Button href="/projects" label="Conoce nuestra labor" variant="primary" icon="arrow" class="!bg-chocolate !text-warm-cream" />
-            <Button href="/posts" label="Lee nuestras publicaciones" variant="outline" icon="arrow" class="!text-chocolate !border-chocolate hover:!border-chocolate" />
+            <Button
+              href="/projects"
+              label="Conoce nuestra labor"
+              variant="primary"
+              icon="arrow"
+              class="!bg-chocolate !text-warm-cream"
+            />
+            <Button
+              href="/posts"
+              label="Lee nuestras publicaciones"
+              variant="outline"
+              icon="arrow"
+              class="!border-chocolate !text-chocolate hover:!border-chocolate"
+            />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="px-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl lg:max-w-6xl mx-auto">
-    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-vibrant-orange">
-      <div class="flex flex-row gap-2  items-center">
-        <span class="material-symbols-outlined text-vibrant-orange mb-3 text-3xl">restaurant</span>
-      <h3 class="text-lg mb-1 text-terracotta font-bold">Seguridad</h3>
-      </div>  
-      <p class="text-2xs opacity-70 text-chocolate">Soberanía alimentaria para nuestras familias.</p>
-    </div>
-    <div class="bg-white/5 p-6 rounded-2xl border-l-4 border-mustard">
-      <div class="flex flex-row gap-2  items-center">
-        <span class="material-symbols-outlined text-mustard mb-3 text-3xl">balance</span>
-      <h3 class="text-3xl mb-1 text-mustard font-bold">Justicia</h3>
+  <section
+    class="mx-auto grid max-w-4xl grid-cols-1 gap-4 px-6 sm:grid-cols-2 lg:max-w-6xl"
+  >
+    <div class="rounded-2xl border-l-4 border-vibrant-orange bg-white/5 p-6">
+      <div class="flex flex-row items-center gap-2">
+        <span
+          class="material-symbols-outlined mb-3 text-3xl text-vibrant-orange"
+          >restaurant</span
+        >
+        <h3 class="mb-1 text-lg font-bold text-terracotta">Seguridad</h3>
       </div>
-      <p class="text-2xs opacity-70 text-chocolate">Combatiendo la desigualdad sistémica.</p>
+      <p class="text-2xs text-chocolate opacity-70">
+        Soberanía alimentaria para nuestras familias.
+      </p>
+    </div>
+    <div class="rounded-2xl border-l-4 border-mustard bg-white/5 p-6">
+      <div class="flex flex-row items-center gap-2">
+        <span class="material-symbols-outlined mb-3 text-3xl text-mustard"
+          >balance</span
+        >
+        <h3 class="mb-1 text-3xl font-bold text-mustard">Justicia</h3>
+      </div>
+      <p class="text-2xs text-chocolate opacity-70">
+        Combatiendo la desigualdad sistémica.
+      </p>
     </div>
   </section>
 
-  <section class="px-6 space-y-6 max-w-4xl lg:max-w-6xl mx-auto">
+  <section class="mx-auto max-w-4xl space-y-6 px-6 lg:max-w-6xl">
     <div class="flex items-end justify-between">
-      <h2 class="text-3xl font-display">Voces de la<br/><span class="text-vibrant-orange">Comunidad</span></h2>
-      <Link href="/posts" label="Ver todas" isUnderline target="_self" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1" />
+      <h2 class="font-display text-3xl">
+        Voces de la<br /><span class="text-vibrant-orange">Comunidad</span>
+      </h2>
+      <Link
+        href="/posts"
+        label="Ver todas"
+        isUnderline
+        target="_self"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard"
+      />
     </div>
     {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
       {
         posts.length !== 0 &&
           posts
@@ -98,37 +135,68 @@ const artItems = (await getCollection("art")).slice(0, 3);
     </div>
   </section>
 
-  <section class="px-6 space-y-6 max-w-4xl lg:max-w-6xl mx-auto">
+  <section class="mx-auto max-w-4xl space-y-6 px-6 lg:max-w-6xl">
     <div class="flex items-center gap-3">
-      <h2 class="text-3xl font-display">Proyectos</h2>
-      <span class="bg-vibrant-orange text-chocolate px-3 py-1 rounded-full text-xs font-black">ACTIVOS</span>
+      <h2 class="font-display text-3xl">Proyectos</h2>
+      <span
+        class="rounded-full bg-vibrant-orange px-3 py-1 text-xs font-black text-chocolate"
+        >ACTIVOS</span
+      >
     </div>
     {projects.length === 0 && <p>Oops, debemos trabajar en esto...</p>}
-    <div class="overflow-x-auto flex gap-6 no-scrollbar -mx-6 px-6">
-      {projects.length !== 0 && projects.map((project) => <ProjectCard {...project} />)}
+    <div class="no-scrollbar -mx-6 flex gap-6 overflow-x-auto px-6">
+      {
+        projects.length !== 0 &&
+          projects.map((project) => <ProjectCard {...project} />)
+      }
     </div>
   </section>
 
-  <section class="px-6 space-y-4 max-w-4xl lg:max-w-6xl mx-auto">
+  <section class="mx-auto max-w-4xl space-y-4 px-6 lg:max-w-6xl">
     <div class="flex items-end justify-between">
-      <h2 class="text-3xl font-display">Galería</h2>
-      <Link href="/gallery" label="Ver galería" isUnderline target="_self" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1" />
+      <h2 class="font-display text-3xl">Galería</h2>
+      <Link
+        href="/gallery"
+        label="Ver galería"
+        isUnderline
+        target="_self"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard"
+      />
     </div>
-    {artItems.length === 0 && <p class="text-sm text-warm-cream/70">Pronto compartiremos nuestras piezas más recientes.</p>}
-    {artItems.length > 0 && (
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {artItems.map((item) => (
-          <a href="/gallery" class="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 card-shadow hover:border-mustard/60 transition-colors">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img src={item.data.image} alt={item.data.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            <div class="p-3 space-y-1">
-              <p class="text-sm font-semibold text-chocolate line-clamp-1">{item.data.title}</p>
-              <p class="text-xs text-chocolate/60 line-clamp-1">{item.data.artist}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    )}
-    </section>
+    {
+      artItems.length === 0 && (
+        <p class="text-sm text-warm-cream/70">
+          Pronto compartiremos nuestras piezas más recientes.
+        </p>
+      )
+    }
+    {
+      artItems.length > 0 && (
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {artItems.map((item) => (
+            <a
+              href="/gallery"
+              class="card-shadow group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-colors hover:border-mustard/60"
+            >
+              <div class="aspect-[4/3] overflow-hidden">
+                <img
+                  src={item.data.image}
+                  alt={item.data.title}
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div class="space-y-1 p-3">
+                <p class="line-clamp-1 text-sm font-semibold text-chocolate">
+                  {item.data.title}
+                </p>
+                <p class="line-clamp-1 text-xs text-chocolate/60">
+                  {item.data.artist}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
 </Layout>

@@ -13,7 +13,7 @@ const videos = await getCollection("videos");
 
 // Sort videos by publishedAt date
 const sortedVideos = videos.sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
 
 // Get featured video or first one
@@ -23,49 +23,64 @@ const otherVideos = sortedVideos
   .slice(0, 6);
 
 // Get social links
-const instagramLink = presentation.socials.find(s => s.label === "Instagram")?.link || "https://www.instagram.com/activashe";
-const youtubeLink = presentation.socials.find(s => s.label === "YouTube")?.link || "https://www.youtube.com/@ActivaShe";
+const instagramLink =
+  presentation.socials.find((s) => s.label === "Instagram")?.link ||
+  "https://www.instagram.com/activashe";
+const youtubeLink =
+  presentation.socials.find((s) => s.label === "YouTube")?.link ||
+  "https://www.youtube.com/@ActivaShe";
 ---
 
-
-<Layout title="Galería | ActivaShe" bodyClass="bg-gradient-to-b from-olive to-olive/90">
-  <div class="px-6 max-w-4xl lg:max-w-6xl mx-auto space-y-16">
+<Layout
+  title="Galería | ActivaShe"
+  bodyClass="bg-gradient-to-b from-olive to-olive/90"
+>
+  <div class="mx-auto max-w-4xl space-y-16 px-6 lg:max-w-6xl">
     <!-- Galería de Arte Section -->
     <section class="space-y-4">
-      <div class="flex items-center justify-between border-l-4 border-mustard pl-4">
-        <h1 class="text-4xl font-display font-bold text-warm-cream">
+      <div
+        class="flex items-center justify-between border-l-4 border-terracotta pl-4"
+      >
+        <h1 class="font-display text-4xl font-bold text-warm-cream">
           Galería de <span class="text-mustard">Arte</span>
         </h1>
-        <span class="material-symbols-outlined text-mustard text-3xl">
+        <span class="material-symbols-outlined text-3xl text-mustard">
           brush
         </span>
       </div>
 
-      <p class="text-warm-cream/70 text-lg">
-        Celebramos las voces creativas de nuestra comunidad. Aquí encuentras obras
-        de artistas que cantan, pintan, tejen y crean historias de resistencia.
+      <p class="text-lg text-warm-cream/70">
+        Celebramos las voces creativas de nuestra comunidad. Aquí encuentras
+        obras de artistas que cantan, pintan, tejen y crean historias de
+        resistencia.
       </p>
 
-      <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-warm-cream/90 space-y-3">
+      <div
+        class="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-6 text-warm-cream/90"
+      >
         <h2 class="text-lg font-semibold text-warm-cream">Manifiesto:</h2>
         <p class="text-2sm leading-relaxed">
-          Somos las voces que se niegan al silencio. Somos raíces que se entrelazan en la tierra y en la memoria. Desde la negritud, el feminismo y la espiritualidad, alzamos el canto por la libertad, la justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color, es un acto de amor, de resistencia y de sanación. Porque nuestro arte es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento.
+          Somos las voces que se niegan al silencio. Somos raíces que se
+          entrelazan en la tierra y en la memoria. Desde la negritud, el
+          feminismo y la espiritualidad, alzamos el canto por la libertad, la
+          justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color,
+          es un acto de amor, de resistencia y de sanación. Porque nuestro arte
+          es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin
+          cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento.
         </p>
       </div>
-
-      
 
       <div class="mt-6">
         <ArtGalleryGrid artworks={artworks} />
       </div>
 
-      <Button 
+      <Button
         href={instagramLink}
         label="Explorar Más Arte"
         variant="secondary"
         showIcon={true}
         icon="arrow"
-        class="w-full mt-6 !text-warm-cream border-warm-cream hover:border-warm-cream"
+        class="mt-6 w-full border-warm-cream !text-warm-cream hover:border-warm-cream"
       />
     </section>
 
@@ -73,18 +88,20 @@ const youtubeLink = presentation.socials.find(s => s.label === "YouTube")?.link 
 
     <!-- Repositorio de Video Section -->
     <section class="space-y-4">
-      <div class="flex items-center justify-between border-l-4 border-mustard pl-4">
-        <h2 class="text-4xl font-display font-bold text-warm-cream">
+      <div
+        class="flex items-center justify-between border-l-4 border-mustard pl-4"
+      >
+        <h2 class="font-display text-4xl font-bold text-warm-cream">
           Repositorio de Video
         </h2>
-        <span class="material-symbols-outlined text-mustard text-3xl">
+        <span class="material-symbols-outlined text-3xl text-vibrant-orange">
           movie
         </span>
       </div>
 
-      <p class="text-warm-cream/70 text-lg">
-        Documentales, entrevistas y talleres que capturan el movimiento, la energía
-        y las historias de transformación de ActivaShe.
+      <p class="text-lg text-warm-cream/70">
+        Documentales, entrevistas y talleres que capturan el movimiento, la
+        energía y las historias de transformación de ActivaShe.
       </p>
 
       <div class="mt-6">
@@ -92,17 +109,17 @@ const youtubeLink = presentation.socials.find(s => s.label === "YouTube")?.link 
       </div>
 
       <div class="mt-8">
-        <h3 class="text-lg font-semibold text-warm-cream mb-4">Más Videos</h3>
+        <h3 class="mb-4 text-lg font-semibold text-warm-cream">Más Videos</h3>
         <VideoGrid videos={otherVideos} />
       </div>
 
-      <Button 
+      <Button
         href={youtubeLink}
         label="Ver más en YouTube"
         variant="primary"
         showIcon={true}
         icon="external"
-        class="w-full mt-8"
+        class="mt-8 w-full"
       />
     </section>
   </div>

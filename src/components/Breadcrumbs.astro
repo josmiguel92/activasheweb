@@ -11,31 +11,41 @@ interface Props {
   separatorColor?: string;
 }
 
-const { items, textColor = "text-warm-cream", mutedColor = "text-white/60", separatorColor = "text-white/30" } = Astro.props;
+const {
+  items,
+  textColor = "text-warm-cream",
+  mutedColor = "text-white/60",
+  separatorColor = "text-white/30",
+} = Astro.props;
 ---
 
 <nav aria-label="Breadcrumb" class="mb-8">
   <ol class:list={["flex items-center gap-2 text-sm", mutedColor]}>
     <li>
-      <a href="/" class="hover:text-vibrant-orange transition-colors flex items-center gap-1">
+      <a
+        href="/"
+        class="flex items-center gap-1 transition-colors hover:text-vibrant-orange"
+      >
         <span class="material-symbols-outlined text-base">home</span>
         Inicio
       </a>
     </li>
-    {items.map((item, index) => (
-      <li class="flex items-center gap-2">
-        <span class:list={[separatorColor]}>/</span>
-        {item.href ? (
-          <a 
-            href={item.href} 
-            class="hover:text-vibrant-orange transition-colors"
-          >
-            {item.label}
-          </a>
-        ) : (
-          <span class:list={[textColor, "font-semibold"]}>{item.label}</span>
-        )}
-      </li>
-    ))}
+    {
+      items.map((item, index) => (
+        <li class="flex items-center gap-2">
+          <span class:list={[separatorColor]}>/</span>
+          {item.href ? (
+            <a
+              href={item.href}
+              class="transition-colors hover:text-vibrant-orange"
+            >
+              {item.label}
+            </a>
+          ) : (
+            <span class:list={[textColor, "font-semibold"]}>{item.label}</span>
+          )}
+        </li>
+      ))
+    }
   </ol>
 </nav>

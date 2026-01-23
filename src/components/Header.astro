@@ -5,62 +5,111 @@ import presentation from "@/data/presentation";
 const pathname = removeTrailingSlash(Astro.url.pathname);
 
 const navLinks = [
-  { href: "/", label: "Inicio", isActive: (path: string) => path === "/" || path === "" },
-  { href: "/about", label: "Quiénes Somos", isActive: (path: string) => path === "/about" },
-  { href: "/posts", label: "Publicaciones", isActive: (path: string) => path.startsWith("/posts") },
-  { href: "/projects", label: "Proyectos", isActive: (path: string) => path.startsWith("/projects") },
-  { href: "/gallery", label: "Galería", isActive: (path: string) => path.startsWith("/gallery") },
-  { href: "/podcasts", label: "Podcasts", isActive: (path: string) => path.startsWith("/podcasts") },
-  { href: "/donate", label: "Donar", isActive: (path: string) => path === "/donate" },
+  {
+    href: "/",
+    label: "Inicio",
+    isActive: (path: string) => path === "/" || path === "",
+  },
+  {
+    href: "/about",
+    label: "Quiénes Somos",
+    isActive: (path: string) => path === "/about",
+  },
+  {
+    href: "/posts",
+    label: "Publicaciones",
+    isActive: (path: string) => path.startsWith("/posts"),
+  },
+  {
+    href: "/projects",
+    label: "Proyectos",
+    isActive: (path: string) => path.startsWith("/projects"),
+  },
+  {
+    href: "/gallery",
+    label: "Galería",
+    isActive: (path: string) => path.startsWith("/gallery"),
+  },
+  {
+    href: "/podcasts",
+    label: "Podcasts",
+    isActive: (path: string) => path.startsWith("/podcasts"),
+  },
+  {
+    href: "/donate",
+    label: "Donar",
+    isActive: (path: string) => path === "/donate",
+  },
 ];
 
 const isHome = pathname === "/" || pathname === "";
 const visibleLinks = navLinks.filter((link) => !(isHome && link.href === "/"));
 ---
 
-<nav class="sticky top-0 z-50 px-6 py-5 bg-chocolate/80 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10 shadow-lg">
-  <div class="flex items-center justify-between mb-4">
-    <span class="text-xl font-bold tracking-widest uppercase text-mustard font-display">ActivaShe</span>
-    <a href={`mailto:${presentation.mail}`} class="text-sm hover:text-vibrant-orange transition-colors">
+<nav
+  class="sticky top-0 z-50 border-b border-white/10 bg-chocolate/80 px-6 py-5 shadow-lg backdrop-blur-xl backdrop-saturate-150"
+>
+  <div class="mb-4 flex items-center justify-between">
+    <span
+      class="font-display text-xl font-bold uppercase tracking-widest text-mustard"
+      >ActivaShe</span
+    >
+    <a
+      href={`mailto:${presentation.mail}`}
+      class="text-sm transition-colors hover:text-vibrant-orange"
+    >
       <span class="material-symbols-outlined text-vibrant-orange">mail</span>
     </a>
   </div>
   <div class="flex items-center gap-3">
-    <div class="flex-1 min-w-0 flex items-center gap-6 text-sm font-semibold overflow-x-auto whitespace-nowrap pb-1 no-scrollbar">
-      {visibleLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={{
-            ["text-vibrant-orange"]: link.isActive(pathname),
-            ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]: !link.isActive(pathname),
-          }}
-        >
-          {link.label}
-        </a>
-      ))}
+    <div
+      class="no-scrollbar flex min-w-0 flex-1 items-center gap-6 overflow-x-auto whitespace-nowrap pb-1 text-sm font-semibold"
+    >
+      {
+        visibleLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={{
+              ["text-vibrant-orange"]: link.isActive(pathname),
+              ["text-warm-cream/70 hover:text-vibrant-orange transition-colors"]:
+                !link.isActive(pathname),
+            }}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
 
     <div class="relative flex-shrink-0 md:hidden">
       <details class="group">
-        <summary class="flex items-center gap-1 px-3 py-1 rounded-full border border-white/10 text-warm-cream/80 hover:text-vibrant-orange hover:border-vibrant-orange transition-colors cursor-pointer list-none">
+        <summary
+          class="flex cursor-pointer list-none items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-warm-cream/80 transition-colors hover:border-vibrant-orange hover:text-vibrant-orange"
+        >
           <span class="material-symbols-outlined text-base">more_horiz</span>
           <span class="text-xs font-semibold">Más</span>
         </summary>
-        <div class="absolute right-0 mt-2 w-52 rounded-2xl bg-chocolate/95 border border-white/10 shadow-xl backdrop-blur-xl">
+        <div
+          class="absolute right-0 mt-2 w-52 rounded-2xl border border-white/10 bg-chocolate/95 shadow-xl backdrop-blur-xl"
+        >
           <ul class="py-2">
-            {visibleLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class:list={{
-                    ["block px-4 py-2 text-sm font-semibold text-vibrant-orange"]: link.isActive(pathname),
-                    ["block px-4 py-2 text-sm font-semibold text-warm-cream/80 hover:text-vibrant-orange hover:bg-white/5 transition-colors"]: !link.isActive(pathname),
-                  }}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {
+              visibleLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class:list={{
+                      ["block px-4 py-2 text-sm font-semibold text-vibrant-orange"]:
+                        link.isActive(pathname),
+                      ["block px-4 py-2 text-sm font-semibold text-warm-cream/80 hover:text-vibrant-orange hover:bg-white/5 transition-colors"]:
+                        !link.isActive(pathname),
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </details>

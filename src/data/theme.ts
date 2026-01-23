@@ -16,7 +16,7 @@ const theme: Theme = {
     blur: {
       top: "terracotta",
       bottom: "mustard",
-    }
+    },
   },
 };
 

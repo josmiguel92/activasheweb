@@ -4,48 +4,62 @@ import Link from "@/components/shared/Link.astro";
 ---
 
 <Layout title="Página no encontrada - ActivaShe">
-  <section class="px-6 max-w-4xl mx-auto">
-    <div class="text-center py-20 space-y-8">
-      <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-terracotta/20 mb-4">
-        <span class="material-symbols-outlined text-7xl text-terracotta">error</span>
+  <section class="mx-auto max-w-4xl px-6">
+    <div class="space-y-8 py-20 text-center">
+      <div
+        class="mb-4 inline-flex h-32 w-32 items-center justify-center rounded-full bg-terracotta/20"
+      >
+        <span class="material-symbols-outlined text-7xl text-terracotta"
+          >error</span
+        >
       </div>
-      
+
       <div class="space-y-4">
-        <h1 class="text-6xl font-display font-bold text-vibrant-orange">404</h1>
-        <h2 class="text-3xl font-display text-vibrant-orange">Página no encontrada</h2>
-        <p class="text-lg text-chocolate/60 max-w-md mx-auto">
-            Lo sentimos, pero la página que buscas no existe o ha sido movida.
+        <h1 class="font-display text-6xl font-bold text-vibrant-orange">404</h1>
+        <h2 class="font-display text-3xl text-vibrant-orange">
+          Página no encontrada
+        </h2>
+        <p class="mx-auto max-w-md text-lg text-chocolate/60">
+          Lo sentimos, pero la página que buscas no existe o ha sido movida.
         </p>
-        <p class="text-sm text-chocolate/50 max-w-lg mx-auto italic">
-          "Pies, ¿para qué los quiero si tengo alas para volar?" — aquí no hay nada que ver.
+        <p class="mx-auto max-w-lg text-sm italic text-chocolate/50">
+          "Pies, ¿para qué los quiero si tengo alas para volar?" — aquí no hay
+          nada que ver.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-        <Link 
-          href="/" 
-          label="Volver al inicio" 
-          isUnderline={false} 
-          target="_self" 
-          class="bg-vibrant-orange text-chocolate py-4 px-8 rounded-xl font-bold text-base hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
+      <div class="flex flex-col justify-center gap-4 pt-8 sm:flex-row">
+        <Link
+          href="/"
+          label="Volver al inicio"
+          isUnderline={false}
+          target="_self"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-vibrant-orange px-8 py-4 text-base font-bold text-chocolate transition-opacity hover:opacity-90"
         />
-        <Link 
-          href="/posts" 
-          label="Ver publicaciones" 
-          isUnderline={false} 
-          target="_self" 
-          class="border-2 border-chocolate text-chocolate py-4 px-8 rounded-xl font-bold text-base hover:bg-chocolate/10 transition-colors inline-flex items-center justify-center gap-2"
+        <Link
+          href="/posts"
+          label="Ver publicaciones"
+          isUnderline={false}
+          target="_self"
+          class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-chocolate px-8 py-4 text-base font-bold text-chocolate transition-colors hover:bg-chocolate/10"
         />
       </div>
 
-      <div class="pt-12 space-y-4">
+      <div class="space-y-4 pt-12">
         <p class="text-xl text-chocolate">Enlaces útiles:</p>
-        <div class="flex flex-wrap gap-4 justify-center text-sm">
-          <a href="/projects" class="hover:text-vibrant-orange transition-colors">Proyectos</a>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <a
+            href="/projects"
+            class="transition-colors hover:text-vibrant-orange">Proyectos</a
+          >
           <span class="text-chocolate/20">•</span>
-          <a href="/gallery" class="hover:text-vibrant-orange transition-colors">Galería</a>
+          <a href="/gallery" class="transition-colors hover:text-vibrant-orange"
+            >Galería</a
+          >
           <span class="text-chocolate/20">•</span>
-          <a href="/donate" class="hover:text-vibrant-orange transition-colors">Donar</a>
+          <a href="/donate" class="transition-colors hover:text-vibrant-orange"
+            >Donar</a
+          >
         </div>
       </div>
     </div>

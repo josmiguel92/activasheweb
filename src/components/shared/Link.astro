@@ -14,7 +14,7 @@ const { label, isUnderline, class: customClass, ...props } = Astro.props;
   class:list={[
     "cursor-pointer relative inline-flex group",
     { "underline decoration-dashed underline-offset-8": isUnderline },
-    customClass
+    customClass,
   ]}
   {...props}
   rel="noreferrer"
@@ -22,7 +22,9 @@ const { label, isUnderline, class: customClass, ...props } = Astro.props;
 >
   <span class="relative">
     {label}
-    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
+    <span
+      class="absolute bottom-0 left-0 h-0.5 w-0 bg-current transition-all duration-300 group-hover:w-full"
+    ></span>
   </span>
   <span class="sr-only">{label} link</span>
 </a>

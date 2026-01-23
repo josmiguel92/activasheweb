@@ -20,48 +20,70 @@ const { art } = Astro.props;
 const { Content } = await art.render();
 ---
 
-<Layout 
-  title={`${art.data.title} | Galería ActivaShe`} 
+<Layout
+  title={`${art.data.title} | Galería ActivaShe`}
   description={`${art.data.description ?? ""} — ActivaShe | Galería`}
   bodyClass="bg-gradient-to-b from-olive to-olive/90"
   image={art.data.image}
 >
-  <main class="px-6 max-w-4xl mx-auto space-y-10 pb-16">
-    <Breadcrumbs items={[
-      { label: "Galería", href: "/gallery" },
-      { label: art.data.title }
-    ]} />
+  <main class="mx-auto max-w-4xl space-y-10 px-6 pb-16">
+    <Breadcrumbs
+      items={[
+        { label: "Galería", href: "/gallery" },
+        { label: art.data.title },
+      ]}
+    />
     <section class="space-y-6">
-      <button 
+      <button
         type="button"
-        class="w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 card-shadow cursor-zoom-in hover:border-mustard/60 transition-colors"
+        class="card-shadow w-full cursor-zoom-in overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition-colors hover:border-mustard/60"
         data-lightbox-trigger
       >
         <img
           src={art.data.image}
           alt={art.data.title}
-          class="w-full h-full object-cover"
+          class="h-full w-full object-cover"
           loading="lazy"
         />
-        <p class="text-xs text-warm-cream/60 text-center py-2">
-          <span class="material-symbols-outlined text-sm align-middle">zoom_in</span>
+        <p class="py-2 text-center text-xs text-warm-cream/60">
+          <span class="material-symbols-outlined align-middle text-sm"
+            >zoom_in</span
+          >
           Toca para ver en tamaño completo
         </p>
       </button>
       <div class="space-y-4">
-        <h1 class="text-4xl font-display text-warm-cream leading-tight">{art.data.title}</h1>
-        <div class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-widest">
-          <span class="px-3 py-1 rounded-full bg-terracotta text-chocolate">{art.data.artist}</span>
-          {art.data.category && (
-            <span class="px-3 py-1 rounded-full border border-mustard/80 text-mustard">{art.data.category}</span>
-          )}
-          {art.data.year && (
-            <span class="px-3 py-1 rounded-full border border-white/20 text-warm-cream/80">{art.data.year}</span>
-          )}
+        <h1 class="font-display text-4xl leading-tight text-warm-cream">
+          {art.data.title}
+        </h1>
+        <div
+          class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-widest"
+        >
+          <span class="rounded-full bg-terracotta px-3 py-1 text-chocolate"
+            >{art.data.artist}</span
+          >
+          {
+            art.data.category && (
+              <span class="rounded-full border border-mustard/80 px-3 py-1 text-mustard">
+                {art.data.category}
+              </span>
+            )
+          }
+          {
+            art.data.year && (
+              <span class="rounded-full border border-white/20 px-3 py-1 text-warm-cream/80">
+                {art.data.year}
+              </span>
+            )
+          }
         </div>
-        {art.data.description && (
-          <p class="text-warm-cream/80 text-lg leading-relaxed">{art.data.description}</p>
-        )}
+        {
+          art.data.description && (
+            <p class="text-lg leading-relaxed text-warm-cream/80">
+              {art.data.description}
+            </p>
+          )
+        }
       </div>
     </section>
 
@@ -70,7 +92,7 @@ const { Content } = await art.render();
     </section>
 
     <div class="">
-      <ShareButtons 
+      <ShareButtons
         url={`/gallery/${art.slug}`}
         title={`${art.data.title} - ${art.data.artist}`}
         description={art.data.description}
@@ -78,20 +100,24 @@ const { Content } = await art.render();
     </div>
 
     <div class="pt-4">
-      <a href="/gallery" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">← Volver a la galería</a>
+      <a
+        href="/gallery"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard transition-colors hover:text-vibrant-orange"
+        >← Volver a la galería</a
+      >
     </div>
   </main>
 
   <!-- Lightbox Modal -->
-  <div 
+  <div
     data-lightbox-modal
-    class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 p-4"
     role="dialog"
     aria-modal="true"
   >
     <button
       type="button"
-      class="absolute top-4 right-4 text-warm-cream hover:text-vibrant-orange transition-colors z-10"
+      class="absolute right-4 top-4 z-10 text-warm-cream transition-colors hover:text-vibrant-orange"
       data-lightbox-close
       aria-label="Cerrar"
     >
@@ -100,41 +126,41 @@ const { Content } = await art.render();
     <img
       src={art.data.image}
       alt={art.data.title}
-      class="max-w-full max-h-full object-contain"
+      class="max-h-full max-w-full object-contain"
       data-lightbox-image
     />
-    <div class="absolute bottom-4 inset-x-0 text-center px-4">
-      <p class="text-warm-cream text-sm font-semibold">{art.data.title}</p>
-      <p class="text-warm-cream/60 text-xs">{art.data.artist}</p>
+    <div class="absolute inset-x-0 bottom-4 px-4 text-center">
+      <p class="text-sm font-semibold text-warm-cream">{art.data.title}</p>
+      <p class="text-xs text-warm-cream/60">{art.data.artist}</p>
     </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const trigger = document.querySelector('[data-lightbox-trigger]');
-      const modal = document.querySelector('[data-lightbox-modal]');
-      const closeBtn = document.querySelector('[data-lightbox-close]');
+    document.addEventListener("DOMContentLoaded", () => {
+      const trigger = document.querySelector("[data-lightbox-trigger]");
+      const modal = document.querySelector("[data-lightbox-modal]");
+      const closeBtn = document.querySelector("[data-lightbox-close]");
 
       const openLightbox = () => {
-        modal?.classList.remove('hidden');
-        modal?.classList.add('flex');
-        document.body.style.overflow = 'hidden';
+        modal?.classList.remove("hidden");
+        modal?.classList.add("flex");
+        document.body.style.overflow = "hidden";
       };
 
       const closeLightbox = () => {
-        modal?.classList.add('hidden');
-        modal?.classList.remove('flex');
-        document.body.style.overflow = '';
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "";
       };
 
-      trigger?.addEventListener('click', openLightbox);
-      closeBtn?.addEventListener('click', closeLightbox);
-      modal?.addEventListener('click', (e) => {
+      trigger?.addEventListener("click", openLightbox);
+      closeBtn?.addEventListener("click", closeLightbox);
+      modal?.addEventListener("click", (e) => {
         if (e.target === modal) closeLightbox();
       });
 
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
       });
     });
   </script>

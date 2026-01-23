@@ -22,58 +22,67 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout 
-  title={`${post.data.title} | ActivaShe`} 
+<Layout
+  title={`${post.data.title} | ActivaShe`}
   description={`${post.data.description ?? ""} — ActivaShe | Publicaciones`}
   image={post.data.image}
 >
-  <article class="px-6 max-w-4xl mx-auto">
-    <Breadcrumbs 
-  items={[
-      { label: "Publicaciones", href: "/posts" },
-      { label: post.data.title }
-    ]} 
-  textColor="text-chocolate" 
-  mutedColor="text-chocolate/60" 
-  separatorColor="text-chocolate/30"
-/>
-    <header class="mb-8 bg-terracotta p-8 rounded-3xl card-shadow">
-      <div class="flex justify-between items-center mb-4">
-        <span class="text-[10px] font-black uppercase tracking-widest text-mustard">Artículo</span>
-        <span class="text-sm text-mustard">{formatDate(post.data.publishedAt)}</span>
+  <article class="mx-auto max-w-4xl px-6">
+    <Breadcrumbs
+      items={[
+        { label: "Publicaciones", href: "/posts" },
+        { label: post.data.title },
+      ]}
+      textColor="text-chocolate"
+      mutedColor="text-chocolate/60"
+      separatorColor="text-chocolate/30"
+    />
+    <header class="card-shadow mb-8 rounded-3xl bg-terracotta p-8">
+      <div class="mb-4 flex items-center justify-between">
+        <span
+          class="text-[10px] font-black uppercase tracking-widest text-mustard"
+          >Artículo</span
+        >
+        <span class="text-sm text-mustard"
+          >{formatDate(post.data.publishedAt)}</span
+        >
       </div>
-      <h1 class="text-4xl font-display leading-tight mb-4 text-warm-cream">
+      <h1 class="mb-4 font-display text-4xl leading-tight text-warm-cream">
         {post.data.title}
       </h1>
-      <p class="text-lg text-warm-cream/90 italic">{post.data.description}</p>
+      <p class="text-lg italic text-warm-cream/90">{post.data.description}</p>
     </header>
 
-    {post.data.image && (
-      <div class="rounded-3xl overflow-hidden mb-8">
-        <img
-          src={post.data.image}
-          alt={post.data.title}
-          class="w-full h-80 md:h-[26rem] object-cover"
-          loading="lazy"
-        />
-      </div>
-    )}
+    {
+      post.data.image && (
+        <div class="mb-8 overflow-hidden rounded-3xl">
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="h-80 w-full object-cover md:h-[26rem]"
+            loading="lazy"
+          />
+        </div>
+      )
+    }
 
-    
-    <div class="post prose prose-lg max-w-none mb-8 text-chocolate">
+    <div class="post prose prose-lg mb-8 max-w-none text-chocolate">
       <Content />
     </div>
 
-    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
-      <ShareButtons 
+    <div class="mb-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+      <ShareButtons
         url={`/posts/${post.slug}`}
         title={post.data.title}
         description={post.data.description}
       />
     </div>
 
-    <div class="mt-12 pt-8 border-t border-white/10">
-      <a href="/posts" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all">
+    <div class="mt-12 border-t border-white/10 pt-8">
+      <a
+        href="/posts"
+        class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3"
+      >
         <span class="material-symbols-outlined text-sm">arrow_back</span>
         Volver a publicaciones
       </a>

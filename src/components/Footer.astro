@@ -5,40 +5,50 @@ import presentation from "@/data/presentation";
 ---
 
 <section class="w-full">
-  <footer 
-    class="p-8 md:p-12 bg-terracotta text-warm-cream relative overflow-hidden"
+  <footer
+    class="relative overflow-hidden bg-terracotta p-8 text-warm-cream md:p-12"
   >
-    <div class="absolute inset-0 bg-gradient-to-tr from-terracotta via-terracotta to-terracotta/40 pointer-events-none"></div>
-    <div 
-      class="absolute inset-y-0 right-0 w-2/3 bg-olive opacity-90 pointer-events-none"
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-terracotta via-terracotta to-terracotta/40"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-olive opacity-90"
       style={{
         maskImage: "url('/random-zigzag.svg')",
         WebkitMaskImage: "url('/random-zigzag.svg')",
-        maskRepeat: 'no-repeat',
-        WebkitMaskRepeat: 'no-repeat',
-        maskPosition: 'right center',
-        WebkitMaskPosition: 'right center',
-        maskSize: 'cover',
-        WebkitMaskSize: 'cover'
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+        maskPosition: "right center",
+        WebkitMaskPosition: "right center",
+        maskSize: "cover",
+        WebkitMaskSize: "cover",
       }}
-    ></div>
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-gradient-to-r from-terracotta via-terracotta/65 to-transparent"></div>
-    <div class="relative z-10 max-w-4xl lg:max-w-6xl mx-auto">
-      <h2 class="text-3xl font-display mb-4">Hablemos</h2>
-    <p class="opacity-90 mb-8 leading-relaxed">
-      Estamos construyendo futuro juntas. Escríbenos para colaborar, donar o simplemente para conectar.
-    </p>
-    <div class="space-y-4 mb-10">
-      <Link
-        href={`mailto:${presentation.mail}`}
-        label={presentation.mail}
-        class="flex items-center gap-4 text-lg font-bold"
-      />
-      <SocialLinks />
+    >
     </div>
-    <div class="pt-8 border-t border-warm-cream/20 text-center">
-      <p class="text-[10px] font-black uppercase tracking-widest opacity-60">© 2024 ActivaShe — Hecho con amor y resistencia</p>
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-gradient-to-r from-terracotta via-terracotta/65 to-transparent"
+    >
     </div>
+    <div class="relative z-10 mx-auto max-w-4xl lg:max-w-6xl">
+      <h2 class="mb-4 font-display text-3xl">Hablemos</h2>
+      <p class="mb-8 leading-relaxed opacity-90">
+        Estamos construyendo futuro juntas. Escríbenos para colaborar, donar o
+        simplemente para conectar.
+      </p>
+      <div class="mb-10 space-y-4">
+        <Link
+          href={`mailto:${presentation.mail}`}
+          label={presentation.mail}
+          class="flex items-center gap-4 text-lg font-bold"
+        />
+        <SocialLinks />
+      </div>
+      <div class="border-t border-warm-cream/20 pt-8 text-center">
+        <p class="text-[10px] font-black uppercase tracking-widest opacity-60">
+          © 2025 ActivaShe — Hecho con amor y resistencia
+        </p>
+      </div>
     </div>
   </footer>
 </section>

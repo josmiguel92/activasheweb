@@ -12,30 +12,42 @@ type Props = {
 const { title, publishedAt, description, slug, image } = Astro.props;
 ---
 
-<article class="bg-white/5 rounded-3xl overflow-hidden border-t-4 border-terracotta card-shadow text-chocolate">
-  {image && (
-    <div class="h-48 relative overflow-hidden">
-      <img 
-        src={image} 
-        alt={title}
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent"></div>
-    </div>
-  )}
+<article
+  class="card-shadow overflow-hidden rounded-3xl border-t-4 border-terracotta bg-white/5 text-chocolate"
+>
+  {
+    image && (
+      <div class="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          class="h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-chocolate/80 to-transparent" />
+      </div>
+    )
+  }
   <div class="p-6">
-    <div class="flex justify-between items-center mb-4">
-      <span class="text-[10px] font-black uppercase tracking-widest text-terracotta">Publicación</span>
-      <span class="text-[10px] text-chocolate/40">{formatDate(publishedAt)}</span>
+    <div class="mb-4 flex items-center justify-between">
+      <span
+        class="text-[10px] font-black uppercase tracking-widest text-terracotta"
+        >Publicación</span
+      >
+      <span class="text-[10px] text-chocolate/40"
+        >{formatDate(publishedAt)}</span
+      >
     </div>
-    <h3 class="text-xl mb-3 leading-snug text-terracotta">
+    <h3 class="mb-3 text-xl leading-snug text-terracotta">
       <a href={`/posts/${slug}`} class="hover:underline">
-      {title}
+        {title}
       </a>
     </h3>
-    <p class="text-sm text-chocolate/60 line-clamp-2 mb-6">{description}</p>
-    <a class="flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:gap-3 transition-all" href={`/posts/${slug}`}>
+    <p class="mb-6 line-clamp-2 text-sm text-chocolate/60">{description}</p>
+    <a
+      class="flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3"
+      href={`/posts/${slug}`}
+    >
       Leer artículo completo
       <span class="material-symbols-outlined text-sm">north_east</span>
     </a>

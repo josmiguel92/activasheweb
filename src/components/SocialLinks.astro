@@ -2,14 +2,14 @@
 import presentation from "@/data/presentation";
 ---
 
-<div class="flex gap-4 flex-wrap">
+<div class="flex flex-wrap gap-4">
   {
     presentation.socials.map((social) => (
-      <a 
+      <a
         href={social.link}
         target="_blank"
         rel="noopener noreferrer"
-        class="p-3 bg-chocolate/20 rounded-full font-bold px-5 hover:bg-chocolate/40 transition-colors text-warm-cream"
+        class="rounded-full bg-chocolate/20 p-3 px-5 font-bold text-warm-cream transition-colors hover:bg-chocolate/40"
       >
         {social.label}
       </a>

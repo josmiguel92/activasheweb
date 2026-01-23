@@ -5,7 +5,6 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
 import StatusBadge from "@/components/StatusBadge.astro";
-import Button from "@/components/Button.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -25,48 +24,64 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.title}>
-  <article class="px-6 max-w-4xl mx-auto">
-    <Breadcrumbs items={[
-      { label: "Proyectos", href: "/projects" },
-      { label: project.data.title }
-    ]}
-      textColor="text-chocolate" 
-  mutedColor="text-chocolate/60" 
-  separatorColor="text-chocolate/30" />
-    <header class="mb-8 bg-gradient-to-br from-olive to-olive/60 p-8 rounded-3xl card-shadow">
-      <div class="flex justify-between items-start mb-4">
+  <article class="mx-auto max-w-4xl px-6">
+    <Breadcrumbs
+      items={[
+        { label: "Proyectos", href: "/projects" },
+        { label: project.data.title },
+      ]}
+      textColor="text-chocolate"
+      mutedColor="text-chocolate/60"
+      separatorColor="text-chocolate/30"
+    />
+    <header
+      class="card-shadow mb-8 rounded-3xl bg-gradient-to-br from-olive to-olive/60 p-8"
+    >
+      <div class="mb-4 flex items-start justify-between">
         <div>
-          {project.data.areas && project.data.areas.length > 0 && (
-            <span class="text-[10px] font-black uppercase tracking-widest text-warm-cream bg-soft-olive/60 border border-soft-olive/60 rounded-full px-3 py-1 backdrop-blur">
-              {project.data.areas.join(' • ')}
-            </span>
-          )}
+          {
+            project.data.areas && project.data.areas.length > 0 && (
+              <span class="rounded-full border border-soft-olive/60 bg-soft-olive/60 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-warm-cream backdrop-blur">
+                {project.data.areas.join(" • ")}
+              </span>
+            )
+          }
         </div>
-        <div class="flex gap-2 items-center">
-          <StatusBadge label={project.data.isComingSoon ? "Próximo" : "Activo"} tone={project.data.isComingSoon ? "accent" : "muted"} />
-          <span class="text-sm text-warm-cream/60">{formatDate(project.data.publishedAt)}</span>
+        <div class="flex items-center gap-2">
+          <StatusBadge
+            label={project.data.isComingSoon ? "Próximo" : "Activo"}
+            tone={project.data.isComingSoon ? "accent" : "muted"}
+          />
+          <span class="text-sm text-warm-cream/60"
+            >{formatDate(project.data.publishedAt)}</span
+          >
         </div>
       </div>
-      <h1 class="text-4xl font-display leading-tight mb-4 text-warm-cream">
+      <h1 class="mb-4 font-display text-4xl leading-tight text-warm-cream">
         {project.data.title}
       </h1>
-      <p class="text-lg text-warm-cream/90 italic">{project.data.description}</p>
+      <p class="text-lg italic text-warm-cream/90">
+        {project.data.description}
+      </p>
     </header>
 
-    <div class="post prose prose-invert prose-lg max-w-none mb-8">
+    <div class="post prose prose-invert prose-lg mb-8 max-w-none">
       <Content />
     </div>
 
-    <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-soft-olive/30">
-      <ShareButtons 
+    <div class="mb-8 rounded-2xl border border-soft-olive/30 bg-white/5 p-6">
+      <ShareButtons
         url={`/projects/${project.slug}`}
         title={project.data.title}
         description={project.data.description}
       />
     </div>
 
-    <div class="mt-12 pt-8 border-t border-soft-olive/30">
-      <a href="/projects" class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange hover:text-olive hover:gap-3 transition-all">
+    <div class="mt-12 border-t border-soft-olive/30 pt-8">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3 hover:text-olive"
+      >
         <span class="material-symbols-outlined text-sm">arrow_back</span>
         Volver a proyectos
       </a>

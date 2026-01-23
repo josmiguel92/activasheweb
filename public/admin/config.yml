@@ -21,8 +21,18 @@ collections:
       - { name: title, label: Título }
       - { name: description, label: Descripción }
       - { name: publishedAt, label: Fecha, widget: date }
-      - {label: "Publicado", name: "isPublish", widget: "boolean", default: true}
-      - {label: "Borrador", name: "isDraft", widget: "boolean", default: false}
+      - {
+          label: "Publicado",
+          name: "isPublish",
+          widget: "boolean",
+          default: true,
+        }
+      - {
+          label: "Borrador",
+          name: "isDraft",
+          widget: "boolean",
+          default: false,
+        }
       - { name: body, label: Contenido, widget: markdown }
 
   - name: project
@@ -36,11 +46,42 @@ collections:
       - { name: description, label: Descripción }
       - { name: publishedAt, label: Fecha, widget: date }
       - { name: slug, label: Slug }
-      - {label: "Publicado", name: "isPublish", widget: "boolean", default: true}
-      - { name: areas, label: Áreas, widget: select, multiple: true, options: ["Investigación", "Derechos Humanos", "Educación", "Incidencia", "Arte y Cultura", "Salud", "Seguridad Alimentaria", "Justicia Social"] }
-      - {label: "Próximamente", name: "isComingSoon", widget: "boolean", default: false}
+      - {
+          label: "Publicado",
+          name: "isPublish",
+          widget: "boolean",
+          default: true,
+        }
+      - {
+          name: areas,
+          label: Áreas,
+          widget: select,
+          multiple: true,
+          options:
+            [
+              "Investigación",
+              "Derechos Humanos",
+              "Educación",
+              "Incidencia",
+              "Arte y Cultura",
+              "Salud",
+              "Seguridad Alimentaria",
+              "Justicia Social",
+            ],
+        }
+      - {
+          label: "Próximamente",
+          name: "isComingSoon",
+          widget: "boolean",
+          default: false,
+        }
       - { name: body, label: Contenido, widget: markdown }
-      - {label: "Mostrar Botón de Donación", name: "showDonate", widget: "boolean", default: false}
+      - {
+          label: "Mostrar Botón de Donación",
+          name: "showDonate",
+          widget: "boolean",
+          default: false,
+        }
 
   - name: video
     label: Videos
@@ -51,7 +92,20 @@ collections:
       - { name: title, label: Título }
       - { name: description, label: Descripción }
       - { name: youtubeId, label: "ID de Video YouTube" }
-      - { name: category, label: Categoría, widget: select, options: ["entrevistas", "talleres", "documentales", "eventos", "educación", "video arte"] }
+      - {
+          name: category,
+          label: Categoría,
+          widget: select,
+          options:
+            [
+              "entrevistas",
+              "talleres",
+              "documentales",
+              "eventos",
+              "educación",
+              "video arte",
+            ],
+        }
       - { name: duration, label: Duración }
       - { name: publishedAt, label: Fecha, widget: date }
       - { name: featured, label: Destacado, widget: boolean, default: false }
@@ -67,6 +121,12 @@ collections:
       - { name: artist, label: Artista }
       - { name: description, label: Descripción }
       - { name: image, label: Imagen, widget: image }
-      - { name: category, label: Categoría, widget: select, options: ["pintura", "fotografía", "escultura", "digital", "artesanía"] }
+      - {
+          name: category,
+          label: Categoría,
+          widget: select,
+          options:
+            ["pintura", "fotografía", "escultura", "digital", "artesanía"],
+        }
       - { name: year, label: Año, widget: number }
       - { name: body, label: Contenido, widget: markdown }

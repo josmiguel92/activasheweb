@@ -1,5 +1,4 @@
 ---
-import Link from "@/components/shared/Link.astro";
 
 interface Props {
   featuredVideo: any;
@@ -8,25 +7,38 @@ interface Props {
 const { featuredVideo } = Astro.props;
 const backgroundImage = `https://img.youtube.com/vi/${featuredVideo.data.youtubeId}/maxresdefault.jpg`;
 const embedUrl = `https://www.youtube.com/embed/${featuredVideo.data.youtubeId}?rel=0&showinfo=0&modestbranding=1&controls=1`;
-const playerId = `featured-video-${featuredVideo.id ?? featuredVideo.slug ?? featuredVideo.data.youtubeId}`;
+const playerId = `featured-video-${
+  featuredVideo.id ?? featuredVideo.slug ?? featuredVideo.data.youtubeId
+}`;
 ---
 
 <div class="mb-6">
-  <p class="text-terracotta text-sm font-bold mb-2 tracking-widest uppercase">Destacado</p>
-  <div class="relative bg-chocolate rounded-2xl overflow-hidden card-shadow border border-terracotta/40" id={playerId}>
-    <div class="aspect-video bg-cover bg-center" style={`background-image: url('${backgroundImage}');`}>
+  <p class="mb-2 text-sm font-bold uppercase tracking-widest text-terracotta">
+    Destacado
+  </p>
+  <div
+    class="card-shadow relative overflow-hidden rounded-2xl border border-terracotta/40 bg-chocolate"
+    id={playerId}
+  >
+    <div
+      class="aspect-video bg-cover bg-center"
+      style={`background-image: url('${backgroundImage}');`}
+    >
       <iframe
-        class="w-full h-full"
+        class="h-full w-full"
         src={embedUrl}
         title={featuredVideo.data.title}
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
     </div>
-    <div class="px-4 py-4 bg-chocolate/90 border-t border-terracotta/50">
-      <h3 class="text-warm-cream font-bold text-lg mb-2">{featuredVideo.data.title}</h3>
-      <div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-widest">
+    <div class="border-t border-terracotta/50 bg-chocolate/90 px-4 py-4">
+      <h3 class="mb-2 text-lg font-bold text-warm-cream">
+        {featuredVideo.data.title}
+      </h3>
+      <div
+        class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-widest"
+      >
         <span class="text-mustard">{featuredVideo.data.category}</span>
         <span class="text-warm-cream/80">{featuredVideo.data.duration}</span>
       </div>

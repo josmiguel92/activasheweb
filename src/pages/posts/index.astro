@@ -4,27 +4,35 @@ import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
 
 const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
 ---
 
 <Layout title="Todas las Publicaciones" class="text-chocolate">
-  <section class="px-6 space-y-8 max-w-4xl lg:max-w-6xl mx-auto">
+  <section class="mx-auto max-w-4xl space-y-8 px-6 lg:max-w-6xl">
     <div class="flex items-end justify-between">
-      <h1 class="text-4xl font-display text-chocolate">Todas las <span class="text-vibrant-orange">Publicaciones</span></h1>
-      <a href="/" class="text-xs font-bold text-mustard uppercase tracking-widest border-b border-mustard pb-1 hover:text-vibrant-orange transition-colors">Volver al inicio</a>
+      <h1 class="font-display text-4xl text-chocolate">
+        Todas las <span class="text-vibrant-orange">Publicaciones</span>
+      </h1>
+      <a
+        href="/"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard transition-colors hover:text-vibrant-orange"
+        >Volver al inicio</a
+      >
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {posts.map((post) => (
-        <PostCard
-          publishedAt={post.data.publishedAt}
-          title={post.data.title}
-          description={post.data.description}
-          slug={post.slug}
-          image={post.data.image}
-        />
-      ))}
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {
+        posts.map((post) => (
+          <PostCard
+            publishedAt={post.data.publishedAt}
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.slug}
+            image={post.data.image}
+          />
+        ))
+      }
     </div>
   </section>
 </Layout>

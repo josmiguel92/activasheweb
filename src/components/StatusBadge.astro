@@ -1,15 +1,19 @@
 ---
 type Props = {
   label?: string;
-  tone?: 'accent' | 'muted';
+  tone?: "accent" | "muted";
 };
 
-const { label = 'Próximamente', tone = 'accent' } = Astro.props as Props;
-const bg = tone === 'accent'
-  ? 'bg-vibrant-orange text-chocolate'
-  : 'bg-soft-olive/30 text-warm-cream border border-soft-olive/60 backdrop-blur-sm';
+const { label = "Próximamente", tone = "accent" } = Astro.props as Props;
+const bg =
+  tone === "accent"
+    ? "bg-vibrant-orange text-chocolate"
+    : "bg-soft-olive/30 text-warm-cream border border-soft-olive/60 backdrop-blur-sm";
 ---
 
-<span class={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${bg}`} aria-label={label}>
+<span
+  class={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${bg}`}
+  aria-label={label}
+>
   {label}
 </span>
