@@ -22,7 +22,11 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<Layout 
+  title={`${post.data.title} | ActivaShe`} 
+  description={`${post.data.description ?? ""} — ActivaShe | Publicaciones`}
+  image={post.data.image}
+>
   <article class="px-6 max-w-4xl mx-auto">
     <Breadcrumbs 
   items={[
