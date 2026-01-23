@@ -1,7 +1,7 @@
 ---
 title: "Fragmentada"
 artist: "Afrik3Reina"
-image: "/images/fragmentada.afrik3reina..jpg"
+image: "/images/fragmentada.afrik3reina.jpg"
 category: "fotografía"
 year: 2026
 description: "Arte menstrual contra la opresión - Voces Cimarronas, un canto de libertad"

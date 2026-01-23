@@ -40,7 +40,7 @@ const { Content } = await post.render();
     <header class="mb-8 bg-terracotta p-8 rounded-3xl card-shadow">
       <div class="flex justify-between items-center mb-4">
         <span class="text-[10px] font-black uppercase tracking-widest text-mustard">Artículo</span>
-        <span class="text-sm text-chocolate/60">{formatDate(post.data.publishedAt)}</span>
+        <span class="text-sm text-mustard">{formatDate(post.data.publishedAt)}</span>
       </div>
       <h1 class="text-4xl font-display leading-tight mb-4 text-warm-cream">
         {post.data.title}
@@ -48,6 +48,18 @@ const { Content } = await post.render();
       <p class="text-lg text-warm-cream/90 italic">{post.data.description}</p>
     </header>
 
+    {post.data.image && (
+      <div class="rounded-3xl overflow-hidden mb-8">
+        <img
+          src={post.data.image}
+          alt={post.data.title}
+          class="w-full h-80 md:h-[26rem] object-cover"
+          loading="lazy"
+        />
+      </div>
+    )}
+
+    
     <div class="post prose prose-lg max-w-none mb-8 text-chocolate">
       <Content />
     </div>

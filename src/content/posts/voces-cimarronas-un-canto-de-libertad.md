@@ -4,7 +4,7 @@ description: Arte feminista contra la opresion en Cuba
 publishedAt: 2026-01-20T19:20:39.971Z
 isPublish: true
 isDraft: false
-image: /images/fragmentada.afrik3reina..jpg
+image: /images/fragmentada.afrik3reina.jpg
 ---
 ## Voces Cimarronas
 
@@ -164,4 +164,4 @@ Otra voz motivacional importante que no queremos dejar de mencionar es [Myrna Di
 
 Es un verdadero honor para la colectiva de artistas y activistas afrofeministas ActivaShe, rozar las vidas de tan valientes mujeres e inspirarnos en sus historias para crear  ‘Voces Cimarronas” que no es más que nuestra humilde manera de decir: gracias…
 
-!["\\"Fragmentada\\"fotografia de Afrik3Reina"](/images/fragmentada.afrik3reina..jpg)
+!["\\"Fragmentada\\"fotografia de Afrik3Reina"](/images/fragmentada.afrik3reina.jpg)
