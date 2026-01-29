@@ -33,6 +33,7 @@ collections:
           widget: "boolean",
           default: false,
         }
+      - { name: image, label: Imagen, widget: image }
       - { name: body, label: Contenido, widget: markdown }
 
   - name: project
