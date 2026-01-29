@@ -4,7 +4,7 @@ description: .
 publishedAt: 2026-01-29T17:38:39.923Z
 isPublish: true
 isDraft: false
-image: /images/fragmentada.afrik3reina.jpg
+image: /images/screenshot-2026-01-29-12.56.15.png
 ---
 ## En Cuba, restricciones legales y lentos procesos judiciales dificultan que madres emigren con sus hijxs, especialmente sin la firma del padre. Esto agrava la crisis migratoria, dejando a miles de familias separadas.
 
@@ -12,12 +12,10 @@ image: /images/fragmentada.afrik3reina.jpg
 
 22/04/2025
 
-![Afrik3reina artista cubana](/images/screenshot-2026-01-29-12.56.15.png)
+
+Foto: Afrik3Reina.
 
 En Cuba, las madres ya no solo luchan por un plato de comida o un poco de luz: ahora pelean por sacar a sus hijxs de una Isla que se hunde. 
-
-
-Foto: Afrik3Reina
 
 Yelenia*, por ejemplo, nunca soñó con Italia. Lo que quería era quedarse, pero la falta de leche para su hija de seis años, y las noches sin electricidad la empujaron a buscar una salida. Cuando encontró una visa, chocó con un muro: el padre de su hija, perdido en México hace años, debía firmar para que la niña pudiera salir. 
 
