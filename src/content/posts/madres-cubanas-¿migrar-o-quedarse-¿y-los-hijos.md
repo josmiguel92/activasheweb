@@ -11,7 +11,7 @@ isDraft: false
 
 22/04/2025
 
-![Afrik3reina artista cubana](https://alastensas.com/wp-content/uploads/2025/04/afrika-reina-768x576.jpg)
+![Afrik3reina artista cubana](/images/screenshot-2026-01-29-12.56.15.png)
 
 Foto: Afrik3Reina
 
