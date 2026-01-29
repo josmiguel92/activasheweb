@@ -1,6 +1,9 @@
 ---
 title: "#Madres cubanas: ¿Migrar o quedarse? ¿Y los hijos?"
-description: .
+description: "## En Cuba, restricciones legales y lentos procesos judiciales
+  dificultan que madres emigren con sus hijxs, especialmente sin la firma del
+  padre. Esto agrava la crisis migratoria, dejando a miles de familias
+  separadas."
 publishedAt: 2026-01-29T17:38:39.923Z
 isPublish: true
 isDraft: false
