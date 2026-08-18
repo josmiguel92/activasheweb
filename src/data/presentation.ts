@@ -11,7 +11,7 @@ type Presentation = {
 };
 
 const presentation: Presentation = {
-  "mail": "activashe@proton.me",
+  "mail": "activashecuba@gmail.com",
   "title": "Hola, somos ActivaShe 👋🏽",
   "description": "**Activ@ Àşé** es un espacio comunal y familiar que nace con el objetivo de empoderar a la comunidad afrocubana, especialmente a las mujeres negras, que a pesar de ser mayoría en el país, son las más desatendidas y desprotegidas por la política social de la isla.",
   "socials": [
