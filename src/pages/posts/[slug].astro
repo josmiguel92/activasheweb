@@ -55,11 +55,11 @@ const { Content } = await post.render();
 
     {
       post.data.image && (
-        <div class="mb-8 overflow-hidden rounded-3xl">
+        <div class="mb-8 flex w-full justify-center overflow-hidden rounded-3xl bg-white/5">
           <img
             src={post.data.image}
             alt={post.data.title}
-            class="h-80 w-full object-cover md:h-[26rem]"
+            class="w-full max-h-80 object-contain md:max-h-[26rem]"
             loading="lazy"
           />
         </div>
