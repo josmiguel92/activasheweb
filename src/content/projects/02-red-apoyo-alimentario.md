@@ -7,7 +7,7 @@ isPublish: true
 areas: ["Incidencia", "Seguridad Alimentaria"]
 isComingSoon: true
 showDonate: true
-image: "favicon.png"
+image: "/favicon.png"
 ---
 
 ## Resumen del Proyecto
