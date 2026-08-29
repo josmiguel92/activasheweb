@@ -2,24 +2,40 @@
 import { SEO } from "astro-seo";
 import { SITE_URL } from "@/data/config";
 import presentation from "@/data/presentation";
+import imageSize from "@/utils/imageSize";
 
- type Props = {
-   title?: string;
-   description?: string;
-   noindex?: boolean;
-   image?: string;
-   author?: string;
-   keywords?: string[];
-   og?: {
-     title: string;
-     type: string;
-     description: string;
-     image: string;
-     alt: string;
-   };
- };
- 
- const { title, description, noindex, image, author, keywords = [], og } = Astro.props;
+type Props = {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  /** Imagen de la tarjeta social (ruta de public/ o URL absoluta). */
+  image?: string;
+  /** Texto alternativo de la imagen social; por defecto, el título. */
+  imageAlt?: string;
+  /** "article" para posts/proyectos/obras; "website" para el resto. */
+  type?: "website" | "article";
+  publishedAt?: Date;
+  modifiedAt?: Date;
+  section?: string;
+  tags?: string[];
+  author?: string;
+  keywords?: string[];
+};
+
+const {
+  title,
+  description,
+  noindex,
+  image,
+  imageAlt,
+  type = "website",
+  publishedAt,
+  modifiedAt,
+  section,
+  tags,
+  author,
+  keywords = [],
+} = Astro.props;
 
 const toAbsoluteUrl = (maybeUrl?: string) => {
   if (!maybeUrl) return undefined;
@@ -31,8 +47,8 @@ const toAbsoluteUrl = (maybeUrl?: string) => {
 const DEFAULT_TITLE_PAGE = "ActivaShe | Visibilidad y Apoyo Afrodescendiente";
 const DEFAULT_DESCRIPTION_PAGE =
   "ActivaShe: Visibilidad y apoyo a mujeres afrodescendientes en vulnerabilidad, promoviendo equidad y derechos humanos.";
-const DEFAULT_URL_SITE = SITE_URL;
-const DEFAULT_IMAGE = `${DEFAULT_URL_SITE}/opengraph-image.jpg`;
+const DEFAULT_IMAGE_PATH = "/opengraph-image.jpg";
+const DEFAULT_IMAGE_ALT = "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'";
 const DEFAULT_SITE_NAME = "ActivaShe";
 const DEFAULT_LOCALE = "es_ES";
 const DEFAULT_AUTHOR = "ActivaShe";
@@ -44,46 +60,98 @@ const DEFAULT_KEYWORDS = [
   "comunidad",
 ];
 
-const openGraph = {
-  title: og?.title || title || DEFAULT_TITLE_PAGE,
-  type: og?.type || "website",
-  image: toAbsoluteUrl(og?.image || image) || DEFAULT_IMAGE,
-  alt: og?.alt || "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'",
-  url: DEFAULT_URL_SITE,
-  description: og?.description || description || DEFAULT_DESCRIPTION_PAGE,
-  siteName: DEFAULT_SITE_NAME,
-  locale: DEFAULT_LOCALE,
-};
+const pageTitle = title || DEFAULT_TITLE_PAGE;
+const pageDescription = description || DEFAULT_DESCRIPTION_PAGE;
+const imagePath = image || DEFAULT_IMAGE_PATH;
+const imageUrl = toAbsoluteUrl(imagePath)!;
+const size = imageSize(imagePath);
+const alt = image ? imageAlt || pageTitle : DEFAULT_IMAGE_ALT;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+
+const jsonLd: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: DEFAULT_SITE_NAME,
+    url: SITE_URL,
+    logo: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
+    description: DEFAULT_DESCRIPTION_PAGE,
+    sameAs: presentation.socials?.map((s) => s.link).filter(Boolean) || [],
+  },
+];
+
+if (type === "article") {
+  jsonLd.push({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: pageTitle,
+    description: pageDescription,
+    image: imageUrl,
+    url: canonical,
+    datePublished: publishedAt?.toISOString(),
+    dateModified: (modifiedAt ?? publishedAt)?.toISOString(),
+    author: { "@type": "Organization", name: author || DEFAULT_AUTHOR },
+    publisher: {
+      "@type": "Organization",
+      name: DEFAULT_SITE_NAME,
+      logo: { "@type": "ImageObject", url: toAbsoluteUrl(DEFAULT_IMAGE_PATH) },
+    },
+    articleSection: section,
+    keywords: tags?.join(", "),
+    inLanguage: "es",
+  });
+}
 ---
 
 <SEO
   charset="UTF-8"
-  title={title || DEFAULT_TITLE_PAGE}
-  description={description || DEFAULT_DESCRIPTION_PAGE}
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
   noindex={noindex || false}
   openGraph={{
     basic: {
-      title: openGraph.title,
-      type: openGraph.type,
-      image: openGraph.image,
+      title: pageTitle,
+      type,
+      image: imageUrl,
+      url: canonical,
+    },
+    optional: {
+      description: pageDescription,
+      siteName: DEFAULT_SITE_NAME,
+      locale: DEFAULT_LOCALE,
     },
     image: {
-      alt: openGraph.alt,
+      alt,
+      width: size?.width,
+      // astro-seo solo omite la etiqueta si el valor es null (undefined deja un content vacío)
+      height: (size?.height ?? null) as any,
     },
-    extra: [
-      { property: "og:site_name", content: openGraph.siteName },
-      { property: "og:locale", content: openGraph.locale },
-    ],
+    ...(type === "article"
+      ? {
+          article: {
+            publishedTime: publishedAt?.toISOString(),
+            modifiedTime: modifiedAt?.toISOString(),
+            authors: [author || DEFAULT_AUTHOR],
+            section,
+            tags,
+          },
+        }
+      : {}),
   }}
   twitter={{
-    creator: "@activashecuba",
-    image: openGraph.image,
     card: "summary_large_image",
+    site: "@activashecuba",
+    creator: "@activashecuba",
+    title: pageTitle,
+    description: pageDescription,
+    image: imageUrl,
+    imageAlt: alt,
   }}
   extend={{
     link: [
       { rel: "icon", href: "/favicon.png" },
-      { rel: "sitemap", href: "/sitemap-0.xml" },
+      { rel: "sitemap", href: "/sitemap-index.xml" },
     ],
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -91,41 +159,10 @@ const openGraph = {
       { name: "generator", content: Astro.generator },
       { name: "author", content: author || DEFAULT_AUTHOR },
       { name: "keywords", content: (keywords.length ? keywords : DEFAULT_KEYWORDS).join(", ") },
-      { property: "og:site_name", content: openGraph.siteName },
-      { property: "og:locale", content: openGraph.locale },
-      { name: "twitter:image", content: openGraph.image },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: openGraph.title },
-      { name: "twitter:description", content: openGraph.description },
-      { name: "twitter:site", content: "@activashecuba" },
     ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: DEFAULT_SITE_NAME,
-          url: DEFAULT_URL_SITE,
-          logo: DEFAULT_IMAGE,
-          description: openGraph.description,
-          sameAs: presentation.socials?.map((s) => s.link).filter(Boolean) || [],
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: DEFAULT_SITE_NAME,
-          url: DEFAULT_URL_SITE,
-          potentialAction: {
-            "@type": "SearchAction",
-            target: `${DEFAULT_URL_SITE}/search?q={search_term_string}`,
-            "query-input": "required name=search_term_string",
-          },
-        }),
-      },
-    ],
+    scripts: jsonLd.map((data) => ({
+      type: "application/ld+json",
+      children: JSON.stringify(data),
+    })),
   }}
 />

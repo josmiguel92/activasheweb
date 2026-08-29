@@ -29,7 +29,16 @@ const others = (await getCollection("projects"))
   .slice(0, 2);
 ---
 
-<Layout title={project.data.title}>
+<Layout
+  title={`${project.data.title} | Proyectos ActivaShe`}
+  description={project.data.description}
+  image={project.data.image}
+  imageAlt={project.data.title}
+  type="article"
+  publishedAt={project.data.publishedAt}
+  section="Proyectos"
+  tags={project.data.areas}
+>
   <article class="mx-auto max-w-4xl px-6">
     <Breadcrumbs
       items={[

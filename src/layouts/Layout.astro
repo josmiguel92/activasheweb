@@ -14,7 +14,14 @@ export interface Props {
   description?: string;
   noTopMargin?: boolean;
   bodyClass?: string;
+  /** Imagen para la tarjeta social (Open Graph / Twitter). */
   image?: string;
+  imageAlt?: string;
+  /** "article" para contenidos (posts, proyectos, obras). */
+  type?: "website" | "article";
+  publishedAt?: Date;
+  section?: string;
+  tags?: string[];
 }
 
 const {
@@ -23,13 +30,27 @@ const {
   noTopMargin = false,
   bodyClass = "bg-warm-cream",
   image,
+  imageAlt,
+  type,
+  publishedAt,
+  section,
+  tags,
 } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <SEOTags title={title} description={description} image={image} />
+    <SEOTags
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      type={type}
+      publishedAt={publishedAt}
+      section={section}
+      tags={tags}
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

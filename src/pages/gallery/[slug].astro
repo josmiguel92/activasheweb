@@ -22,11 +22,18 @@ const { Content } = await art.render();
 
 <Layout
   title={`${art.data.title} | Galería ActivaShe`}
-  description={`${art.data.description ?? ""} — ActivaShe | Galería`}
+  description={
+    art.data.description ||
+    `${art.data.title}, obra de ${art.data.artist} en la galería de ActivaShe.`
+  }
   bodyClass="bg-gradient-to-b from-olive to-olive/90"
   image={art.data.image}
+  imageAlt={`${art.data.title} — ${art.data.artist}`}
+  type="article"
+  section="Galería"
+  tags={[art.data.category, art.data.artist]}
 >
-  <main class="mx-auto max-w-4xl space-y-10 px-6 pb-16">
+  <div class="mx-auto max-w-4xl space-y-10 px-6 pb-16">
     <Breadcrumbs
       items={[
         { label: "Galería", href: "/gallery" },
@@ -107,7 +114,7 @@ const { Content } = await art.render();
         >← Volver a la galería</a
       >
     </div>
-  </main>
+  </div>
 
   <!-- Lightbox Modal -->
   <div

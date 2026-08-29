@@ -32,8 +32,12 @@ const related = (await getCollection("posts"))
 
 <Layout
   title={`${post.data.title} | ActivaShe`}
-  description={`${post.data.description ?? ""} — ActivaShe | Publicaciones`}
+  description={post.data.description}
   image={post.data.image}
+  imageAlt={post.data.title}
+  type="article"
+  publishedAt={post.data.publishedAt}
+  section="Publicaciones"
 >
   <article class="mx-auto max-w-4xl px-6">
     <Breadcrumbs
