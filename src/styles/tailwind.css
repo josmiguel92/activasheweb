@@ -10,6 +10,27 @@
   h1, h2, h3 {
     @apply font-display font-extrabold;
   }
+
+  /* Foco visible consistente para teclado (WCAG 2.4.7) */
+  :focus-visible {
+    @apply outline-none ring-[3px] ring-mustard ring-offset-2 ring-offset-warm-cream;
+  }
+  .bg-chocolate :focus-visible,
+  nav :focus-visible {
+    @apply ring-offset-chocolate;
+  }
+
+  /* Respetar la preferencia de movimiento reducido (WCAG 2.3.3) */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {

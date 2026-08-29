@@ -55,8 +55,18 @@ const {
   </head>
 
   <body class:list={["min-h-screen text-chocolate", bodyClass]}>
+    <a
+      href="#contenido"
+      class="sr-only z-[60] rounded-xl bg-mustard px-4 py-2 font-bold text-chocolate focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+    >
+      Saltar al contenido
+    </a>
     <Header />
-    <main class:list={[!noTopMargin && "mt-8", "space-y-16 pb-20"]}>
+    <main
+      id="contenido"
+      tabindex="-1"
+      class:list={[!noTopMargin && "mt-8", "space-y-16 pb-20 outline-none"]}
+    >
       <slot />
     </main>
     <Footer />
