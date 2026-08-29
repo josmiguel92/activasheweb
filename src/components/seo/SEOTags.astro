@@ -160,9 +160,11 @@ if (type === "article") {
       { name: "author", content: author || DEFAULT_AUTHOR },
       { name: "keywords", content: (keywords.length ? keywords : DEFAULT_KEYWORDS).join(", ") },
     ],
-    scripts: jsonLd.map((data) => ({
-      type: "application/ld+json",
-      children: JSON.stringify(data),
-    })),
   }}
 />
+{/* astro-seo 0.7 no soporta extend.scripts: el JSON-LD se emite aquí */}
+{
+  jsonLd.map((data) => (
+    <script type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))
+}
