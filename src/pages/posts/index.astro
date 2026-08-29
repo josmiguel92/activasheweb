@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
+import readingTime from "@/utils/readingTime";
 
 const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
@@ -12,11 +13,11 @@ const posts = (await getCollection("posts")).sort(
   <section class="mx-auto max-w-4xl space-y-8 px-6 lg:max-w-6xl">
     <div class="flex items-end justify-between">
       <h1 class="font-display text-4xl text-chocolate">
-        Todas las <span class="text-vibrant-orange">Publicaciones</span>
+        Todas las <span class="text-terracotta">Publicaciones</span>
       </h1>
       <a
         href="/"
-        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard transition-colors hover:text-vibrant-orange"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-terracotta-deep transition-colors hover:text-terracotta"
         >Volver al inicio</a
       >
     </div>
@@ -30,6 +31,7 @@ const posts = (await getCollection("posts")).sort(
             description={post.data.description}
             slug={post.slug}
             image={post.data.image}
+            readingTime={readingTime(post.body)}
           />
         ))
       }

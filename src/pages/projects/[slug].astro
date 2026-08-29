@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
 import StatusBadge from "@/components/StatusBadge.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -21,6 +22,11 @@ type Props = {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+const others = (await getCollection("projects"))
+  .filter((p) => p.slug !== project.slug && p.data.isPublish)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 2);
 ---
 
 <Layout title={project.data.title}>
@@ -35,7 +41,7 @@ const { Content } = await project.render();
       separatorColor="text-chocolate/30"
     />
     <header
-      class="card-shadow mb-8 rounded-3xl bg-gradient-to-br from-olive to-olive/60 p-8"
+      class="card-shadow mb-8 rounded-3xl bg-gradient-to-br from-olive to-soft-olive p-8"
     >
       <div class="mb-4 flex items-start justify-between">
         <div>
@@ -52,8 +58,10 @@ const { Content } = await project.render();
             label={project.data.isComingSoon ? "Próximo" : "Activo"}
             tone={project.data.isComingSoon ? "accent" : "muted"}
           />
-          <span class="text-sm text-warm-cream/60"
-            >{formatDate(project.data.publishedAt)}</span
+          <time
+            datetime={project.data.publishedAt.toISOString()}
+            class="text-sm text-warm-cream/90"
+            >{formatDate(project.data.publishedAt)}</time
           >
         </div>
       </div>
@@ -65,7 +73,7 @@ const { Content } = await project.render();
       </p>
     </header>
 
-    <div class="post prose prose-lg mb-8 max-w-none text-chocolate">
+    <div class="post prose prose-lg mx-auto mb-8 max-w-3xl text-chocolate">
       <Content />
     </div>
 
@@ -77,12 +85,34 @@ const { Content } = await project.render();
       />
     </div>
 
+    {
+      others.length > 0 && (
+        <section aria-labelledby="otros-proyectos" class="mt-12">
+          <h2 id="otros-proyectos" class="mb-6 font-display text-2xl text-chocolate">
+            Otros proyectos
+          </h2>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {others.map((p) => (
+              <ProjectCard
+                title={p.data.title}
+                areas={p.data.areas}
+                link={`/projects/${p.slug}`}
+                isComingSoon={!!p.data.isComingSoon}
+                preview={p.data.description}
+                image={p.data.image}
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
     <div class="mt-12 border-t border-soft-olive/30 pt-8">
       <a
         href="/projects"
-        class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3 hover:text-olive"
+        class="inline-flex items-center gap-2 text-sm font-bold text-terracotta-deep transition-all hover:gap-3 hover:text-olive"
       >
-        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_back</span>
         Volver a proyectos
       </a>
     </div>

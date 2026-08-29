@@ -15,3 +15,12 @@
 .post p:last-child:has(> a[href^="#"]) {
   @apply text-sm text-chocolate/60;
 }
+
+/* Pie de foto: un párrafo en cursiva justo debajo de una imagen
+   (Markdown: ![alt](/img.jpg) + línea en blanco + *Pie de foto*) */
+.post p:has(> img:only-child) + p:has(> em:only-child) {
+  @apply -mt-8 mb-10 text-center text-sm not-italic text-chocolate/70;
+}
+.post p:has(> img:only-child) + p:has(> em:only-child) > em {
+  @apply not-italic;
+}

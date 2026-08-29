@@ -25,7 +25,7 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
 
 <>
   <div
-    class="min-w-[280px] overflow-hidden rounded-[2rem] border border-chocolate/20 bg-mustard/5 text-chocolate transition-transform hover:-translate-y-1"
+    class="min-w-[280px] overflow-hidden rounded-[2rem] border border-chocolate/20 bg-mustard/5 text-chocolate transition-transform hover:-translate-y-1 motion-reduce:transform-none"
   >
     <div class="relative h-40">
       {
@@ -59,7 +59,7 @@ const formatAreas = (values: string[] = []) => values.join(" • ");
       <h3 class="mb-2 text-lg text-olive">{title}</h3>
       {
         preview && (
-          <p class="mb-4 line-clamp-2 text-sm text-chocolate/60">{preview}</p>
+          <p class="mb-4 line-clamp-3 text-sm leading-relaxed text-chocolate/80">{preview}</p>
         )
       }
       <Button

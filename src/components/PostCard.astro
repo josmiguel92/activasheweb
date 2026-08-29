@@ -7,9 +7,11 @@ type Props = {
   description: string;
   slug: string;
   image?: string;
+  readingTime?: number;
 };
 
-const { title, publishedAt, description, slug, image } = Astro.props;
+const { title, publishedAt, description, slug, image, readingTime } =
+  Astro.props;
 ---
 
 <article
@@ -34,22 +36,25 @@ const { title, publishedAt, description, slug, image } = Astro.props;
         class="text-[10px] font-black uppercase tracking-widest text-terracotta"
         >Publicación</span
       >
-      <span class="text-[10px] text-chocolate/40"
-        >{formatDate(publishedAt)}</span
-      >
+      <span class="text-[11px] font-medium text-chocolate/70">
+        <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
+        {readingTime && <span aria-hidden="true"> · </span>}
+        {readingTime && <span>{readingTime} min de lectura</span>}
+      </span>
     </div>
     <h3 class="mb-3 text-xl leading-snug text-terracotta">
       <a href={`/posts/${slug}`} class="hover:underline">
         {title}
       </a>
     </h3>
-    <p class="mb-6 line-clamp-2 text-sm text-chocolate/60">{description}</p>
+    <p class="mb-6 line-clamp-3 text-sm leading-relaxed text-chocolate/80">{description}</p>
     <a
-      class="flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3"
+      class="flex items-center gap-2 text-sm font-bold text-terracotta-deep transition-all hover:gap-3 hover:text-terracotta motion-reduce:transition-none"
       href={`/posts/${slug}`}
+      aria-label={`Leer artículo completo: ${title}`}
     >
       Leer artículo completo
-      <span class="material-symbols-outlined text-sm">north_east</span>
+      <span class="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
     </a>
   </div>
 </article>

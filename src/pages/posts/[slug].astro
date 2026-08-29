@@ -4,6 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
+import readingTime from "@/utils/readingTime";
+import PostCard from "@/components/PostCard.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -20,6 +22,12 @@ type Props = {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const minutes = readingTime(post.body);
+
+const related = (await getCollection("posts"))
+  .filter((p) => p.slug !== post.slug && p.data.isPublish)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 2);
 ---
 
 <Layout
@@ -37,15 +45,18 @@ const { Content } = await post.render();
       mutedColor="text-chocolate/60"
       separatorColor="text-chocolate/30"
     />
-    <header class="card-shadow mb-8 rounded-3xl bg-terracotta p-8">
-      <div class="mb-4 flex items-center justify-between">
+    <header class="card-shadow mb-8 rounded-3xl bg-terracotta-deep p-8">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
         <span
-          class="text-[10px] font-black uppercase tracking-widest text-mustard"
+          class="text-[11px] font-black uppercase tracking-widest text-warm-cream/90"
           >Artículo</span
         >
-        <span class="text-sm text-mustard"
-          >{formatDate(post.data.publishedAt)}</span
-        >
+        <span class="text-sm text-warm-cream/90">
+          <time datetime={post.data.publishedAt.toISOString()}
+            >{formatDate(post.data.publishedAt)}</time
+          >
+          <span aria-hidden="true"> · </span>{minutes} min de lectura
+        </span>
       </div>
       <h1 class="mb-4 font-display text-4xl leading-tight text-warm-cream">
         {post.data.title}
@@ -60,13 +71,14 @@ const { Content } = await post.render();
             src={post.data.image}
             alt={post.data.title}
             class="w-full max-h-80 object-contain md:max-h-[26rem]"
-            loading="lazy"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
       )
     }
 
-    <div class="post prose prose-lg mb-8 max-w-none text-chocolate">
+    <div class="post prose prose-lg mx-auto mb-8 max-w-3xl text-chocolate">
       <Content />
     </div>
 
@@ -78,12 +90,34 @@ const { Content } = await post.render();
       />
     </div>
 
-    <div class="mt-12 border-t border-white/10 pt-8">
+    {
+      related.length > 0 && (
+        <section aria-labelledby="seguir-leyendo" class="mt-12">
+          <h2 id="seguir-leyendo" class="mb-6 font-display text-2xl text-chocolate">
+            Seguir leyendo
+          </h2>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {related.map((p) => (
+              <PostCard
+                publishedAt={p.data.publishedAt}
+                title={p.data.title}
+                description={p.data.description}
+                slug={p.slug}
+                image={p.data.image}
+                readingTime={readingTime(p.body)}
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <div class="mt-12 border-t border-chocolate/10 pt-8">
       <a
         href="/posts"
-        class="inline-flex items-center gap-2 text-sm font-bold text-vibrant-orange transition-all hover:gap-3"
+        class="inline-flex items-center gap-2 text-sm font-bold text-terracotta-deep transition-all hover:gap-3 hover:text-terracotta"
       >
-        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_back</span>
         Volver a publicaciones
       </a>
     </div>

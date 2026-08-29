@@ -7,6 +7,7 @@ import ProjectCard from "@/components/ProjectCard.astro";
 import Link from "@/components/shared/Link.astro";
 import Button from "@/components/Button.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
+import readingTime from "@/utils/readingTime";
 
 import presentation from "@/data/presentation";
 const projectsCollection = (await getCollection("projects")).sort(
@@ -33,6 +34,10 @@ const artItems = (await getCollection("art")).slice(0, 3);
         alt="Comunidad ActivaShe"
         class="h-full w-full object-cover"
         src="/hero.webp"
+        width="2048"
+        height="1151"
+        fetchpriority="high"
+        decoding="async"
       />
       <div class="image-overlay absolute inset-0"></div>
     </div>
@@ -82,6 +87,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
       <div class="flex flex-row items-center gap-2">
         <span
           class="material-symbols-outlined mb-3 text-3xl text-vibrant-orange"
+          aria-hidden="true"
           >restaurant</span
         >
         <h3 class="mb-1 text-lg font-bold text-terracotta">Seguridad</h3>
@@ -93,9 +99,10 @@ const artItems = (await getCollection("art")).slice(0, 3);
     <div class="rounded-2xl border-l-4 border-mustard bg-white/5 p-6">
       <div class="flex flex-row items-center gap-2">
         <span class="material-symbols-outlined mb-3 text-3xl text-mustard"
+          aria-hidden="true"
           >balance</span
         >
-        <h3 class="mb-1 text-3xl font-bold text-mustard">Justicia</h3>
+        <h3 class="mb-1 text-lg font-bold text-olive">Justicia</h3>
       </div>
       <p class="text-2xs text-chocolate opacity-70">
         Combatiendo la desigualdad sistémica.
@@ -106,14 +113,14 @@ const artItems = (await getCollection("art")).slice(0, 3);
   <section class="mx-auto max-w-4xl space-y-6 px-6 lg:max-w-6xl">
     <div class="flex items-end justify-between">
       <h2 class="font-display text-3xl">
-        Voces de la<br /><span class="text-vibrant-orange">Comunidad</span>
+        Voces de la<br /><span class="text-terracotta">Comunidad</span>
       </h2>
       <Link
         href="/posts"
         label="Ver todas"
         isUnderline
         target="_self"
-        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-terracotta-deep"
       />
     </div>
     {posts.length === 0 && <p>Pronto, mantente conectado 👀...</p>}
@@ -129,6 +136,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
                 description={post.data.description}
                 slug={post.slug}
                 image={post.data.image}
+                readingTime={readingTime(post.body)}
               />
             ))
       }
@@ -160,7 +168,7 @@ const artItems = (await getCollection("art")).slice(0, 3);
         label="Ver galería"
         isUnderline
         target="_self"
-        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-mustard"
+        class="border-b border-mustard pb-1 text-xs font-bold uppercase tracking-widest text-terracotta-deep"
       />
     </div>
     {

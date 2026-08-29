@@ -28,8 +28,6 @@ Elegimos el baobab porque es el árbol que en África guarda agua en su tronco p
 
 Baobá es nuestro salto metodológico más profundo. Si antes trabajábamos con la mujer como sujeto individual, ahora pasamos a proteger el ciclo vital completo del tejido afro: desde la gestación, pasando por la infancia, la maternidad, hasta llegar a la abuela y la bisabuela.
 
-*De atender mujeres adultas a proteger el ciclo completo: de la gestación a la bisabuela.*
-
 ### RAMA 1: Infancias diversas y vulnerables
 
 Esta rama responde a una ausencia histórica en el trabajo comunitario antirracista en Cuba: la intersección entre raza, infancia y discapacidad desde la dignidad.
@@ -49,6 +47,8 @@ Brinda acompañamiento a infancias que viven en contextos de precariedad social,
 Ambos talleres dialogan con nuestra iniciativa [Voces que Cuentan](/posts/convocatoria-activashe-2026), porque los cuentos que rescatan las mujeres mayores son los mismos que hoy les leemos a sus nietas.
 
 ![Nace de una demanda real: asistan a nuestros niños](/images/baoba202609_2.jpg)
+
+*Nace de una demanda real: "asistan a nuestros niños".*
 
 ### RAMA 2: Maternidad desde antes
 
@@ -71,6 +71,8 @@ Entendemos la maternidad no como destino biológico, sino como práctica comunit
 - **Enfoque interseccional:** Raza, género, clase, discapacidad y territorio se leen juntas.
 
 ![Nuestro salto metodológico más profundo: de la gestación a la bisabuela](/images/baoba202609_3.jpg)
+
+*De atender mujeres adultas a proteger el ciclo completo: de la gestación a la bisabuela.*
 
 ### Cuidar el ciclo es cuidar el futuro
 
