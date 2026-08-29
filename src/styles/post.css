@@ -1,51 +1,17 @@
-.post p {
-  @apply leading-7 text-chocolate/80 mb-4;
+/*
+ * Estilos de artículos (.post).
+ * La tipografía base (espaciado, colores, listas, citas, código, imágenes)
+ * la aporta @tailwindcss/typography, configurada con la paleta del sitio
+ * en tailwind.config.cjs (theme.extend.typography). Aquí solo van ajustes
+ * que el plugin no cubre.
+ */
+
+/* Enlaces de bloque tipo "call to action": **[texto](/ruta)** */
+.post p > strong:only-child > a {
+  @apply inline-flex items-center gap-2 rounded-xl bg-mustard px-6 py-3 font-bold text-chocolate no-underline shadow-md transition-all hover:bg-vibrant-orange hover:text-chocolate;
 }
 
-.post code {
-  @apply rounded-md bg-white/10 px-2 py-1 text-mustard font-mono text-sm;
-}
-
-.post h2 {
-  @apply mt-8 mb-4 text-3xl font-display text-chocolate;
-}
-
-.post h3 {
-  @apply mt-6 mb-3 text-xl font-display text-chocolate;
-}
-
-.post a {
-  @apply text-vibrant-orange underline hover:text-mustard transition-colors;
-}
-
-.post ul {
-  @apply list-disc ml-6 mb-4 space-y-2;
-}
-
-.post li {
-  @apply text-chocolate/80;
-}
-
-.post blockquote {
-  @apply flex flex-row gap-4 pl-4 py-4 my-6 border-l-4 border-mustard bg-white/5 rounded-r-xl before:content-[''];
-}
-
-.post blockquote p {
-  @apply text-chocolate/90 italic;
-}
-
-.post pre {
-  @apply p-4 rounded-xl bg-white/5 overflow-x-auto my-6;
-}
-
-.post pre > code {
-  @apply bg-transparent text-sm;
-}
-
-.post strong {
-  @apply text-chocolate font-bold;
-}
-
-.post em {
-  @apply text-chocolate/90 italic;
+/* Hashtags finales (párrafo que empieza por #) quedan más discretos */
+.post p:last-child:has(> a[href^="#"]) {
+  @apply text-sm text-chocolate/60;
 }
