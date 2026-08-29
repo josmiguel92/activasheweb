@@ -13,21 +13,22 @@ image: "/images/baoba202609_0.jpg"
 
 En Activa Ásè entendimos hace tiempo que la Incubadora de Ideas no podía ser solo un espacio de formación para mujeres adultas. Las comunidades afrocubanas que habitamos nos estaban pidiendo algo más profundo.
 
-![BAOBÁ: El Cuidado del Ciclo Completo de la Vida Afro](/images/baoba202609_1.jpg)
-
 Nació de una frase directa, dicha por una madre en el barrio: **"asistan a nuestros niños"**.
 
 Esa demanda territorial se convirtió en mandato. Y ese mandato hoy tiene nombre: **Baobá**.
 
-![Nace de una demanda real: asistan a nuestros niños](/images/baoba202609_2.jpg)
 
 ### ¿Por qué Baobá?
+
+![BAOBÁ: El Cuidado del Ciclo Completo de la Vida Afro](/images/baoba202609_1.jpg)
+
+*Baobá: el cuidado del ciclo completo de la vida afro.*
 
 Elegimos el baobab porque es el árbol que en África guarda agua en su tronco para los tiempos secos, el árbol bajo el cual se cuentan historias, se hacen asambleas y se cuida a la infancia. Es archivo, es refugio, es madre.
 
 Baobá es nuestro salto metodológico más profundo. Si antes trabajábamos con la mujer como sujeto individual, ahora pasamos a proteger el ciclo vital completo del tejido afro: desde la gestación, pasando por la infancia, la maternidad, hasta llegar a la abuela y la bisabuela.
 
-![Nuestro salto metodológico más profundo: de la gestación a la bisabuela](/images/baoba202609_3.jpg)
+*De atender mujeres adultas a proteger el ciclo completo: de la gestación a la bisabuela.*
 
 ### RAMA 1: Infancias diversas y vulnerables
 
@@ -46,6 +47,8 @@ Es un espacio político y afectivo: afirmar que todas las infancias negras son b
 Brinda acompañamiento a infancias que viven en contextos de precariedad social, económica y habitacional. No se trata de "reforzar la escuela", sino de crear un espacio donde aprender no sea sinónimo de violencia. Pintamos, cantamos, contamos cuentos negros donde ellas y ellos son protagonistas.
 
 Ambos talleres dialogan con nuestra iniciativa [Voces que Cuentan](/posts/convocatoria-activashe-2026), porque los cuentos que rescatan las mujeres mayores son los mismos que hoy les leemos a sus nietas.
+
+![Nace de una demanda real: asistan a nuestros niños](/images/baoba202609_2.jpg)
 
 ### RAMA 2: Maternidad desde antes
 
@@ -66,6 +69,8 @@ Entendemos la maternidad no como destino biológico, sino como práctica comunit
 - **Matriz artística afro:** El cuerpo, el tambor, el color y el cuento como lenguajes de sanación y expresión.
 - **Acompañamiento holístico:** No damos charlas, acompañamos procesos.
 - **Enfoque interseccional:** Raza, género, clase, discapacidad y territorio se leen juntas.
+
+![Nuestro salto metodológico más profundo: de la gestación a la bisabuela](/images/baoba202609_3.jpg)
 
 ### Cuidar el ciclo es cuidar el futuro
 
