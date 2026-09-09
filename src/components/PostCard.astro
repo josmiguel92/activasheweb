@@ -9,10 +9,25 @@ type Props = {
   slug: string;
   image?: string;
   readingTime?: number;
+  /**
+   * Nivel del titular de la tarjeta. En un listado, donde el h1 es el título
+   * de la página, corresponde h2; dentro de una sección con su propio h2,
+   * corresponde h3. Sin esto el índice de la página salta de nivel.
+   */
+  headingLevel?: 2 | 3;
 };
 
-const { title, publishedAt, description, slug, image, readingTime } =
-  Astro.props;
+const {
+  title,
+  publishedAt,
+  description,
+  slug,
+  image,
+  readingTime,
+  headingLevel = 3,
+} = Astro.props;
+
+const Titular = `h${headingLevel}` as "h2" | "h3";
 ---
 
 <article
@@ -43,11 +58,11 @@ const { title, publishedAt, description, slug, image, readingTime } =
         {readingTime && <span>{readingTime} min de lectura</span>}
       </span>
     </div>
-    <h3 class="mb-3 text-xl leading-snug text-terracotta">
+    <Titular class="mb-3 text-xl leading-snug text-terracotta">
       <a href={`/posts/${slug}`} class="hover:underline">
         {title}
       </a>
-    </h3>
+    </Titular>
     <p class="mb-6 line-clamp-3 text-sm leading-relaxed text-chocolate/80">{description}</p>
     <a
       class="flex items-center gap-2 text-sm font-bold text-terracotta-deep transition-all hover:gap-3 hover:text-terracotta motion-reduce:transition-none"

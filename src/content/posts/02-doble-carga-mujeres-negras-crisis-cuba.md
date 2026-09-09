@@ -14,7 +14,7 @@ En medio de una de las peores crisis económicas de su historia, que ha sumido a
 
 ***
 
-### Una Crisis con Rostro de Mujer
+## Una Crisis con Rostro de Mujer
 
 La crisis económica en Cuba, agudizada por la pandemia, la disminución del turismo y políticas económicas internas fallidas, ha generado una escasez generalizada de alimentos, medicinas y productos básicos. Sin embargo, el impacto de esta crisis no es uniforme. Las mujeres, tradicionalmente encargadas del cuidado del hogar y la alimentación familiar, soportan una carga desproporcionada. Esta situación se agrava aún más para las mujeres negras, quienes se encuentran en la intersección de la discriminación de género y racial.
 
@@ -25,7 +25,7 @@ Estudios y reportes de diversas organizaciones de derechos humanos señalan que 
 
 ***
 
-### Inseguridad Alimentaria: El Pan de Cada Día
+## Inseguridad Alimentaria: El Pan de Cada Día
 
 La inseguridad alimentaria se ha vuelto una constante. Para las mujeres negras, que a menudo son jefas de hogar con bajos niveles de escolaridad y empleos informales o de baja remuneración, garantizar la alimentación familiar supone un sacrificio personal extremo.
 
@@ -33,7 +33,7 @@ La inseguridad alimentaria se ha vuelto una constante. Para las mujeres negras, 
 
 Con salarios mínimos que no cubren ni una fracción de la canasta básica, y un acceso limitado a las divisas y a las remesas, las mujeres afrocubanas se ven forzadas a recurrir a un mercado informal con precios exorbitantes.
 
-### Racismo Estructural y Falta de Oportunidades
+## Racismo Estructural y Falta de Oportunidades
 
 El legado histórico del racismo estructural continúa perpetuando la desigualdad en Cuba. A pesar de las narrativas oficiales de igualdad, la población negra enfrenta discriminación en el ámbito laboral y tiene una representación muy baja en el emergente sector privado.
 

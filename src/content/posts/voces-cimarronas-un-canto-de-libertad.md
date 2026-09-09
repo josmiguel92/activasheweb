@@ -10,9 +10,9 @@ image: /images/fragmentada.afrik3reina.jpg
 
  Presentamos una muestra de arte visual que rinde homenaje a 12 mujeres negras cubanas que han sido voces referentes en la lucha por la justicia y la igualdad en los últimos años. A través de fotografías, pinturas, arte menstrual y arte digital, exploramos la fuerza y la resiliencia de estas mujeres que han desafiado la opresión y el silencio.
 
-##### **Manifiesto:**
+### **Manifiesto:**
 
-> ##### *Somos las voces que se niegan al silencio. Somos raíces que se entrelazan en la tierra y en la memoria. Desde la negritud, el feminismo y la espiritualidad, alzamos el canto por la libertad, la justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color, es un acto de amor, de resistencia y de sanación. Porque nuestro arte es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento*.
+> *Somos las voces que se niegan al silencio. Somos raíces que se entrelazan en la tierra y en la memoria. Desde la negritud, el feminismo y la espiritualidad, alzamos el canto por la libertad, la justicia y el bienestar de todxs. Cada trazo, cada gesto, cada color, es un acto de amor, de resistencia y de sanación. Porque nuestro arte es tambor, es rezo, es comunidad. Porque ser cimarrona es vivir sin cadenas. Es crear desde el fuego que arrasa para un nuevo nacimiento*.
 
 La muestra homenajea la lucha, la resistencia y obra de artistas y activistas tales como: [Yunaikys Linares  ](https://youtu.be/GnkM6DXXN-Y?si=7Ee94LpBWtJUCYr5)quien cumplio condena por manifestarse pacíficamente el 11 de julio de 2021 en la Habana, así mismo su madre, [Niurka Rodríguez](https://youtu.be/GnkM6DXXN-Y?si=YD1NDhw-Zt_8Yqhb&t=53) quien se convirtió en voz representativa de las cientos de madres que desde esa fecha aclaman la libertar de los centenares de jóvenes que el gobierno mantiene presos injustamente por participar en dichas protestas. 
 

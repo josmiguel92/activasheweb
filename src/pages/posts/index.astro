@@ -28,6 +28,7 @@ const posts = publicadas(await getCollection("posts"));
       {
         posts.map((post) => (
           <PostCard
+            headingLevel={2}
             publishedAt={post.data.publishedAt}
             title={post.data.title}
             description={post.data.description}

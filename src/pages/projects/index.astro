@@ -41,6 +41,7 @@ const makePreview = (text = "", maxWords = 30) => {
           const preview = makePreview(raw, 30);
           return (
             <ProjectCard
+              headingLevel={2}
               title={project.data.title}
               areas={project.data.areas}
               link={`/projects/${project.slug}`}

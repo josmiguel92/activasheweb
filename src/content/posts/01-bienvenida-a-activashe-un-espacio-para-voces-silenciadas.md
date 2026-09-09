@@ -17,7 +17,7 @@ Nosotras hemos llegado para llenar uno de esos vacíos.
 
 ***
 
-### ¿Por qué ActivaShe?
+## ¿Por qué ActivaShe?
 
 Porque creemos en el poder de nombrar la injusticia. Porque entendemos que detrás de cada estadística hay un rostro, una familia, una comunidad que sufre en silencio. ActivaShe nace de la convicción de que visibilizar es el primer paso para transformar.
 
@@ -27,7 +27,7 @@ Nuestro enfoque es claro: queremos poner la lupa sobre la intersección de las o
 
 Iniciamos nuestro camino centrando la atención en la **situación de las mujeres afrocubanas**, un colectivo doblemente afectado por la crisis sistémica y el racismo estructural. Su lucha diaria por la seguridad alimentaria y la dignidad es el tipo de historia que nos mueve y que encontrarás en este espacio.
 
-### Un Proyecto Abierto
+## Un Proyecto Abierto
 
 Este no es solo un blog o una página web. Es una plataforma de denuncia, un archivo de la memoria y un punto de encuentro para quienes se niegan a mirar hacia otro lado.
 

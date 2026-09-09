@@ -50,7 +50,7 @@ const toAbsoluteUrl = (maybeUrl?: string) => {
 // las que alguien busca esto, y el par anterior no las contenía.
 const DEFAULT_TITLE_PAGE = "ActivaShe | Mujeres negras y afrodescendientes en Cuba";
 const DEFAULT_DESCRIPTION_PAGE =
-  "Organización afrocubana que visibiliza y acompaña a mujeres negras, infancias y familias en Cuba: investigación, arte, incidencia y apoyo directo.";
+  "Organización afrocubana que visibiliza y acompaña a mujeres negras, infancias y familias en Cuba. Conoce nuestros proyectos, la galería y cómo colaborar.";
 const DEFAULT_IMAGE_PATH = "/opengraph-image.jpg";
 const DEFAULT_IMAGE_ALT = "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'";
 const DEFAULT_SITE_NAME = "ActivaShe";
@@ -203,6 +203,8 @@ if (type === "article") {
   extend={{
     link: [
       { rel: "icon", href: "/favicon.png" },
+      // Icono al añadir la web a la pantalla de inicio en iOS.
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "sitemap", href: "/sitemap-index.xml" },
       {
         rel: "alternate",
