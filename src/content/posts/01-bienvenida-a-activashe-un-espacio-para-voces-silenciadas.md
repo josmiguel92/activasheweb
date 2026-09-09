@@ -6,7 +6,7 @@ description: Nacemos para dar voz a las historias que no se cuentan. Presentamos
 publishedAt: 2025-09-08
 slug: bienvenida-a-activashe-un-espacio-para-voces-silenciadas
 isPublish: true
-image: favicon.png
+image: "/favicon.png"
 ---
 
 Hoy nace la web de ActivaShe. Y con este nacimiento, creamos un espacio que hacía falta: un altavoz para las realidades que a menudo se ignoran, se minimizan o, directamente, se silencian.

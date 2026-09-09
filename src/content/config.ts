@@ -31,6 +31,33 @@ const fechaTolerante = z.preprocess((valor) => {
 }, z.date().optional());
 
 /**
+ * Ruta de imagen tolerante.
+ *
+ * El panel guarda siempre rutas absolutas (`/images/foto.jpg`). Si un fichero
+ * editado a mano trae `foto.jpg`, el navegador la resuelve contra la página
+ * que la muestra —`/posts/mi-articulo/foto.jpg`— y la imagen sale rota tanto
+ * en el sitio como en el editor del CMS, que la busca dentro de `/admin/`.
+ * Aquí se le añade la barra inicial y se avisa. Las direcciones completas se
+ * dejan como están.
+ */
+function normalizarRuta(valor: unknown) {
+  if (typeof valor !== "string") return valor;
+  const ruta = valor.trim();
+  if (ruta === "") return undefined;
+  if (/^(https?:)?\/\//.test(ruta) || ruta.startsWith("/") || ruta.startsWith("data:")) {
+    return ruta;
+  }
+  console.warn(
+    `[contenido] Ruta de imagen relativa: "${ruta}". Se corrige a "/${ruta}", ` +
+      "pero conviene arreglarla en el fichero: las rutas empiezan por «/».",
+  );
+  return `/${ruta}`;
+}
+
+const imagen = z.preprocess(normalizarRuta, z.string());
+const imagenOpcional = z.preprocess(normalizarRuta, z.string().optional());
+
+/**
  * Casillas de publicación, comunes a las cuatro colecciones.
  * `isPublish: false` retira el contenido del sitio sin borrarlo;
  * `isDraft: true` lo deja a medias sin que aparezca.
@@ -48,7 +75,7 @@ const postsCollection = defineCollection({
     publishedAt: fechaTolerante,
     description: z.string(),
     ...publicacion,
-    image: z.string().optional(),
+    image: imagenOpcional,
   }),
 });
 
@@ -63,7 +90,7 @@ const projectsCollection = defineCollection({
     isComingSoon: z.boolean().optional(),
     // Añade al final de la página del proyecto la llamada a colaborar.
     showDonate: z.boolean().default(false),
-    image: z.string().optional(),
+    image: imagenOpcional,
   }),
 });
 
@@ -72,7 +99,7 @@ const artCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     artist: z.string(),
-    image: z.string(),
+    image: imagen,
     description: z.string().optional(),
     category: z.enum([
       "pintura",
@@ -102,7 +129,7 @@ const videoCollection = defineCollection({
       "video arte",
     ]),
     duration: z.string(),
-    thumbnail: z.string().optional(),
+    thumbnail: imagenOpcional,
     publishedAt: fechaTolerante,
     ...publicacion,
   }),
