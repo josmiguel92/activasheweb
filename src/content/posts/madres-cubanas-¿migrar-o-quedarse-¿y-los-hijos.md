@@ -7,14 +7,14 @@ description: "#En Cuba, restricciones legales y lentos procesos judiciales
   separadas."
 publishedAt: 2026-01-29T17:38:39.923Z
 image: /images/screenshot-2026-01-29-12.56.15.png
-isPublish: true
+isPublish: false
 isDraft: false
 ---
-En Cuba, restricciones legales y lentos procesos judiciales dificultan que madres emigren con sus hijxs, especialmente sin la firma del padre. Esto agrava la crisis migratoria, dejando a miles de familias separadas.*.*
+En Cuba, restricciones legales y lentos procesos judiciales dificultan que madres emigren con sus hijxs, especialmente sin la firma del padre. Esto agrava la crisis migratoria, dejando a miles de familias separadas.*..*
 
-##### *(Este trabajo fue realizado con el apoyo del Fondo de Periodismo de Casa Palanca para la realización de reportajes)*
+*(Este trabajo fue realizado con el apoyo del Fondo de Periodismo de Casa Palanca para la realización de reportajes)*
 
-[Afrik3Reina](https://alastensas.com/autores/afrik3reina/) 
+Por: [Afrik3Reina](https://alastensas.com/autores/afrik3reina/) 
 
 22/04/2025
 
