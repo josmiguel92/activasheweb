@@ -12,7 +12,7 @@ isDraft: false
 ---
 En Cuba, restricciones legales y lentos procesos judiciales dificultan que madres emigren con sus hijxs, especialmente sin la firma del padre. Esto agrava la crisis migratoria, dejando a miles de familias separadas.*.*
 
-*(Este trabajo fue realizado con el apoyo del Fondo de Periodismo de Casa Palanca para la realización de reportajes)*
+##### *(Este trabajo fue realizado con el apoyo del Fondo de Periodismo de Casa Palanca para la realización de reportajes)*
 
 [Afrik3Reina](https://alastensas.com/autores/afrik3reina/) 
 
