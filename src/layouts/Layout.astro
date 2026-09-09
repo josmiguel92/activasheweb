@@ -5,6 +5,7 @@ import ScrollToTop from "@/components/ScrollToTop.astro";
 import BlurCircle from "@/components/shared/BlurCircle.astro";
 import theme from "@/data/theme";
 import SEOTags from "@/components/seo/SEOTags.astro";
+import { URL_ICONOS } from "@/data/iconos";
 
 import "@/styles/tailwind.css";
 import "@/styles/post.css";
@@ -58,22 +59,18 @@ const {
       rel="stylesheet"
     />
     {/*
-      Los iconos no forman parte del texto que se lee: se cargan sin bloquear
-      el pintado de la página. Con el enlace normal, el navegador esperaba a
-      esta hoja de Google antes de enseñar nada, y eso penaliza la métrica de
-      carga que Google usa como factor de posicionamiento.
+      Iconos: solo los que usa el sitio (ver src/data/iconos.ts). Se cargan
+      sin bloquear el pintado de la página, y el hueco de cada icono está
+      reservado por CSS, así que aparecer no mueve nada de sitio.
     */}
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      href={URL_ICONOS}
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet"
-      />
+      <link href={URL_ICONOS} rel="stylesheet" />
     </noscript>
 
     <!-- Google tag (gtag.js) -->

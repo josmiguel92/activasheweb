@@ -13,7 +13,7 @@
 
 /* Hashtags finales (párrafo que empieza por #) quedan más discretos */
 .post p:last-child:has(> a[href^="#"]) {
-  @apply text-sm text-chocolate/60;
+  @apply text-sm text-chocolate/70;
 }
 
 /* Pie de foto: un párrafo en cursiva justo debajo de una imagen

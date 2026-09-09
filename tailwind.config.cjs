@@ -19,8 +19,14 @@ module.exports = {
         'warm-cream': '#FDF8F3',
         accent: 'rgb(249 115 22 / var(--tw-bg-opacity))',
         'accent-600': '#ff6a3f',
-        // Terracota oscurecido: 5.6:1 sobre warm-cream (AA para texto normal)
-        'terracotta-deep': '#A8462C'
+        // Versiones oscurecidas para usar sobre warm-cream. El mismo tono, con
+        // el contraste que pide la norma: 4,5:1 para texto y 3:1 para iconos.
+        // Terracota: 5,6:1 (AA para texto normal)
+        'terracotta-deep': '#A8462C',
+        // Mostaza: 3,3:1. La original queda en 1,9:1 sobre crema.
+        'mustard-deep': '#B87D00',
+        // Naranja: 3,8:1. La original queda en 2,6:1 sobre crema.
+        'orange-deep': '#E54500'
       },
       typography: ({ theme }) => ({
         DEFAULT: {

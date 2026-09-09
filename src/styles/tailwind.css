@@ -20,6 +20,25 @@
     @apply ring-offset-chocolate;
   }
 
+  /*
+   * Hueco reservado para los iconos.
+   *
+   * La hoja de iconos de Google llega después del primer pintado. Hasta
+   * entonces el navegador coloca el nombre del icono («restaurant») con la
+   * tipografía normal, que ocupa mucho más que el dibujo; al llegar la fuente
+   * el ancho cambia y la página entera se mueve. Fijar la caja en 1em × 1em
+   * desde el primer momento deja el sitio hecho y nada se desplaza.
+   *
+   * Esta regla va aquí, en la hoja del sitio, y no en la de Google: tiene que
+   * estar aplicada antes de que aquella se descargue.
+   */
+  .material-symbols-outlined {
+    display: inline-block;
+    width: 1em;
+    line-height: 1;
+    font-feature-settings: "liga";
+  }
+
   /* Respetar la preferencia de movimiento reducido (WCAG 2.3.3) */
   @media (prefers-reduced-motion: reduce) {
     *,

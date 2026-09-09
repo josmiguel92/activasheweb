@@ -360,12 +360,26 @@ collections:
                 label_singular: Tarjeta
                 summary: "{{fields.text}}"
                 fields:
-                  - {
-                      name: icon,
-                      label: Icono,
-                      widget: string,
-                      hint: "Nombre del icono en Material Symbols, por ejemplo handshake, school, palette o stars. Catálogo en fonts.google.com/icons.",
-                    }
+                  # La lista sale de src/data/iconos.ts, que es la misma con
+                  # la que se pide a Google el subconjunto de la fuente. Para
+                  # ofrecer un icono nuevo hay que añadirlo en los dos sitios.
+                  - name: icon
+                    label: Icono
+                    widget: select
+                    options:
+                      - handshake
+                      - school
+                      - palette
+                      - stars
+                      - balance
+                      - restaurant
+                      - brush
+                      - movie
+                      - mail
+                      - home
+                      - link
+                    hint: "Dibujo que acompaña a la tarjeta. Si hace falta otro, pídelo: hay que añadirlo al sitio primero."
+
                   - { name: text, label: Texto, widget: text }
           - name: closing
             label: Párrafos de cierre
