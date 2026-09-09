@@ -1,7 +1,5 @@
 ---
 title: Yoleisy Oviedo
-artist: ...
-description: "*"
 image: /images/7_20251205_152424_0006.jpg
 category: digital
 year: 2026

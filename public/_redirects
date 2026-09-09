@@ -1,0 +1,12 @@
+# Redirecciones permanentes de Netlify.
+# Direcciones antiguas de la galería: llevaban acentos (que el navegador
+# convierte en %C3%A1 al compartirlas) o no se correspondían con el título de
+# la obra. Se mantienen para no perder los enlaces ya compartidos ni lo que
+# Google tenga indexado.
+
+/gallery/mam%C3%A1-georgina        /gallery/mama-georgina                 301
+/gallery/mamá-georgina             /gallery/mama-georgina                 301
+/gallery/donaida-p%C3%A9rez-paseiro /gallery/donaida-perez-paseiro-2024   301
+/gallery/donaida-pérez-paseiro     /gallery/donaida-perez-paseiro-2024    301
+/gallery/afi-y-el-sol              /gallery/afi-mar                       301
+/gallery/tamir-garcia-1            /gallery/tamir-garcia-pintura          301

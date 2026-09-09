@@ -1,7 +1,5 @@
 ---
 title: Niurka Rodriguez
-artist: ...
-description: "*"
 image: /images/taimir-garcia-banner-para-youtube-_20251205_132414_0000.jpg
 category: digital
 year: 2024

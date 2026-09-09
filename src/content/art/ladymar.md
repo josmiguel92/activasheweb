@@ -1,6 +1,5 @@
 ---
 title: LadyMar
-artist: ...
 description: (acrílico sobre cartulina)
 image: /images/5_20251205_152424_0004.jpg
 category: pintura

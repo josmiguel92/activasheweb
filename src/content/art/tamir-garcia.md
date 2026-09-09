@@ -1,7 +1,5 @@
 ---
 title: Tamir Garcia
-artist: ...
-description: "*"
 image: /images/img-20251205-wa0009.jpg
 category: digital
 year: 2026

@@ -1,6 +1,5 @@
 ---
 title: Myrna Dickson
-artist: ...
 description: (a partir de imagen publicada en redes sociales)
 image: /images/md.jpg
 category: fotografía

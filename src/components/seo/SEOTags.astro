@@ -3,6 +3,7 @@ import { SEO } from "astro-seo";
 import { SITE_URL } from "@/data/config";
 import presentation from "@/data/presentation";
 import imageSize from "@/utils/imageSize";
+import resumen from "@/utils/resumen";
 
 type Props = {
   title?: string;
@@ -44,9 +45,12 @@ const toAbsoluteUrl = (maybeUrl?: string) => {
   return `${SITE_URL}${leadingSlash}${maybeUrl}`;
 };
 
-const DEFAULT_TITLE_PAGE = "ActivaShe | Visibilidad y Apoyo Afrodescendiente";
+// Título y descripción de la portada, y respaldo del resto de páginas.
+// Nombran a Cuba y a las mujeres negras a propósito: son las palabras con
+// las que alguien busca esto, y el par anterior no las contenía.
+const DEFAULT_TITLE_PAGE = "ActivaShe | Mujeres negras y afrodescendientes en Cuba";
 const DEFAULT_DESCRIPTION_PAGE =
-  "ActivaShe: Visibilidad y apoyo a mujeres afrodescendientes en vulnerabilidad, promoviendo equidad y derechos humanos.";
+  "Organización afrocubana que visibiliza y acompaña a mujeres negras, infancias y familias en Cuba: investigación, arte, incidencia y apoyo directo.";
 const DEFAULT_IMAGE_PATH = "/opengraph-image.jpg";
 const DEFAULT_IMAGE_ALT = "Logo de ActivaShe con el eslogan 'Visibilidad y Equidad'";
 const DEFAULT_SITE_NAME = "ActivaShe";
@@ -60,8 +64,40 @@ const DEFAULT_KEYWORDS = [
   "comunidad",
 ];
 
-const pageTitle = title || DEFAULT_TITLE_PAGE;
-const pageDescription = description || DEFAULT_DESCRIPTION_PAGE;
+const SUFIJO_TITULO = ` | ${DEFAULT_SITE_NAME}`;
+// Google recorta el título alrededor de los 60 caracteres.
+const LARGO_MAXIMO_TITULO = 60;
+// Y la descripción alrededor de los 155.
+const LARGO_MAXIMO_DESCRIPCION = 155;
+
+/**
+ * Añade « | ActivaShe » al título solo si cabe. Un título largo pierde el
+ * final en los resultados de búsqueda, y ahí vale más la frase propia de la
+ * página que repetir la marca. Si el título ya nombra a ActivaShe, no se
+ * repite.
+ */
+function componerTitulo(titulo?: string) {
+  const limpio = (titulo ?? "").trim();
+  if (!limpio) return DEFAULT_TITLE_PAGE;
+  if (limpio.toLowerCase().includes(DEFAULT_SITE_NAME.toLowerCase())) return limpio;
+  return limpio.length + SUFIJO_TITULO.length <= LARGO_MAXIMO_TITULO
+    ? limpio + SUFIJO_TITULO
+    : limpio;
+}
+
+/** Handle de una red social a partir de su dirección, para twitter:site. */
+function handleDe(dominio: string) {
+  const enlace = presentation.socials?.find((s) => s.link.includes(dominio))?.link;
+  const usuario = enlace?.replace(/\/+$/, "").split("/").pop();
+  return usuario ? `@${usuario}` : undefined;
+}
+
+const pageTitle = componerTitulo(title);
+const pageDescription = resumen(
+  description || DEFAULT_DESCRIPTION_PAGE,
+  LARGO_MAXIMO_DESCRIPCION,
+);
+const twitterHandle = handleDe("twitter.com") ?? handleDe("x.com");
 const imagePath = image || DEFAULT_IMAGE_PATH;
 const imageUrl = toAbsoluteUrl(imagePath)!;
 const size = imageSize(imagePath);
@@ -71,12 +107,32 @@ const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 const jsonLd: Record<string, unknown>[] = [
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    // NGO es el tipo concreto para una organización sin ánimo de lucro:
+    // le dice a Google qué clase de entidad es, no solo que existe.
+    "@type": "NGO",
+    "@id": `${SITE_URL}/#organizacion`,
+    name: DEFAULT_SITE_NAME,
+    alternateName: "Activ@ Àşé",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
+    },
+    image: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
+    description: DEFAULT_DESCRIPTION_PAGE,
+    email: presentation.mail,
+    knowsLanguage: "es",
+    areaServed: { "@type": "Country", name: "Cuba" },
+    sameAs: presentation.socials?.map((s) => s.link).filter(Boolean) || [],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#sitio`,
     name: DEFAULT_SITE_NAME,
     url: SITE_URL,
-    logo: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
-    description: DEFAULT_DESCRIPTION_PAGE,
-    sameAs: presentation.socials?.map((s) => s.link).filter(Boolean) || [],
+    inLanguage: "es",
+    publisher: { "@id": `${SITE_URL}/#organizacion` },
   },
 ];
 
@@ -91,11 +147,7 @@ if (type === "article") {
     datePublished: publishedAt?.toISOString(),
     dateModified: (modifiedAt ?? publishedAt)?.toISOString(),
     author: { "@type": "Organization", name: author || DEFAULT_AUTHOR },
-    publisher: {
-      "@type": "Organization",
-      name: DEFAULT_SITE_NAME,
-      logo: { "@type": "ImageObject", url: toAbsoluteUrl(DEFAULT_IMAGE_PATH) },
-    },
+    publisher: { "@id": `${SITE_URL}/#organizacion` },
     articleSection: section,
     keywords: tags?.join(", "),
     inLanguage: "es",
@@ -141,8 +193,8 @@ if (type === "article") {
   }}
   twitter={{
     card: "summary_large_image",
-    site: "@activashecuba",
-    creator: "@activashecuba",
+    site: twitterHandle,
+    creator: twitterHandle,
     title: pageTitle,
     description: pageDescription,
     image: imageUrl,
@@ -152,12 +204,31 @@ if (type === "article") {
     link: [
       { rel: "icon", href: "/favicon.png" },
       { rel: "sitemap", href: "/sitemap-index.xml" },
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        title: `Publicaciones de ${DEFAULT_SITE_NAME}`,
+        href: `${SITE_URL}/rss.xml`,
+      },
     ],
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#2D1B14" },
       { name: "generator", content: Astro.generator },
       { name: "author", content: author || DEFAULT_AUTHOR },
+      // astro-seo ya emite <meta name="robots">. Estas directivas van en la
+      // etiqueta específica de Google para no duplicar la anterior: autorizan
+      // a enseñar la imagen grande y el fragmento entero. Sin ellas, las
+      // fichas de resultados y de Discover salen recortadas.
+      ...(noindex
+        ? []
+        : [
+            {
+              name: "googlebot",
+              content:
+                "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            },
+          ]),
       { name: "keywords", content: (keywords.length ? keywords : DEFAULT_KEYWORDS).join(", ") },
     ],
   }}

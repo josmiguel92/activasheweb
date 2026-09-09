@@ -1,4 +1,6 @@
 ---
+import { SITE_URL } from "@/data/config";
+
 interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -17,8 +19,27 @@ const {
   mutedColor = "text-white/60",
   separatorColor = "text-white/30",
 } = Astro.props;
+
+// La misma ruta de migas, en el formato que leen los buscadores: es lo que
+// hace que en los resultados salga «activashecuba.org › Publicaciones › …»
+// en lugar de la dirección cruda.
+const migas = [{ label: "Inicio", href: "/" }, ...items];
+const listaDeMigas = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: migas.map((miga, indice) => ({
+    "@type": "ListItem",
+    position: indice + 1,
+    name: miga.label,
+    ...(miga.href ? { item: new URL(miga.href, SITE_URL).href } : {}),
+  })),
+};
 ---
 
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(listaDeMigas)}
+/>
 <nav aria-label="Breadcrumb" class="mb-8">
   <ol class:list={["flex items-center gap-2 text-sm", mutedColor]}>
     <li>

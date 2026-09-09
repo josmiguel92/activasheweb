@@ -1,6 +1,5 @@
 ---
 title: Afi y el Sol
-artist: ...
 description: (a partir de imagen publicada en redes sociales)
 image: /images/afi.jpg
 category: fotografía

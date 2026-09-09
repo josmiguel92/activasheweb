@@ -1,6 +1,5 @@
 ---
 title: Mamá Georgina
-artist: ...
 description: (a partir de imagen publicada en redes sociales)
 image: /images/goga-1-.jpg
 category: fotografía

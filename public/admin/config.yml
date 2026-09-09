@@ -249,14 +249,15 @@ collections:
     format: frontmatter
     identifier_field: title
     preview_path: "gallery/{{slug}}"
-    summary: "{{title}} — {{artist}}"
+    summary: "{{title}}"
     sortable_fields: [title, artist, year]
     fields:
       - { name: title, label: Título de la obra, widget: string }
       - name: artist
-        label: Artista
+        label: Autoría
         widget: string
-        hint: "Nombre de quien la creó. Si no se conoce, escribe «Autoría no identificada»."
+        required: false
+        hint: "Quién creó la obra. Déjalo vacío si no se conoce: la ficha no lo muestra en ese caso."
       - name: description
         label: Descripción
         widget: text
@@ -311,8 +312,9 @@ collections:
         fields:
           - {
               name: title,
-              label: Título de la pestaña del navegador,
+              label: Título para buscadores,
               widget: string,
+              hint: "Aparece en la pestaña del navegador y como titular en Google. Si es corto se le añade « | ActivaShe » automáticamente.",
             }
           - {
               name: seoDescription,
@@ -378,8 +380,9 @@ collections:
         fields:
           - {
               name: title,
-              label: Título de la pestaña del navegador,
+              label: Título para buscadores,
               widget: string,
+              hint: "Aparece en la pestaña del navegador y como titular en Google. Si es corto se le añade « | ActivaShe » automáticamente.",
             }
           - { name: seoDescription, label: Descripción para buscadores, widget: text }
           - { name: heading, label: Titular, widget: string }
@@ -422,8 +425,9 @@ collections:
         fields:
           - {
               name: title,
-              label: Título de la pestaña del navegador,
+              label: Título para buscadores,
               widget: string,
+              hint: "Aparece en la pestaña del navegador y como titular en Google. Si es corto se le añade « | ActivaShe » automáticamente.",
             }
           - { name: seoDescription, label: Descripción para buscadores, widget: text }
           - { name: heading, label: Titular, widget: string }

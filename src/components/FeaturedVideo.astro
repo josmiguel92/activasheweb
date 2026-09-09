@@ -1,4 +1,5 @@
 ---
+import { fechaISO } from "@/utils/formatDate";
 
 interface Props {
   featuredVideo: any;
@@ -10,7 +11,35 @@ const embedUrl = `https://www.youtube.com/embed/${featuredVideo.data.youtubeId}?
 const playerId = `featured-video-${
   featuredVideo.id ?? featuredVideo.slug ?? featuredVideo.data.youtubeId
 }`;
+
+/** «1:05» y «1:02:30» en la notación ISO 8601 que espera schema.org. */
+function duracionISO(duracion?: string) {
+  if (!duracion) return undefined;
+  const partes = duracion.split(":").map(Number);
+  if (partes.some(Number.isNaN)) return undefined;
+  const [horas, minutos, segundos] =
+    partes.length === 3 ? partes : [0, partes[0] ?? 0, partes[1] ?? 0];
+  return `PT${horas ? `${horas}H` : ""}${minutos ? `${minutos}M` : ""}${segundos}S`;
+}
+
+// Ficha del vídeo para los buscadores. Google puede enseñar la miniatura y un
+// enlace al vídeo en los resultados cuando el vídeo está incrustado en la
+// página, como aquí.
+const fichaDelVideo = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: featuredVideo.data.title,
+  description: featuredVideo.data.description || featuredVideo.data.title,
+  thumbnailUrl: [backgroundImage],
+  uploadDate: fechaISO(featuredVideo.data.publishedAt),
+  duration: duracionISO(featuredVideo.data.duration),
+  embedUrl: `https://www.youtube.com/embed/${featuredVideo.data.youtubeId}`,
+  contentUrl: `https://www.youtube.com/watch?v=${featuredVideo.data.youtubeId}`,
+  inLanguage: "es",
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(fichaDelVideo)} />
 
 <div class="mb-6">
   <p class="mb-2 text-sm font-bold uppercase tracking-widest text-terracotta">

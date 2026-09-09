@@ -1,7 +1,5 @@
 ---
 title: Sulmira M.
-artist: ...
-description: "*"
 image: /images/img-20251205-wa0007-1-.jpg
 category: digital
 year: 2024

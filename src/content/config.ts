@@ -98,7 +98,9 @@ const artCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    artist: z.string(),
+    // Autoría de la obra. Muchas de las piezas de la galería llegaron sin
+    // crédito, así que no se exige.
+    artist: z.string().optional(),
     image: imagen,
     description: z.string().optional(),
     category: z.enum([

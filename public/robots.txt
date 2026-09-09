@@ -1,0 +1,8 @@
+# https://activashecuba.org
+# Todo el sitio es público y se puede indexar, salvo el panel de edición.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://activashecuba.org/sitemap-index.xml

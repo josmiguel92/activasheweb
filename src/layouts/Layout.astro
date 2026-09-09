@@ -57,10 +57,24 @@ const {
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    {/*
+      Los iconos no forman parte del texto que se lee: se cargan sin bloquear
+      el pintado de la página. Con el enlace normal, el navegador esperaba a
+      esta hoja de Google antes de enseñar nada, y eso penaliza la métrica de
+      carga que Google usa como factor de posicionamiento.
+    */}
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B1E6QKQQC"

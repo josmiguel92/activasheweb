@@ -1,6 +1,5 @@
 ---
 title: Donaida Pérez Paseiro
-artist: ...
 description: (acrílico sobre cartulina)
 image: /images/2_20251205_152422_0001.jpg
 category: pintura

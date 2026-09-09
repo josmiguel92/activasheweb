@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
 import { esVisible } from "@/utils/contenido";
+import { descripcionSeo } from "@/utils/resumen";
 
 export async function getStaticPaths() {
   const artworks = (await getCollection("art")).filter(esVisible);
@@ -19,20 +20,30 @@ type Props = {
 
 const { art } = Astro.props;
 const { Content } = await art.render();
+
+// Varias obras comparten el nombre de la persona retratada. Añadir técnica y
+// año distingue los títulos en los resultados de búsqueda, que si no salen
+// repetidos y compiten entre ellos.
+const detalle = [art.data.category, art.data.year].filter(Boolean).join(" ");
+const tituloSeo = detalle ? `${art.data.title} · ${detalle}` : art.data.title;
+const textoAlternativo = [
+  art.data.title,
+  art.data.artist ? `obra de ${art.data.artist}` : null,
+  `${art.data.category} de la galería de ActivaShe`,
+]
+  .filter(Boolean)
+  .join(", ");
 ---
 
 <Layout
-  title={`${art.data.title} | Galería ActivaShe`}
-  description={
-    art.data.description ||
-    `${art.data.title}, obra de ${art.data.artist} en la galería de ActivaShe.`
-  }
+  title={tituloSeo}
+  description={descripcionSeo(art.data.description, art.body)}
   bodyClass="bg-gradient-to-b from-olive to-olive/90"
   image={art.data.image}
-  imageAlt={`${art.data.title} — ${art.data.artist}`}
+  imageAlt={textoAlternativo}
   type="article"
   section="Galería"
-  tags={[art.data.category, art.data.artist]}
+  tags={[art.data.category, art.data.artist].filter(Boolean) as string[]}
 >
   <div class="mx-auto max-w-4xl space-y-10 px-6 pb-16">
     <Breadcrumbs
@@ -49,7 +60,7 @@ const { Content } = await art.render();
       >
         <img
           src={art.data.image}
-          alt={art.data.title}
+          alt={textoAlternativo}
           class="h-full w-full object-cover"
           loading="lazy"
         />
@@ -68,9 +79,13 @@ const { Content } = await art.render();
         <div
           class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-widest"
         >
-          <span class="rounded-full bg-terracotta px-3 py-1 text-chocolate"
-            >{art.data.artist}</span
-          >
+          {
+            art.data.artist && (
+              <span class="rounded-full bg-terracotta px-3 py-1 text-chocolate">
+                {art.data.artist}
+              </span>
+            )
+          }
           {
             art.data.category && (
               <span class="rounded-full border border-mustard/80 px-3 py-1 text-mustard">
@@ -103,7 +118,7 @@ const { Content } = await art.render();
     <div class="">
       <ShareButtons
         url={`/gallery/${art.slug}`}
-        title={`${art.data.title} - ${art.data.artist}`}
+        title={art.data.artist ? `${art.data.title} — ${art.data.artist}` : art.data.title}
         description={art.data.description}
       />
     </div>
@@ -134,7 +149,7 @@ const { Content } = await art.render();
     </button>
     <img
       src={art.data.image}
-      alt={art.data.title}
+      alt={textoAlternativo}
       class="max-h-full max-w-full object-contain"
       data-lightbox-image
     />
