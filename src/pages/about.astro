@@ -1,11 +1,13 @@
 ---
+import { getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import negritas from "@/utils/negritas";
+
+// Los textos se editan desde /admin → «Páginas fijas → Quiénes somos».
+const { data: pagina } = await getEntry("pages", "about");
 ---
 
-<Layout
-  title="Quiénes Somos | ActivaShe"
-  description="ActivaShe es un espacio comunal y familiar para empoderar a la comunidad afrocubana, especialmente a las mujeres negras."
->
+<Layout title={pagina.title} description={pagina.seoDescription}>
   <section class="mx-auto max-w-4xl space-y-8 px-6 lg:max-w-6xl">
     <div
       class="card-shadow relative overflow-hidden rounded-3xl bg-terracotta p-8 md:p-12"
@@ -16,89 +18,71 @@ import Layout from "@/layouts/Layout.astro";
       </div>
       <div class="relative z-10">
         <h1 class="mb-6 font-display text-4xl text-warm-cream">
-          Quiénes <span class="underline decoration-mustard decoration-4 underline-offset-4">Somos</span>
+          {pagina.heading}{
+            pagina.headingHighlight && (
+              <>
+                {" "}
+                <span class="underline decoration-mustard decoration-4 underline-offset-4">
+                  {pagina.headingHighlight}
+                </span>
+              </>
+            )
+          }
         </h1>
 
-        <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
-          <p class="text-lg">
-            <strong>Activ@ Àşé</strong> es un espacio comunal y familiar que nace
-            con el objetivo de empoderar a la comunidad afrocubana, especialmente
-            a las mujeres negras, que a pesar de ser mayoría en el país, son las
-            más desatendidas y desprotegidas por la política social de la isla.
-          </p>
-        </div>
+        {
+          pagina.intro.length > 0 && (
+            <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
+              {pagina.intro.map((parrafo) => (
+                <p class="text-lg" set:html={negritas(parrafo)} />
+              ))}
+            </div>
+          )
+        }
       </div>
     </div>
 
-    <h2 class="mb-6 font-display text-3xl text-chocolate">Nuestro Propósito</h2>
-
-    <p class="text-lg">
-      Crear un centro de capacitación y empoderamiento que ponga a disposición
-      de la gente negra espacios de formación y desarrollo, para que puedan:
-    </p>
-
-    <div class="mt-4 grid gap-4 md:grid-cols-2">
-      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
-        <div class="mb-3 flex items-center gap-3">
-          <span class="material-symbols-outlined text-3xl text-mustard"
-            aria-hidden="true"
-            >handshake</span
-          >
-          <h3 class="text-sm font-bold text-chocolate">
-            Desarrollar sus comunidades y generar un futuro próspero
-          </h3>
+    {
+      pagina.sections.map((seccion) => (
+        <div>
+          {seccion.heading && (
+            <h2 class="mb-6 font-display text-3xl text-chocolate">
+              {seccion.heading}
+            </h2>
+          )}
+          {seccion.paragraphs.map((parrafo) => (
+            <p class="text-lg" set:html={negritas(parrafo)} />
+          ))}
+          {seccion.cards.length > 0 && (
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+              {seccion.cards.map((tarjeta) => (
+                <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
+                  <div class="mb-3 flex items-center gap-3">
+                    {/* set:text evita los saltos de línea alrededor del
+                        nombre: la fuente Material Symbols solo forma el
+                        icono si el texto va pegado a las etiquetas. */}
+                    <span
+                      class="material-symbols-outlined text-3xl text-mustard"
+                      aria-hidden="true"
+                      set:text={tarjeta.icon}
+                    />
+                    <h3 class="text-sm font-bold text-chocolate">
+                      {tarjeta.text}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
+      ))
+    }
 
-      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
-        <div class="mb-3 flex items-center gap-3">
-          <span class="material-symbols-outlined text-3xl text-mustard"
-            aria-hidden="true"
-            >school</span
-          >
-          <h3 class="text-sm font-bold text-chocolate">
-            Recibir formación en diversos ámbitos y acceder a oportunidades de
-            calidad
-          </h3>
-        </div>
-      </div>
-
-      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
-        <div class="mb-3 flex items-center gap-3">
-          <span class="material-symbols-outlined text-3xl text-mustard"
-            aria-hidden="true"
-            >palette</span
-          >
-          <h3 class="text-sm font-bold text-chocolate">
-            Elevar su cognición en el ámbito de la cultura y la sociedad
-          </h3>
-        </div>
-      </div>
-
-      <div class="rounded-2xl border-l-4 border-mustard bg-chocolate/10 p-6">
-        <div class="mb-3 flex items-center gap-3">
-          <span class="material-symbols-outlined text-3xl text-mustard"
-            aria-hidden="true"
-            >stars</span
-          >
-          <h3 class="text-sm font-bold text-chocolate">
-            Promover y visibilizar la labor de emprendedores y artistas negrxs
-            en la isla
-          </h3>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="mb-6 font-display text-3xl text-chocolate">
-      Un espacio cubano para la transformación
-    </h2>
-
-    <p class="text-lg">
-      <strong>Activ@ Àşé</strong> es un centro de artivismo y desarrollo cultural
-      que busca promover y potenciar bienes espirituales, morales y materiales para
-      el bienestar de las poblaciones no blancas en la Cuba de hoy. Un espacio donde
-      la comunidad afrocubana pueda crecer, expresarse y sentirse valorada.
-    </p>
+    {
+      pagina.closing.map((parrafo) => (
+        <p class="text-lg" set:html={negritas(parrafo)} />
+      ))
+    }
 
     <a
       href="/"

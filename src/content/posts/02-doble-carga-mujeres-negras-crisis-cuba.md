@@ -6,7 +6,7 @@ description: Análisis sobre cómo la crisis económica y la inseguridad
 publishedAt: 2025-10-07
 slug: doble-carga-mujeres-negras-crisis-cuba
 isPublish: true
-isDraft: true
+isDraft: false
 image: "/images/mujer-cuba-mercado.webp"
 ---
 

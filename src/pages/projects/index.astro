@@ -2,10 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import { publicadas } from "@/utils/contenido";
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
+const projects = publicadas(await getCollection("projects"));
 const formatAreas = (values = []) => values.join(" • ");
 
 const makePreview = (text = "", maxWords = 30) => {

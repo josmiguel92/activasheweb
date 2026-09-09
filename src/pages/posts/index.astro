@@ -3,10 +3,9 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
 import readingTime from "@/utils/readingTime";
+import { publicadas } from "@/utils/contenido";
 
-const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
+const posts = publicadas(await getCollection("posts"));
 ---
 
 <Layout

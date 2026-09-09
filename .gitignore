@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# caché de jampack (optimización de imágenes al compilar)
+.jampack/
+
 # dependencies
 node_modules/
 

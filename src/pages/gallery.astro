@@ -6,20 +6,18 @@ import FeaturedVideo from "@/components/FeaturedVideo.astro";
 import VideoGrid from "@/components/VideoGrid.astro";
 import Button from "@/components/Button.astro";
 import presentation from "@/data/presentation";
+import { esVisible, publicadas } from "@/utils/contenido";
 import "@/styles/art-gallery.css";
 
-const artworks = await getCollection("art");
-const videos = await getCollection("videos");
+const artworks = (await getCollection("art")).filter(esVisible);
+// Ya vienen ordenados de más reciente a más antiguo.
+const sortedVideos = publicadas(await getCollection("videos"));
 
-// Sort videos by publishedAt date
-const sortedVideos = videos.sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
-
-// Get featured video or first one
-const featuredVideo = videos.find((v) => v.data.featured) || sortedVideos[0];
+// El destacado, o el más reciente si nadie ha marcado ninguno.
+const featuredVideo =
+  sortedVideos.find((v) => v.data.featured) ?? sortedVideos[0];
 const otherVideos = sortedVideos
-  .filter((v) => v.slug !== featuredVideo.slug)
+  .filter((v) => v.slug !== featuredVideo?.slug)
   .slice(0, 6);
 
 // Get social links

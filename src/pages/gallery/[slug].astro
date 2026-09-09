@@ -3,9 +3,10 @@ import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
+import { esVisible } from "@/utils/contenido";
 
 export async function getStaticPaths() {
-  const artworks = await getCollection("art");
+  const artworks = (await getCollection("art")).filter(esVisible);
   return artworks.map((art) => ({
     params: { slug: art.slug },
     props: { art },

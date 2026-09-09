@@ -2,7 +2,7 @@
 title: AfibolaSifunola
 artist: ...
 description: "*"
-image: /images/4_20251205_152423_0003.png
+image: /images/4_20251205_152423_0003.jpg
 category: pintura
 year: 2025
 ---

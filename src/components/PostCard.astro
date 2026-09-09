@@ -1,9 +1,10 @@
 ---
 import formatDate from "@/utils/formatDate";
+import { fechaISO } from "@/utils/formatDate";
 
 type Props = {
   title: string;
-  publishedAt: Date;
+  publishedAt?: Date;
   description: string;
   slug: string;
   image?: string;
@@ -37,7 +38,7 @@ const { title, publishedAt, description, slug, image, readingTime } =
         >Publicación</span
       >
       <span class="text-[11px] font-medium text-chocolate/70">
-        <time datetime={publishedAt.toISOString()}>{formatDate(publishedAt)}</time>
+        <time datetime={fechaISO(publishedAt)}>{formatDate(publishedAt)}</time>
         {readingTime && <span aria-hidden="true"> · </span>}
         {readingTime && <span>{readingTime} min de lectura</span>}
       </span>

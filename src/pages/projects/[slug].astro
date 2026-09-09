@@ -4,11 +4,14 @@ import Layout from "@/layouts/Layout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ShareButtons from "@/components/ShareButtons.astro";
 import formatDate from "@/utils/formatDate";
+import { fechaISO } from "@/utils/formatDate";
+import { publicadas } from "@/utils/contenido";
 import StatusBadge from "@/components/StatusBadge.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import Button from "@/components/Button.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = publicadas(await getCollection("projects"));
 
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -23,9 +26,8 @@ type Props = {
 const { project } = Astro.props;
 const { Content } = await project.render();
 
-const others = (await getCollection("projects"))
-  .filter((p) => p.slug !== project.slug && p.data.isPublish)
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+const others = publicadas(await getCollection("projects"))
+  .filter((p) => p.slug !== project.slug)
   .slice(0, 2);
 ---
 
@@ -68,7 +70,7 @@ const others = (await getCollection("projects"))
             tone={project.data.isComingSoon ? "accent" : "muted"}
           />
           <time
-            datetime={project.data.publishedAt.toISOString()}
+            datetime={fechaISO(project.data.publishedAt)}
             class="text-sm text-warm-cream/90"
             >{formatDate(project.data.publishedAt)}</time
           >
@@ -85,6 +87,23 @@ const others = (await getCollection("projects"))
     <div class="post prose prose-lg mx-auto mb-8 max-w-3xl text-chocolate">
       <Content />
     </div>
+
+    {
+      project.data.showDonate && (
+        <aside class="mb-8 rounded-2xl border-l-4 border-mustard bg-olive/10 p-6">
+          <h2 class="mb-2 font-display text-xl text-chocolate">
+            Este proyecto se sostiene con apoyo
+          </h2>
+          <p class="mb-4 text-chocolate/80">
+            Escríbenos y te contamos las vías seguras para que tu aporte llegue
+            íntegramente a quienes lo necesitan.
+          </p>
+          <div class="flex">
+            <Button href="/donate" label="Colabora con ActivaShe" icon="heart" />
+          </div>
+        </aside>
+      )
+    }
 
     <div class="mb-8 rounded-2xl border border-soft-olive/30 bg-white/5 p-6">
       <ShareButtons

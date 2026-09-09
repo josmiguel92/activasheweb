@@ -8,11 +8,10 @@ import Link from "@/components/shared/Link.astro";
 import Button from "@/components/Button.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 import readingTime from "@/utils/readingTime";
+import { esVisible, publicadas } from "@/utils/contenido";
 
 import presentation from "@/data/presentation";
-const projectsCollection = (await getCollection("projects")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
+const projectsCollection = publicadas(await getCollection("projects"));
 const projects = projectsCollection.map((p) => ({
   title: p.data.title,
   areas: p.data.areas,
@@ -21,10 +20,8 @@ const projects = projectsCollection.map((p) => ({
   image: p.data.image,
 }));
 
-const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
-const artItems = (await getCollection("art")).slice(0, 3);
+const posts = publicadas(await getCollection("posts"));
+const artItems = (await getCollection("art")).filter(esVisible).slice(0, 3);
 ---
 
 <Layout noTopMargin>

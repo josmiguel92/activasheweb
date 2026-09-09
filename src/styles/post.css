@@ -24,3 +24,24 @@
 .post p:has(> img:only-child) + p:has(> em:only-child) > em {
   @apply not-italic;
 }
+
+/* Bloque «Imagen con pie de foto» del CMS: <figure> con <figcaption>.
+   Sustituye a la convención de arriba (imagen + párrafo en cursiva), que se
+   mantiene por el contenido ya publicado. */
+.post figure {
+  @apply my-10;
+}
+.post figure img {
+  @apply mx-auto rounded-2xl;
+}
+.post figcaption {
+  @apply mt-3 text-center text-sm leading-normal text-chocolate/70;
+}
+
+/* Bloque «Vídeo de YouTube» del CMS */
+.post .post-video {
+  @apply relative my-10 aspect-video w-full overflow-hidden rounded-2xl bg-chocolate/5;
+}
+.post .post-video iframe {
+  @apply absolute inset-0 h-full w-full border-0;
+}

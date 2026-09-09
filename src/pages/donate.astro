@@ -1,12 +1,14 @@
 ---
+import { getEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import presentation from "@/data/presentation";
+import negritas from "@/utils/negritas";
+
+// Los textos se editan desde /admin → «Páginas fijas → Colabora».
+const { data: pagina } = await getEntry("pages", "donate");
 ---
 
-<Layout
-  title="Colabora con ActivaShe | Donaciones"
-  description="Apoya el trabajo de ActivaShe con mujeres, infancias y familias afrocubanas. Escríbenos para conocer las vías seguras de colaborar."
->
+<Layout title={pagina.title} description={pagina.seoDescription}>
   <section class="mx-auto max-w-4xl space-y-8 px-6 lg:max-w-6xl">
     <div
       class="card-shadow relative overflow-hidden rounded-3xl bg-olive p-8 md:p-12"
@@ -17,51 +19,54 @@ import presentation from "@/data/presentation";
       </div>
       <div class="relative z-10">
         <h1 class="mb-6 font-display text-4xl text-warm-cream">
-          Colabora con <span class="underline decoration-mustard decoration-4 underline-offset-4">ActivaShe</span>
+          {pagina.heading}{
+            pagina.headingHighlight && (
+              <>
+                {" "}
+                <span class="underline decoration-mustard decoration-4 underline-offset-4">
+                  {pagina.headingHighlight}
+                </span>
+              </>
+            )
+          }
         </h1>
 
         <div class="flex flex-col gap-6 leading-relaxed text-warm-cream/95">
-          <p>
-            Actualmente estamos estableciendo una plataforma segura y directa
-            para recibir donaciones. De momento, no contamos con un sistema
-            automatizado, pero tu interés en ayudar es increíblemente valioso
-            para nosotras.
-          </p>
-          <p>
-            Si deseas colaborar, la mejor vía es ponerte en contacto directo con
-            nuestro equipo. Escríbenos y te comentaremos personalmente las
-            formas más efectivas y seguras para que tu aporte llegue
-            íntegramente a quienes lo necesitan.
-          </p>
+          {pagina.intro.map((parrafo) => <p set:html={negritas(parrafo)} />)}
 
-          <div
-            class="mt-4 rounded-2xl border-l-4 border-mustard bg-chocolate/30 p-6"
-          >
-            <div class="mb-2 flex items-center justify-between">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-wider text-warm-cream"
-              >
-                Nuestro correo de contacto
-              </p>
-              <span class="material-symbols-outlined flex-shrink-0 text-mustard"
-                aria-hidden="true"
-                >mail</span
-              >
-            </div>
+          {
+            pagina.aside && (
+              <div class="mt-4 rounded-2xl border-l-4 border-mustard bg-chocolate/30 p-6">
+                <div class="mb-2 flex items-center justify-between">
+                  <p class="mb-3 text-sm font-bold uppercase tracking-wider text-warm-cream">
+                    {pagina.aside.title}
+                  </p>
+                  <span
+                    class="material-symbols-outlined flex-shrink-0 text-mustard"
+                    aria-hidden="true"
+                    set:text="mail"
+                  />
+                </div>
 
-            <a
-              href={`mailto:${presentation.mail}`}
-              class="flex items-center gap-3 break-all text-lg font-bold transition-colors hover:text-mustard lg:text-xl"
-            >
-              <span class="lg:truncate-none truncate">{presentation.mail}</span>
-            </a>
-          </div>
+                {pagina.aside.text && (
+                  <p class="text-warm-cream/90" set:html={negritas(pagina.aside.text)} />
+                )}
 
-          <p class="text-lg">
-            Gracias de antemano por tu generosidad y por creer en nuestra
-            misión. Cada gesto, por pequeño que sea, nos impulsa a seguir
-            adelante.
-          </p>
+                {pagina.aside.showEmail && (
+                  <a
+                    href={`mailto:${presentation.mail}`}
+                    class="flex items-center gap-3 break-all text-lg font-bold transition-colors hover:text-mustard lg:text-xl"
+                  >
+                    <span class="lg:truncate-none truncate">
+                      {presentation.mail}
+                    </span>
+                  </a>
+                )}
+              </div>
+            )
+          }
+
+          {pagina.closing.map((parrafo) => <p class="text-lg" set:html={negritas(parrafo)} />)}
         </div>
       </div>
     </div>
