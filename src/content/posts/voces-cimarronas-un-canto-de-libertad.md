@@ -1,6 +1,7 @@
 ---
 title: Voces Cimarronas, un canto de libertad...
 description: Arte feminista contra la opresion en Cuba
+slug: voces-cimarronas-un-canto-de-libertad
 publishedAt: 2026-01-20T19:20:39.971Z
 isPublish: true
 isDraft: false

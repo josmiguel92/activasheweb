@@ -41,12 +41,20 @@ en producción. Las ramas de prueba se borran con `git branch -D cms/...`.
 | `src/content/config.ts` | Los campos que admite cada colección |
 | `public/admin/config.yml` | Qué campos enseña el panel. Tiene que ir a la par del fichero anterior |
 | `public/admin/editor-components.js` | Bloques insertables en el cuerpo: imagen con pie, vídeo, botón |
+| `public/admin/campo-direccion.js` | El campo «Dirección (slug)», bloqueado en las entradas ya guardadas |
 | `public/images` | Las imágenes que sube el panel |
 | `tools/optimizar-imagenes.mjs` | Reduce el peso de `public/` sin cambiar nombres ni formatos |
 
 Dos casillas deciden si algo se ve: **Publicado** retira el contenido del sitio
 sin borrarlo, y **Borrador** lo esconde mientras se termina. Las aplica
 `src/utils/contenido.ts` en los cuatro tipos de contenido.
+
+La **dirección (slug)** de una entrada es su URL, y cambiarla en algo ya
+publicado deja en 404 los enlaces compartidos y lo que Google tenga indexado.
+Por eso el campo se abre bloqueado en las entradas ya guardadas: hay que pulsar
+«Cambiar la dirección» y confirmar. Todas las entradas llevan el campo relleno
+a propósito; si alguna se quedara sin él, aparecería vacío al abrirla y sería
+fácil guardar una dirección nueva sin querer.
 
 Las fechas se guardan como `YYYY-MM-DD`. Si alguien edita un fichero a mano y
 escribe otra cosa, el build no se rompe: avisa por consola y la entrada se

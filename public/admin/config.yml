@@ -42,10 +42,12 @@ collections:
     sortable_fields: [publishedAt, title]
     fields:
       - { name: title, label: Título, widget: string }
+      # Campo propio, en public/admin/campo-direccion.js: se abre bloqueado en
+      # las entradas ya guardadas para no cambiar una URL sin querer.
       - name: slug
         label: Dirección (slug)
-        widget: string
-        hint: "Parte final de la URL: /posts/mi-articulo. Solo minúsculas, números y guiones. No cambiarlo una vez publicado: rompe los enlaces compartidos."
+        widget: direccion
+        hint: "Parte final de la URL: /posts/mi-articulo. Solo minúsculas, números y guiones. En una entrada ya publicada aparece bloqueado: cambiarlo deja en 404 los enlaces compartidos y lo que Google tenga indexado."
         pattern:
           ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Solo minúsculas, números y guiones."]
       - name: description
@@ -110,10 +112,11 @@ collections:
     sortable_fields: [publishedAt, title]
     fields:
       - { name: title, label: Título, widget: string }
+      # Mismo campo propio que en las publicaciones.
       - name: slug
         label: Dirección (slug)
-        widget: string
-        hint: "Parte final de la URL: /projects/mi-proyecto. Solo minúsculas, números y guiones."
+        widget: direccion
+        hint: "Parte final de la URL: /projects/mi-proyecto. Solo minúsculas, números y guiones. En un proyecto ya publicado aparece bloqueado: cambiarlo deja en 404 los enlaces compartidos."
         pattern:
           ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Solo minúsculas, números y guiones."]
       - { name: description, label: Descripción, widget: text }
