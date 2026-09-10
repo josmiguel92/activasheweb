@@ -8,6 +8,7 @@ slug: doble-carga-mujeres-negras-crisis-cuba
 isPublish: true
 isDraft: false
 image: "/images/mujer-cuba-mercado.webp"
+project: informe-doble-carga
 ---
 
 En medio de una de las peores crisis económicas de su historia, que ha sumido a gran parte de la población en la pobreza, las mujeres negras en Cuba enfrentan una batalla diaria por la supervivencia, marcada por una profunda inseguridad alimentaria y la agudización de desigualdades históricas. Mientras los apagones se prolongan y el valor del peso cubano se desploma, para muchas mujeres afrocubanas, llevar un plato de comida a la mesa se ha convertido en un desafío monumental.

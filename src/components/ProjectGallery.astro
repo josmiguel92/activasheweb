@@ -1,0 +1,199 @@
+---
+/**
+ * Galería de recuerdos de un proyecto.
+ *
+ * Las fotos vienen con marco dibujado y en proporciones distintas (unas
+ * apaisadas, otras verticales), así que se pintan en columnas al estilo
+ * mosaico y cada una conserva su forma. Recortarlas a una cuadrícula
+ * uniforme cortaría el marco.
+ *
+ * Al tocar una foto se abre a tamaño completo, con flechas para pasar a la
+ * siguiente. Sin JavaScript la sección sigue siendo una lista de imágenes
+ * legible: el visor es un añadido, no el único modo de verlas.
+ */
+import imageSize from "@/utils/imageSize";
+
+type Foto = {
+  image: string;
+  alt: string;
+  caption?: string;
+};
+
+type Props = {
+  fotos: Foto[];
+  /** Encabezado de la sección. */
+  titulo?: string;
+};
+
+const { fotos, titulo = "Recuerdos" } = Astro.props;
+const id = "recuerdos";
+
+// Las medidas se leen del fichero al compilar. Sin ellas, el navegador no sabe
+// cuánto sitio guardar para una foto que aún no ha llegado y la maqueta salta
+// entera cuando cargan: en columnas tipo mosaico el salto es muy visible.
+const fotosMedidas = fotos.map((foto) => ({
+  ...foto,
+  medidas: imageSize(foto.image),
+}));
+---
+
+<section aria-labelledby={id} class="mb-8">
+  <div class="mb-6 border-t border-soft-olive/30 pt-8">
+    <h2 id={id} class="font-display text-2xl text-chocolate">{titulo}</h2>
+  </div>
+
+  <ul
+    class="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3"
+    data-galeria
+  >
+    {
+      fotosMedidas.map((foto, indice) => (
+        <li class="break-inside-avoid">
+          <button
+            type="button"
+            class="group card-shadow block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-soft-olive/30 bg-white/5 text-left transition-colors hover:border-mustard"
+            data-foto={indice}
+            data-src={foto.image}
+            data-alt={foto.alt}
+            data-caption={foto.caption ?? ""}
+            aria-label={`Ver a tamaño completo: ${foto.alt}`}
+          >
+            <img
+              src={foto.image}
+              alt={foto.alt}
+              width={foto.medidas?.width}
+              height={foto.medidas?.height}
+              class="h-auto w-full transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              loading="lazy"
+              decoding="async"
+            />
+            {foto.caption && (
+              <p class="px-4 py-3 text-sm leading-normal text-chocolate/70">
+                {foto.caption}
+              </p>
+            )}
+          </button>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<div
+  data-visor
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Foto a tamaño completo"
+  hidden
+>
+  <button
+    type="button"
+    class="absolute right-4 top-4 z-10 text-warm-cream transition-colors hover:text-vibrant-orange"
+    data-visor-cerrar
+    aria-label="Cerrar"
+  >
+    <span class="material-symbols-outlined text-4xl" aria-hidden="true">close</span>
+  </button>
+
+  <button
+    type="button"
+    class="absolute left-2 z-10 rounded-full p-2 text-warm-cream transition-colors hover:text-vibrant-orange sm:left-4"
+    data-visor-anterior
+    aria-label="Foto anterior"
+  >
+    <span class="material-symbols-outlined text-4xl" aria-hidden="true">arrow_back</span>
+  </button>
+
+  <button
+    type="button"
+    class="absolute right-2 z-10 rounded-full p-2 text-warm-cream transition-colors hover:text-vibrant-orange sm:right-4"
+    data-visor-siguiente
+    aria-label="Foto siguiente"
+  >
+    <span class="material-symbols-outlined text-4xl" aria-hidden="true">arrow_forward</span>
+  </button>
+
+  <figure class="flex max-h-full flex-col items-center gap-4">
+    <img
+      data-visor-imagen
+      src=""
+      alt=""
+      class="max-h-[80vh] max-w-full rounded-xl object-contain"
+    />
+    <figcaption
+      data-visor-pie
+      class="max-w-2xl text-center text-sm text-warm-cream/85"
+    >
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const galeria = document.querySelector("[data-galeria]");
+    const visor = document.querySelector<HTMLElement>("[data-visor]");
+    if (!galeria || !visor) return;
+
+    const imagen = visor.querySelector<HTMLImageElement>("[data-visor-imagen]");
+    const pie = visor.querySelector<HTMLElement>("[data-visor-pie]");
+    const cerrar = visor.querySelector<HTMLButtonElement>("[data-visor-cerrar]");
+    const anterior = visor.querySelector<HTMLButtonElement>("[data-visor-anterior]");
+    const siguiente = visor.querySelector<HTMLButtonElement>("[data-visor-siguiente]");
+    const botones = Array.from(
+      galeria.querySelectorAll<HTMLButtonElement>("[data-foto]"),
+    );
+    if (!imagen || !pie || botones.length === 0) return;
+
+    // Para devolver el foco a la foto desde la que se abrió el visor.
+    let origen: HTMLButtonElement | null = null;
+    let actual = 0;
+
+    const mostrar = (indice: number) => {
+      actual = (indice + botones.length) % botones.length;
+      const boton = botones[actual];
+      imagen.src = boton.dataset.src ?? "";
+      imagen.alt = boton.dataset.alt ?? "";
+      pie.textContent = boton.dataset.caption ?? "";
+    };
+
+    const abrir = (indice: number, boton: HTMLButtonElement) => {
+      origen = boton;
+      mostrar(indice);
+      visor.hidden = false;
+      visor.classList.remove("hidden");
+      visor.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      cerrar?.focus();
+    };
+
+    const ocultar = () => {
+      visor.hidden = true;
+      visor.classList.add("hidden");
+      visor.classList.remove("flex");
+      document.body.style.overflow = "";
+      origen?.focus();
+      origen = null;
+    };
+
+    botones.forEach((boton, indice) => {
+      boton.addEventListener("click", () => abrir(indice, boton));
+    });
+
+    cerrar?.addEventListener("click", ocultar);
+    anterior?.addEventListener("click", () => mostrar(actual - 1));
+    siguiente?.addEventListener("click", () => mostrar(actual + 1));
+
+    // Tocar el fondo cierra; tocar la foto o los botones, no.
+    visor.addEventListener("click", (evento) => {
+      if (evento.target === visor) ocultar();
+    });
+
+    document.addEventListener("keydown", (evento) => {
+      if (visor.hidden) return;
+      if (evento.key === "Escape") ocultar();
+      if (evento.key === "ArrowLeft") mostrar(actual - 1);
+      if (evento.key === "ArrowRight") mostrar(actual + 1);
+    });
+  });
+</script>

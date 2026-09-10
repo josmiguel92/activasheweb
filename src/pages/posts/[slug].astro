@@ -9,6 +9,7 @@ import { publicadas } from "@/utils/contenido";
 import { descripcionSeo } from "@/utils/resumen";
 import readingTime from "@/utils/readingTime";
 import PostCard from "@/components/PostCard.astro";
+import { proyectoDePublicacion } from "@/utils/series";
 
 export async function getStaticPaths() {
   const posts = publicadas(await getCollection("posts"));
@@ -27,9 +28,20 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const minutes = readingTime(post.body);
 
-const related = publicadas(await getCollection("posts"))
-  .filter((p) => p.slug !== post.slug)
-  .slice(0, 2);
+// Proyecto del que forma parte el artículo, si lo declara; ver
+// src/utils/series.ts.
+const proyecto = proyectoDePublicacion(post, await getCollection("projects"));
+
+// Para seguir leyendo, primero los artículos del mismo proyecto: son la
+// continuación natural. Si no llegan a dos, se completa con los más
+// recientes del resto.
+const resto = publicadas(await getCollection("posts")).filter(
+  (p) => p.slug !== post.slug,
+);
+const related = [
+  ...resto.filter((p) => proyecto && p.data.project === proyecto.slug),
+  ...resto.filter((p) => !proyecto || p.data.project !== proyecto.slug),
+].slice(0, 2);
 ---
 
 <Layout
@@ -68,6 +80,22 @@ const related = publicadas(await getCollection("posts"))
         {post.data.title}
       </h1>
       <p class="text-lg italic text-warm-cream/90">{post.data.description}</p>
+      {
+        proyecto && (
+          <p class="mt-5 border-t border-warm-cream/20 pt-4 text-sm text-warm-cream/90">
+            <span class="material-symbols-outlined align-middle text-base" aria-hidden="true">
+              folder_open
+            </span>{" "}
+            Forma parte del proyecto{" "}
+            <a
+              href={`/projects/${proyecto.slug}`}
+              class="font-bold text-warm-cream underline decoration-mustard decoration-2 underline-offset-4 hover:decoration-warm-cream"
+            >
+              {proyecto.data.title}
+            </a>
+          </p>
+        )
+      }
     </header>
 
     {

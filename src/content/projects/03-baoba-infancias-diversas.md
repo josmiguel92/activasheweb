@@ -13,6 +13,52 @@ image: /images/baoba202609_0.jpg
 description: El Cuidado del Ciclo Completo de la Vida Afro. Talleres de
   educación alternativa y matriz artística para infancias negras y mestizas, y
   una red de acompañamiento a madres desde la gestación.
+gallery:
+  - image: /images/baoba-recuerdos-01.jpg
+    alt: Niñas y niños con uniforme escolar sentados en círculo en el suelo del
+      aula, trabajando con hojas de papel.
+    caption: El taller se hace en el suelo, en círculo. Nadie está al frente.
+  - image: /images/baoba-recuerdos-02.jpg
+    alt: Una educadora inclinada reparte materiales entre cuatro niñas y niños
+      que dibujan tumbados en el suelo del aula.
+    caption: Acompañar no es dar clase. Es agacharse a la altura de quien
+      aprende.
+  - image: /images/baoba-recuerdos-03.jpg
+    alt: Educadoras y niñas y niños con uniforme escolar repartidos por el aula,
+      dibujando en el suelo con lápices de colores.
+    caption: Aprender haciendo, aprendiendo jugando.
+  - image: /images/baoba-recuerdos-04.jpg
+    alt: Seis niñas y niños con uniforme escolar posan junto a dos educadoras,
+      sosteniendo las figuras de papel que acaban de recortar.
+    caption: El final del encuentro, con lo hecho ese día en las manos.
+  - image: /images/baoba-recuerdos-05.jpg
+    alt: Un niño sentado en un sofá sostiene una guitarra casi tan grande como
+      él y mira a la cámara.
+    caption: La guitarra pesa más que quien la toca. No importa.
+  - image: /images/baoba-recuerdos-06.jpg
+    alt: Una niña abraza una guitarra apoyada en una silla y recuesta la cabeza
+      sobre la caja.
+    caption: El tambor, el color y el cuento como lenguajes de expresión.
+  - image: /images/baoba-recuerdos-07.jpg
+    alt: Un niño pequeño sonríe mientras pinta con un pincel sobre un muro
+      cubierto de manchas de colores.
+    caption: El muro del patio, convertido en lienzo.
+  - image: /images/baoba-recuerdos-08.jpg
+    alt: Un grupo de niñas y niños juega disfrazado con hojas de palma,
+      sombreros y flores dentro del aula.
+    caption: Día de disfraces con lo que da el patio.
+  - image: /images/baoba-recuerdos-09.jpg
+    alt: Varias niñas y niños agachados en el césped, con guantes de trabajo,
+      sembrando una planta pequeña.
+    caption: La siembra se hace entre todas las manos.
+  - image: /images/baoba-recuerdos-10.jpg
+    alt: Dos personas agachadas riegan una planta recién sembrada con agua de
+      un cubo.
+    caption: Regar lo sembrado también es parte del taller.
+  - image: /images/baoba-recuerdos-11.jpg
+    alt: Un niño de pie sobre una roca al aire libre, con los brazos abiertos y
+      el cielo detrás.
+    caption: Salir del aula, que también es cuidar.
 ---
 ## Resumen del Proyecto
 

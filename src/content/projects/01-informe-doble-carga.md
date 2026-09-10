@@ -1,5 +1,5 @@
 ---
-title: "Informe: La Doble Carga en Cuba"
+title: "La Doble Carga en Cuba"
 publishedAt: 2025-09-15
 slug: informe-doble-carga
 isPublish: true

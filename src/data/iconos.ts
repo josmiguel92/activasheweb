@@ -14,11 +14,13 @@
  */
 export const ICONOS = [
   "arrow_back",
+  "arrow_forward",
   "arrow_upward",
   "balance",
   "brush",
   "close",
   "error",
+  "folder_open",
   "handshake",
   "home",
   "link",

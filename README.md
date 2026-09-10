@@ -51,3 +51,32 @@ sin borrarlo, y **Borrador** lo esconde mientras se termina. Las aplica
 Las fechas se guardan como `YYYY-MM-DD`. Si alguien edita un fichero a mano y
 escribe otra cosa, el build no se rompe: avisa por consola y la entrada se
 publica sin fecha, ordenada la última.
+
+## Recuerdos: la galería de un proyecto
+
+Un proyecto puede llevar al final una sección **Recuerdos** con fotos de las
+actividades. Se rellena desde el panel, en el campo del mismo nombre: cada foto
+pide una imagen, un texto alternativo (obligatorio: lo leen los lectores de
+pantalla) y un pie opcional. Si la lista está vacía, la sección no aparece.
+
+Las fotos se pintan en columnas tipo mosaico y cada una conserva su proporción,
+porque muchas vienen con marco dibujado y recortarlas a una cuadrícula lo
+cortaría. Al tocar una se abre a tamaño completo, con flechas y teclado para
+pasar de una a otra. Las medidas se leen del fichero al compilar
+(`src/utils/imageSize.ts`) para que el navegador reserve el hueco y la maqueta
+no salte al cargar.
+
+## Publicaciones dentro de un proyecto
+
+Un proyecto largo —«La Doble Carga»— no se cuenta de una vez: se va publicando
+en artículos sueltos. El campo **Proyecto** de una publicación guarda la
+dirección (slug) del proyecto al que pertenece, y con eso el sitio ata las dos
+puntas: el proyecto lista sus artículos al final de su página, y cada artículo
+enlaza de vuelta al proyecto bajo el titular. En «Seguir leyendo» salen primero
+los artículos del mismo proyecto.
+
+El campo es opcional: sin él, la publicación es un artículo suelto y todo
+funciona como antes. La relación la leen las dos funciones de
+`src/utils/series.ts`. Si el slug tiene una errata o el proyecto se retira del
+sitio, el artículo se publica igual —sin el enlace— y queda el aviso en el
+registro del build.

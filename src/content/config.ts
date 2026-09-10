@@ -68,6 +68,25 @@ const publicacion = {
   isDraft: z.boolean().default(false),
 };
 
+/**
+ * Proyecto al que pertenece una publicación.
+ *
+ * Guarda la dirección (slug) de una entrada de `projects`, por ejemplo
+ * `informe-doble-carga`. Sirve para que un proyecto de larga duración
+ * reúna en su página los artículos que va publicando, y para que cada
+ * artículo enlace de vuelta al proyecto del que forma parte.
+ *
+ * Es un texto suelto y no una referencia estricta a propósito: si alguien
+ * escribe un slug que no existe, o retira el proyecto del sitio, el
+ * artículo se publica igual —sin la cinta del proyecto— en lugar de tumbar
+ * el build. src/utils/series.ts avisa en el registro cuando no cuadra.
+ */
+const proyectoOpcional = z.preprocess((valor) => {
+  if (typeof valor !== "string") return undefined;
+  const slug = valor.trim();
+  return slug === "" ? undefined : slug;
+}, z.string().optional());
+
 const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -76,8 +95,29 @@ const postsCollection = defineCollection({
     description: z.string(),
     ...publicacion,
     image: imagenOpcional,
+    project: proyectoOpcional,
   }),
 });
+
+/**
+ * Galería de recuerdos de un proyecto.
+ *
+ * Fotografías de las actividades, al final de la página del proyecto. Es una
+ * lista opcional: los proyectos que no la tienen no pintan la sección.
+ *
+ * `alt` describe la escena para quien no ve la imagen y es obligatorio;
+ * `caption` es el pie visible, opcional. No es lo mismo: repetir el pie en el
+ * alt hace que un lector de pantalla lea dos veces la misma frase.
+ */
+const galeriaOpcional = z
+  .array(
+    z.object({
+      image: imagen,
+      alt: z.string(),
+      caption: z.string().optional(),
+    }),
+  )
+  .optional();
 
 const projectsCollection = defineCollection({
   type: "content",
@@ -91,6 +131,7 @@ const projectsCollection = defineCollection({
     // Añade al final de la página del proyecto la llamada a colaborar.
     showDonate: z.boolean().default(false),
     image: imagenOpcional,
+    gallery: galeriaOpcional,
   }),
 });
 

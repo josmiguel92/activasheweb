@@ -66,6 +66,17 @@ collections:
         widget: image
         required: false
         hint: "Opcional. También es la imagen que se ve al compartir el enlace. Horizontal, ancho de 1200 px basta."
+      # Ata el artículo a una línea de trabajo. El proyecto lo lista entre sus
+      # publicaciones y el artículo enlaza de vuelta a él.
+      - name: project
+        label: Proyecto
+        widget: relation
+        required: false
+        collection: project
+        value_field: slug
+        search_fields: [title]
+        display_fields: [title]
+        hint: "Opcional. Si el artículo forma parte de un proyecto —«La Doble Carga», por ejemplo—, elígelo aquí: aparecerá en la página del proyecto junto al resto de sus artículos. Déjalo vacío si es un artículo suelto."
       - {
           name: isPublish,
           label: "Publicado",
@@ -152,6 +163,26 @@ collections:
           required: false,
           hint: "Añade al final del proyecto una llamada a colaborar.",
         }
+      # Galería de fotos al final de la página del proyecto. Si la lista queda
+      # vacía, la sección no aparece.
+      - name: gallery
+        label: Recuerdos
+        label_singular: Foto
+        widget: list
+        required: false
+        summary: "{{fields.caption}}"
+        hint: "Fotos de las actividades. Se muestran al final de la página, en una sección «Recuerdos», y se abren a tamaño completo al tocarlas."
+        fields:
+          - { name: image, label: Foto, widget: image }
+          - name: alt
+            label: Texto alternativo
+            widget: string
+            hint: "Qué se ve en la foto. Lo leen los lectores de pantalla y aparece si la imagen no carga. No repitas el pie: se leería dos veces."
+          - name: caption
+            label: Pie de foto
+            widget: string
+            required: false
+            hint: "Opcional: se muestra debajo, en letra pequeña."
       - { name: isPublish, label: "Publicado", widget: boolean, default: true }
       - {
           name: isDraft,
