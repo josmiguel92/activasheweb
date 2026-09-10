@@ -72,7 +72,7 @@ collections:
       # publicaciones y el artículo enlaza de vuelta a él.
       - name: project
         label: Proyecto
-        widget: relation
+        widget: proyecto
         required: false
         collection: project
         value_field: slug

@@ -101,11 +101,16 @@
     },
   });
 
-  var Preview = createClass({
+  /*
+   * En el panel de vista previa no se pinta nada. La dirección no forma
+   * parte del artículo, y salía suelta encima del texto —«el-brindis-del-
+   * apagon»— como si fuera una línea más.
+   */
+  var SinVistaPrevia = createClass({
     render: function () {
-      return h("div", null, this.props.value || "");
+      return null;
     },
   });
 
-  CMS.registerWidget("direccion", Control, Preview);
+  CMS.registerWidget("direccion", Control, SinVistaPrevia);
 })();

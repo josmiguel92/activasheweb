@@ -42,6 +42,7 @@ en producción. Las ramas de prueba se borran con `git branch -D cms/...`.
 | `public/admin/config.yml` | Qué campos enseña el panel. Tiene que ir a la par del fichero anterior |
 | `public/admin/editor-components.js` | Bloques insertables en el cuerpo: imagen con pie, vídeo, botón |
 | `public/admin/campo-direccion.js` | El campo «Dirección (slug)», bloqueado en las entradas ya guardadas |
+| `public/admin/campo-proyecto.js` | El campo «Proyecto», sin rastro en el panel de vista previa |
 | `public/images` | Las imágenes que sube el panel |
 | `tools/optimizar-imagenes.mjs` | Reduce el peso de `public/` sin cambiar nombres ni formatos |
 
